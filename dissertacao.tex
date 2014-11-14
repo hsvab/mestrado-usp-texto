@@ -1,0 +1,573 @@
+%% abtex2-modelo-trabalho-academico.tex, v-1.9.2 laurocesar
+%% Copyright 2012-2014 by abnTeX2 group at http://abntex2.googlecode.com/
+%%
+%% This work may be distributed and/or modified under the
+%% conditions of the LaTeX Project Public License, either version 1.3
+%% of this license or (at your option) any later version.
+%% The latest version of this license is in
+%%   http://www.latex-project.org/lppl.txt
+%% and version 1.3 or later is part of all distributions of LaTeX
+%% version 2005/12/01 or later.
+%%
+%% This work has the LPPL maintenance status `maintained'.
+%%
+%% The Current Maintainer of this work is the abnTeX2 team, led
+%% by Lauro César Araujo. Further information are available on
+%% http://abntex2.googlecode.com/
+%%
+%% This work consists of the files abntex2-modelo-trabalho-academico.tex,
+%% abntex2-modelo-include-comandos and abntex2-modelo-references.bib
+%%
+
+% ------------------------------------------------------------------------
+% ------------------------------------------------------------------------
+% abnTeX2: Modelo de Trabalho Academico (tese de doutorado, dissertacao de
+% mestrado e trabalhos monograficos em geral) em conformidade com
+% ABNT NBR 14724:2011: Informacao e documentacao - Trabalhos academicos -
+% Apresentacao
+% ------------------------------------------------------------------------
+% ------------------------------------------------------------------------
+
+\documentclass[
+  % -- opções da classe memoir --
+  12pt,        % tamanho da fonte
+  openright,      % capítulos começam em pág ímpar (insere página vazia caso preciso)
+  twoside,      % para impressão em verso e anverso. Oposto a oneside
+  a4paper,      % tamanho do papel.
+  % -- opções da classe abntex2 --
+  %chapter=TITLE,    % títulos de capítulos convertidos em letras maiúsculas
+  %section=TITLE,    % títulos de seções convertidos em letras maiúsculas
+  %subsection=TITLE,  % títulos de subseções convertidos em letras maiúsculas
+  %subsubsection=TITLE,% títulos de subsubseções convertidos em letras maiúsculas
+  % -- opções do pacote babel --
+  english,      % idioma adicional para hifenização
+%  french,        % idioma adicional para hifenização
+%  spanish,      % idioma adicional para hifenização
+  brazil        % o último idioma é o principal do documento
+]{abntex2}
+
+% ---
+% Pacotes básicos
+% ---
+\usepackage{lmodern}      % Usa a fonte Latin Modern
+\usepackage[T1]{fontenc}    % Selecao de codigos de fonte.
+\usepackage[utf8]{inputenc}    % Codificacao do documento (conversão automática dos acentos)
+\usepackage[table,usenames,dvipsnames]{xcolor}     % para colorir céluas de tabelas
+\usepackage{lastpage}      % Usado pela Ficha catalográfica
+\usepackage{indentfirst}    % Indenta o primeiro parágrafo de cada seção.
+%\usepackage[usenames,dvipsnames]{color}    % Controle das cores
+\usepackage{graphicx}      % Inclusão de gráficos
+\usepackage{microtype}       % para melhorias de justificação
+\usepackage{soulutf8}          % usado para grifar textos com o comando '\hl{}'
+\usepackage[portuguese,obeyFinal,textsize=tiny]{todonotes}         % Pacotes para inserir anotações de coisas a fazer
+\usepackage{paralist}          % pacote usado para enumerações "em linha"
+\usepackage{url}               % pacote para adicionar URLs no texto
+\usepackage{epstopdf}
+\usepackage{multirow}
+\usepackage{array}             % usado para centralizar células de tabelas
+\usepackage{longtable}
+\usepackage{pdflscape}         % usado para landscape de página
+\usepackage{adjustbox}
+\usepackage{booktabs}
+\usepackage{varwidth}%
+\usepackage{underscore}        % Para adicionar underscores nas urls
+\usepackage[final]{pdfpages}          % Para fazer o include de arquivos PDF
+% ---
+
+% ---
+% Pacotes de citações
+% ---
+\usepackage[brazilian,hyperpageref]{backref}   % Paginas com as citações na bibl
+\usepackage[alf]{abntex2cite}  % Citações padrão ABNT
+
+% ---
+% CONFIGURAÇÕES DE PACOTES
+% ---
+
+% ---
+% Configurações do pacote backref
+% Usado sem a opção hyperpageref de backref
+\renewcommand{\backrefpagesname}{Citado na(s) página(s):~}
+% Texto padrão antes do número das páginas
+\renewcommand{\backref}{}
+% Define os textos da citação
+\renewcommand*{\backrefalt}[4]{
+  \ifcase #1 %
+    Nenhuma citação no texto.%
+  \or
+    Citado na página #2.%
+  \else
+    Citado #1 vezes nas páginas #2.%
+  \fi}%
+% ---
+
+% ---
+% Informações de dados para CAPA e FOLHA DE ROSTO
+% ---
+\titulo{Padrões de desclocamento de acordo com o gênero: um estudo da Região Metropolitana de São Paulo}
+\autor{Hayd\'ee Svab}
+\local{São Paulo}
+\data{Dezembro/2014}
+\orientador[Orientador:]{Orlando Strambi}
+%\coorientador[Co-orientadora:]{Rayza Sarmento}
+\instituicao{%
+  Universidade de São Paulo -- USP
+  \par
+  Escola Politécnica}
+\tipotrabalho{Dissertação de Mestrado}
+% O preambulo deve conter o tipo do trabalho, o objetivo,
+% o nome da instituição e a área de concentração
+\preambulo{Trabalho apresentado à Escola Politécnica da Universidade de São Paulo para Exame de Qualificação ao Mestrado.}
+% ---
+
+\include{personalizacoes/comandos-personalizados}
+
+% ---
+% Configurações de aparência do PDF final
+
+% alterando o aspecto da cor azul
+\definecolor{blue}{RGB}{41,5,195}
+
+% informações do PDF
+\makeatletter
+\hypersetup{
+       %pagebackref=true,
+    pdftitle={\@title},
+    pdfauthor={\@author},
+      pdfsubject={\imprimirpreambulo},
+      pdfcreator={PDFLaTeX with abnTeX2},
+    pdfkeywords={abnt}{latex}{abntex}{abntex2}{trabalho acadêmico},
+    colorlinks=true,           % false: boxed links; true: colored links
+      linkcolor=blue,            % color of internal links
+      citecolor=blue,            % color of links to bibliography
+      filecolor=magenta,          % color of file links
+    urlcolor=blue,
+    bookmarksdepth=4
+}
+\makeatother
+% ---
+
+% ---
+% Espaçamentos entre linhas e parágrafos
+% ---
+
+% O tamanho do parágrafo é dado por:
+\setlength{\parindent}{1.3cm}
+
+% Controle do espaçamento entre um parágrafo e outro:
+\setlength{\parskip}{0.2cm}  % tente também \onelineskip
+
+% ---
+% compila o indice
+% ---
+\makeindex
+% ---
+
+% ----
+% Início do documento
+% ----
+\begin{document}
+
+% Retira espaço extra obsoleto entre as frases.
+\frenchspacing
+
+% ----------------------------------------------------------
+% ELEMENTOS PRÉ-TEXTUAIS
+% ----------------------------------------------------------
+% \pretextual
+
+% ---
+% Capa
+% ---
+\imprimircapa
+% ---
+
+% ---
+% Folha de rosto
+% (o * indica que haverá a ficha bibliográfica)
+% ---
+\imprimirfolhaderosto*
+% ---
+
+% ---
+% Inserir a ficha bibliografica
+% ---
+
+% Isto é um exemplo de Ficha Catalográfica, ou ``Dados internacionais de
+% catalogação-na-publicação''. Você pode utilizar este modelo como referência.
+% Porém, provavelmente a biblioteca da sua universidade lhe fornecerá um PDF
+% com a ficha catalográfica definitiva após a defesa do trabalho. Quando estiver
+% com o documento, salve-o como PDF no diretório do seu projeto e substitua todo
+% o conteúdo de implementação deste arquivo pelo comando abaixo:
+%
+% \begin{fichacatalografica}
+%     \includepdf{fig_ficha_catalografica.pdf}
+% \end{fichacatalografica}
+\begin{fichacatalografica}
+  \vspace*{\fill}          % Posição vertical
+  \hrule              % Linha horizontal
+  \begin{center}          % Minipage Centralizado
+  \begin{minipage}[c]{12.5cm}    % Largura
+
+  \imprimirautor
+
+  \hspace{0.5cm} \imprimirtitulo  / \imprimirautor. --
+  \imprimirlocal, \imprimirdata-
+
+  \hspace{0.5cm} \pageref{LastPage} p. : il. (algumas color.) ; 30 cm.\\
+
+  \hspace{0.5cm} \imprimirorientadorRotulo~\imprimirorientador\\
+
+%  \hspace{0.5cm} \imprimircoorientadorRotulo~\imprimircoorientador\\
+
+  \hspace{0.5cm}
+  \parbox[t]{\textwidth}{\imprimirtipotrabalho~--~\imprimirinstituicao,
+  \imprimirdata.}\\
+
+  \hspace{0.5cm} 
+    1. Planejamento de Transportes.
+    2. Análise de Demanda.
+    3. Gênero.
+    I. \imprimirorientadorRotulo~\imprimirorientador~
+    II. Universidade de São Paulo.
+    III. Escola Poliécnica.
+    IV. Título\\
+
+  \hspace{8.75cm} CDU 02:141:005.7\\ %TODO
+
+  \end{minipage}
+  \end{center}
+  \hrule
+\end{fichacatalografica}
+% ---
+
+% ---
+% Inserir errata
+% ---
+
+%\begin{errata}
+%Elemento opcional da \citeonline[4.2.1.2]{NBR14724:2011}. Exemplo:
+%
+%\vspace{\onelineskip}
+%
+%FERRIGNO, C. R. A. \textbf{Tratamento de neoplasias ósseas apendiculares com
+%reimplantação de enxerto ósseo autólogo autoclavado associado ao plasma
+%rico em plaquetas}: estudo crítico na cirurgia de preservação de membro em
+%cães. 2011. 128 f. Tese (Livre-Docência) - Faculdade de Medicina Veterinária e
+%Zootecnia, Universidade de São Paulo, São Paulo, 2011.
+%
+%\begin{table}[htb]
+%\center
+%\footnotesize
+%\begin{tabular}{|p{1.4cm}|p{1cm}|p{3cm}|p{3cm}|}
+%  \hline
+%   \textbf{Folha} & \textbf{Linha}  & \textbf{Onde se lê}  & \textbf{Leia-se}  \\
+%    \hline
+%    1 & 10 & auto-conclavo & autoconclavo\\
+%   \hline
+%\end{tabular}
+%\end{table}
+%
+%\end{errata}
+
+% ---
+
+% ---
+% Inserir folha de aprovação
+% ---
+
+% Isto é um exemplo de Folha de aprovação, elemento obrigatório da NBR
+% 14724/2011 (seção 4.2.1.3). Você pode utilizar este modelo até a aprovação
+% do trabalho. Após isso, substitua todo o conteúdo deste arquivo por uma
+% imagem da página assinada pela banca com o comando abaixo:
+%
+% \includepdf{folhadeaprovacao_final.pdf}
+%
+\begin{folhadeaprovacao}
+
+  \begin{center}
+    {\ABNTEXchapterfont\large\imprimirautor}
+
+    \vspace*{\fill}\vspace*{\fill}
+    \begin{center}
+      \ABNTEXchapterfont\bfseries\Large\imprimirtitulo
+    \end{center}
+    \vspace*{\fill}
+
+    \hspace{.45\textwidth}
+    \begin{minipage}{.5\textwidth}
+        \imprimirpreambulo
+    \end{minipage}%
+    \vspace*{\fill}
+
+   Trabalho aprovado. \\
+   \imprimirlocal, XX de dezembro de 2014: 
+   \end{center}
+
+   \assinatura{\textbf{\imprimirorientador} \\ \imprimirorientadorRotulo}
+   \assinatura{\textbf{Professor} \\ Profa. Dra. XXXX}
+   \assinatura{\textbf{Professor} \\ Prof. Dr. YYYYYY}
+   %\assinatura{\textbf{Professor} \\ Convidado 3}
+   %\assinatura{\textbf{Professor} \\ Convidado 4}
+
+   \begin{center}
+    \vspace*{0.5cm}
+    {\large\imprimirlocal}
+    \par
+    {\large\imprimirdata}
+    \vspace*{1cm}
+  \end{center}
+
+\end{folhadeaprovacao}
+% ---
+
+% ---
+% Dedicatória
+% ---
+\begin{dedicatoria}
+   \vspace*{\fill}
+   \centering
+   \noindent
+   \textit{Este trabalho é dedicado a todas as pessoas que acreditam que o planejamento de transportes só será bem-sucedido se houver conexão com as dimensões sociais e urbanas que influencia e pelas quais é influenciado.} \vspace*{\fill}
+\end{dedicatoria}
+% ---
+
+% ---
+% Agradecimentos %TODO
+% ---
+\begin{agradecimentos} 
+Um trabalho de pesquisa sempre é fruto direta ou indiretamente da colaboração de muitas pessoas.
+Agradecê-las nominalmente é um risco por ser possível deixar indevidamente alguém de fora.
+Assim, deixo registrado um sincero agradecimento a todas e todos que contribuíram para monografia tornar-se realidade: minha família de nascença e também aquela que escolhemos e vamos compondo ao longo da vida.
+
+Ao Diego Rabatone Oliveira, agradeço pela parceria incondicional, pela tranquilidade e amor fundamentais nos momentos de tensão e pelas horas a fio dispendidas ombro a ombro sobre a mesa de trabalho. 
+
+Ao Orlando Strmabi, agradeço pela dedicação e orientação, indispensáveis para o andamento deste trabalho.
+
+Ao Felipe Dias e à Glaucia Pereira sou grata pela amizade, pela disposição em ajudar em momentos cruciais, sem vocês a realização deste trabalho seria impossível.
+
+Ao Guilherme Carmelo Ungar, agradeço pela amizade, bom humor e espirituosidade cotidianos que desmancham qualquer desânimo.
+
+Finalmente, agradeço a Villa-Lobos e \emph{The Piano Guys} que acalmaram minhas inquietações com suas composições.
+
+\end{agradecimentos}
+% ---
+
+% ---
+% Epígrafe %TODO
+% ---
+\begin{epigrafe}
+    \vspace*{\fill}
+  \begin{flushright}  
+        \textit{``No atlas do seu império, ó Grande Khan, devem cosntar tanto a grande Fedora de pedra quanto as pequenas Fedoras das esferas de vidro. Não porque sejam igualmente reais, mas porque são todas supostas. Uma reúne o que é considerado necessário, mas ainda não o é; as outras, o que se imagina possível e um minuto mais tarde deixa de sê-lo.''\\
+    (Calvino, Ítalo; In: Cidades Invisíveis)}\\%$•$
+        \textit{``Sustainable development is not a goal, but a change in direction.''\\
+    (Banister, David; In: Unsustainable Transport)}\\
+    
+  \end{flushright}
+\end{epigrafe}
+% ---
+
+% ---
+% RESUMOS
+% ---
+
+% resumo em português
+\setlength{\absparsep}{18pt} % ajusta o espaçamento dos parágrafos do resumo
+%TODO
+\begin{resumo}
+
+XXXXXXX
+
+ \textbf{Palavras-chaves}: gênero; transporte; planejamento; sustentabilidade; mobilidade.
+\end{resumo}
+
+% resumo em inglês
+%\begin{resumo}[Abstract]
+% \begin{otherlanguage*}{english}
+%   This is the english abstract.
+%
+%   \vspace{\onelineskip}
+%
+%   \noindent
+%   \textbf{Key-words}: latex. abntex. text editoration.
+% \end{otherlanguage*}
+%\end{resumo}
+
+% resumo em francês
+%\begin{resumo}[Résumé]
+% \begin{otherlanguage*}{french}
+%    Il s'agit d'un résumé en français.
+%
+%   \textbf{Mots-clés}: latex. abntex. publication de textes.
+% \end{otherlanguage*}
+%\end{resumo}
+
+% resumo em espanhol
+%\begin{resumo}[Resumen]
+% \begin{otherlanguage*}{spanish}
+%   Este es el resumen en español.
+%
+%   \textbf{Palabras clave}: latex. abntex. publicación de textos.
+% \end{otherlanguage*}
+%\end{resumo}
+% ---
+
+% ---
+% inserir lista de ilustrações
+% ---
+\pdfbookmark[0]{\listfigurename}{lof}
+\listoffigures*
+\cleardoublepage
+% ---
+
+% ---
+% inserir lista de quadros
+% ---
+\pdfbookmark[0]{\listofquadrosname}{loq}
+\listofquadros*
+%\cleardoublepage
+% ---
+
+% ---
+% inserir lista de tabelas
+% ---
+\pdfbookmark[0]{\listtablename}{lot}
+\listoftables*
+\cleardoublepage
+% ---
+
+
+% ---
+% inserir lista de abreviaturas e siglas
+%% ---
+%TODO
+\begin{siglas}
+  \item[ANACOR] Análise de Correspondência
+
+
+\end{siglas}
+% ---
+
+% ---
+% inserir lista de símbolos
+%% ---
+%\begin{simbolos} %TODO
+%  \item[$ \Gamma $] Letra grega Gama
+%  \item[$ \Lambda $] Lambda
+%  \item[$ \zeta $] Letra grega minúscula zeta
+%  \item[$ \in $] Pertence
+%\end{simbolos}
+% ---
+
+% ---
+% inserir o sumario
+% ---
+\pdfbookmark[0]{\contentsname}{toc}
+\tableofcontents*
+\cleardoublepage
+% ---
+
+
+
+% ----------------------------------------------------------
+% ELEMENTOS TEXTUAIS
+% ----------------------------------------------------------
+\textual
+
+\include{textos/introducao}
+% ----------------------------------------------------------
+% Capitulo de Revisão de Literatura
+% ---
+\include{textos/revisao-literatura}
+% ----------------------------------------------------------
+% Capitulo de Métodos
+% ---
+\include{textos/metodo}
+% ----------------------------------------------------------
+% Capitulo de Análises Realizadas
+% ---
+\include{textos/analises-realizadas}
+% ----------------------------------------------------------
+% Capitulo de Conclusões e Próximos Passos
+% ---
+\include{textos/conclusoes-proximos-passos}
+% ---
+% ----------------------------------------------------------
+% Finaliza a parte no bookmark do PDF
+% para que se inicie o bookmark na raiz
+% e adiciona espaço de parte no Sumário
+% ----------------------------------------------------------
+\phantompart
+
+% ---
+% Conclusão (outro exemplo de capítulo sem numeração e presente no sumário)
+% ---
+%\chapter*[Conclusão]{Conclusão}
+%\addcontentsline{toc}{chapter}{Conclusão}
+% ---
+
+% ----------------------------------------------------------
+% ELEMENTOS PÓS-TEXTUAIS
+% ----------------------------------------------------------
+\postextual
+% ----------------------------------------------------------
+
+% ----------------------------------------------------------
+% Referências bibliográficas
+% ----------------------------------------------------------
+\bibliography{dissertacao}
+
+% ----------------------------------------------------------
+% Glossário
+% ----------------------------------------------------------
+%
+% Consulte o manual da classe abntex2 para orientações sobre o glossário.
+%
+%\glossary
+
+% ----------------------------------------------------------
+% Apêndices
+% ----------------------------------------------------------
+
+% ---
+% Inicia os apêndices
+% ---
+%\begin{apendicesenv}
+
+% Imprime uma página indicando o início dos apêndices
+%\partapendices
+% ----------------------------------------------------------
+%\include{textos/apendices/apendice}
+% ----------------------------------------------------------
+%\end{apendicesenv}
+% ---
+
+
+% ----------------------------------------------------------
+% Anexos
+% ----------------------------------------------------------
+
+% ---
+% Inicia os anexos
+% ---
+\begin{anexosenv}
+
+% Imprime uma página indicando o início dos anexos
+\partanexos
+
+% ---
+\include{anexos/anexos}
+% ---
+%% ---
+
+\end{anexosenv}
+
+%---------------------------------------------------------------------
+% INDICE REMISSIVO
+%---------------------------------------------------------------------
+\phantompart
+\printindex
+%---------------------------------------------------------------------
+%\listoftodos
+\end{document}
