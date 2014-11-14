@@ -1,0 +1,168 @@
+\newcommand{\partbr}{\index{\emph{Participa.br}}}
+\newcommand{\participatorio}{\index{\emph{Participatório}}}
+\newcommand{\gabdig}{\index{\emph{Gabinete Digital}}}
+\newcommand{\edem}{\index{\emph{e-Democracia}}}
+\newcommand{\ptrans}{\index{\emph{Portal da Transparência}}}
+
+\definecolor{lightblue}{rgb}{.80,.85,1}
+\definecolor{lightred}{rgb}{1,.80,.85}
+\definecolor{lightgreen}{rgb}{.80,1,.85}
+
+% COMANDOS PARA NOTAS DE "TODO"
+\newcounter{todocounter}
+%To-do que indica necessidade de correção de referência
+\newcommand{\corrigeref}[1]{
+    \sethlcolor{lightgreen}
+    #1\hl{(Corrigir referência)}\todonum[color=lightgreen]{Corrigir Referência}
+    \sethlcolor{yellow}
+}
+%To-do que destaca 'highlight' o texto e adiciona a nota também
+\newcommand{\todohl}[2]{
+    \hl{#1}\todonum{#2}
+}
+%To-do da cor vermelha, revisão do texto necessária
+\newcommand{\todorevisar}[1]{
+    \sethlcolor{lightred}
+    \hl{#1}\todonum[color=lightred]{Revisar o trecho}
+    \sethlcolor{yellow}
+}
+%To-do da cor azul, vindo de "Recorte e cole", possivelmente não vai ficar
+\newcommand{\todojogado}[1]{#1\todonum[color=blue!40]{Texto vindo de Recorte e Cole}}
+%To-do padrão numerado. Contém um parâmetro opcional para referência da localização da nota
+\newcommand{\todonum}[2][]{\stepcounter{todocounter}\todo[#1]{\thetodocounter: #2}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% AMBIENTE E LISTA DE QUADROS
+% Novo list of (listings) para QUADROS
+\newcommand{\quadroname}{Quadro}
+\newcommand{\listofquadrosname}{Lista de quadros}
+\newfloat[chapter]{quadro}{loq}{\quadroname}
+\newlistof{listofquadros}{loq}{\listofquadrosname}
+\newlistentry{quadro}{loq}{0}
+
+% configurações para atender às regras da ABNT
+\counterwithout{quadro}{chapter}
+\renewcommand{\cftquadroname}{\quadroname\space}
+\renewcommand*{\cftquadroaftersnum}{\hfill--\hfill}
+
+
+
+% Para centralizar células de tabelas
+\newcolumntype{P}[1]{>{\centering\arraybackslash}p{#1}}
+\newcolumntype{M}[1]{>{\centering\arraybackslash}m{#1}}
+
+% Para rotacionar os títulos de forma adequada
+\newcommand{\turn}[3][10em]{% \turn[<width>]{<angle>}{<stuff>}
+  \rlap{\rotatebox[origin=rB]{#2}{\begin{varwidth}[t]{#1}\bfseries#3\end{varwidth}}}%
+}
+
+% Comandos de cores de céluas
+%%Cor Padrão de cabeçalhos de tabelas
+\newcommand{\headerColor}{RoyalBlue!95!black!20}
+\newcommand{\headerFontStyle}{\sffamily\bfseries\color{white}}
+\newcommand{\headerCell}[1]{
+    %\multicolumn{1}{c|}{\cellcolor{\headerColor}\textcolor{white}{\sffamily\bfseries{#1}}}
+    %\cellcolor{\headerColor}\textcolor{white}{\sffamily\bfseries{#1}}
+    \textbf{#1}
+}
+
+\newcommand{\destValCel}[1]{\mbox{\color{Red!99!black!99}#1}}
+
+\newcommand{\headerCenterCell}[1]{
+    %\multicolumn{1}{c|}{\cellcolor{\headerColor}\textcolor{white}{\sffamily\bfseries{#1}}}
+    %\cellcolor{\headerColor}\textcolor{white}{\sffamily\bfseries{#1}}
+    \begin{center}\textbf{#1}\end{center}
+}
+
+\newcommand{\headerCenter}[3]{%
+    %#1 = Qtde de Células
+    %#2 = tamanho da célula
+    %#2 = conteúdo
+    \multicolumn{#1}{P{#2}}{\textbf{#3}}%
+}%
+
+\newcommand{\CellCenter}[3]{%
+    %#1 = Qtde de Células
+    %#2 = tamanho da célula
+    %#2 = conteúdo
+    \multicolumn{#1}{P{#2}}{#3}%
+}%
+
+\newcommand{\headerCenterM}[3]{%
+    %#1 = Qtde de Células
+    %#2 = tamanho da célula
+    %#2 = conteúdo
+  \multicolumn{#1}{|M{#2}}{{\headerCenterCell{\textbf{#3}}}}%
+}%
+
+\newcommand{\headerTabCenterCell}[1]{
+    \multicolumn{1}{c}{\textbf{#1}}
+}
+\newcommand{\celAlinhaEsquerda}[1]{
+    \multicolumn{1}{l}{#1}
+}
+\newcommand{\celAlinhaDireita}[1]{
+    \multicolumn{1}{r}{#1}
+}
+\newcommand{\celAlinhaCentro}[1]{
+    \multicolumn{1}{c}{#1}
+}
+\newcommand{\destaqueCel}{
+    \cellcolor{\headerColor}
+}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Refazendo comando de capa e folha de rosto
+\renewcommand{\imprimircapa}{%
+  \begin{capa}%
+    \center
+    
+    \imprimirinstituicao
+
+    \ABNTEXchapterfont\large\imprimirautor
+
+    \vfill
+    \ABNTEXchapterfont\bfseries\LARGE\imprimirtitulo
+    \vfill
+
+    \large\imprimirlocal
+
+    \large\imprimirdata
+
+    \vspace*{1cm}
+  \end{capa}
+}
+
+\renewcommand{\folhaderostocontent}{
+    \begin{center}
+
+      %\vspace*{1cm}
+      \imprimirinstituicao
+
+      {\ABNTEXchapterfont\large\imprimirautor}
+
+      \vspace*{\fill}\vspace*{\fill}
+      \begin{center}
+      \ABNTEXchapterfont\bfseries\Large\imprimirtitulo
+      \end{center}
+      \vspace*{\fill}
+
+      \hspace{.45\textwidth}
+      \begin{minipage}{.5\textwidth}
+      \SingleSpacing
+      \imprimirpreambulo
+      \end{minipage}%
+      \vspace*{\fill}
+
+      {\large\imprimirorientadorRotulo~\imprimirorientador\par}
+      \large\imprimircoorientadorRotulo~\imprimircoorientador
+      \vspace*{\fill}
+
+      {\large\imprimirlocal}
+      \par
+      {\large\imprimirdata}
+      \vspace*{1cm}
+
+    \end{center}
+  }
