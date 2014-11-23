@@ -72,6 +72,7 @@
 \usepackage{varwidth}%
 \usepackage{underscore}        % Para adicionar underscores nas urls
 \usepackage[final]{pdfpages}          % Para fazer o include de arquivos PDF
+\usepackage{amsmath}            % Para fórmulas matemáticas
 % ---
 
 % ---
@@ -428,6 +429,14 @@ XXXXXXX
 \listofquadros*
 %\cleardoublepage
 % ---
+% ---
+
+% inserir lista de graficos
+% ---
+\pdfbookmark[0]{\listofgraficosname}{lofg}
+\listofgraficos*
+%\cleardoublepage
+% ---
 
 % ---
 % inserir lista de tabelas
@@ -444,7 +453,7 @@ XXXXXXX
 %TODO
 \begin{siglas}
   \item[CO$_2$] dióxido de carbono
-  \item[Metrô-SP] Companhia do MEtropolitano de São Paulo
+  \item[Metrô-SP] Companhia do Metropolitano de São Paulo
   \item[OD-1977] Pesquisa Origem Destino do Metrô-SP de 1977
   \item[OD-1987] Pesquisa Origem Destino do Metrô-SP de 1987
   \item[OD-1997] Pesquisa Origem Destino do Metrô-SP de 1997

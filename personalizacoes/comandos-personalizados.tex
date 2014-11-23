@@ -46,6 +46,24 @@
 \renewcommand*{\cftquadroaftersnum}{\hfill--\hfill}
 
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% AMBIENTE E LISTA DE GRÁFICOS
+% Novo list of (listings) para GRÁFICOS
+\newcommand{\graficoname}{Gr\'{a}fico}
+\newcommand{\listofgraficosname}{Lista de gr\'{a}ficos}
+\newfloat[chapter]{grafico}{lofg}{\graficoname}
+\newlistof{listofgraficos}{lofg}{\listofgraficosname}
+\newlistentry{grafico}{lofg}{0}
+
+% configurações para atender às regras da ABNT
+\counterwithout{grafico}{chapter}
+\renewcommand{\cftgraficoname}{\graficoname\space}
+\renewcommand*{\cftgraficoaftersnum}{\hfill--\hfill}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
 
 % Para centralizar células de tabelas
 \newcolumntype{P}[1]{>{\centering\arraybackslash}p{#1}}
