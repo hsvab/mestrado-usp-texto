@@ -225,13 +225,28 @@ Alguns procedimentos realizados na integração dos bancos de dados não foram �
 \end{compactitem}
 
 \clearpage
+\newcommand{\layoutTamColA}{0.50cm}
+\newcommand{\layoutTamColB}{3.20cm}
+\newcommand{\layoutTamColC}{4.20cm}
+\newcommand{\layoutTamColD}{0.90cm}
+\newcommand{\layoutTamColE}{4.50cm}
+\newcommand{\layoutColA}[2]{%
+	%2 parâmetros:
+	%#1 = número de linhas a serem mescladas
+	%#2 = conteúdo da célula
+	\multicolumn{1}{|c|}{\multirow{#1}{\layoutTamColA}{\centering#2}}%
+}
+\newcommand{\layoutColB}[2]{\multicolumn{1}{c|}{\multirow{#1}{\layoutTamColB}{\centering#2}}}
+\newcommand{\layoutColC}[2]{\multicolumn{1}{c|}{\multirow{#1}{\layoutTamColC}{\centering#2}}}
+\newcommand{\layoutColD}[2]{\multicolumn{1}{c|}{\multirow{#1}{\layoutTamColD}{\centering#2}}}
+
 \begin{quadro}[htb]
     \IBGEtab{
         \renewcommand{\arraystretch}{1.5}
         \ABNTEXfontereduzida
         \caption[Layout]{\label{qua:layout-haydee}\emph{Layout} do banco de dados integrador das bases OD-1977, OD-1987, OD-1987 e OD2007}
 	}{%
-        \begin{tabular}{|P{0.3cm}|P{2.50cm}|P{5.00cm}|P{1.2cm}|p{4.50cm}|}
+        \begin{tabular}{|P{\layoutTamColA}|P{\layoutTamColB}|P{\layoutTamColC}|P{\layoutTamColD}|p{\layoutTamColE}|}
            \hline
    		       \headerCenterCell{nº} & 
 		       \headerCenterCell{Variável} & 
@@ -239,100 +254,90 @@ Alguns procedimentos realizados na integração dos bancos de dados não foram �
 		       \headerCenterCell{Qtde. Díg.} & 
 		       \headerCenterCell{Códigos e Categorias}\\ 
 		    \hline\hline
-		        1&
-		        UCOD&
+		        {\vfill 1 \vfill}&
+		        {\vfill UCOD \vfill}&
 		        Unidade de Correspondência de Pesquisas OD&
-		        2&
-		        1 a 67\\
+		        {\vfill 2 \vfill}&
+				{\vfill 1 a 67\vfill}\\
 			\hline
-		        \multirow{4}{0.3cm}{\centering 2}&
-		        \multirow{4}{2.5cm}{\centering ANO}&
-		        \multirow{4}{5cm}{\centering Ano de referência da Pesquisa OD}&
-		        \multirow{4}{1.2cm}{\centering 1}&
+		        \layoutColA{4}{2}&
+		        \layoutColB{4}{ANO}&
+		        \layoutColC{4}{Ano de referência da Pesquisa OD}&
+		        \layoutColD{4}{1}&
 		        1 - OD-1997\\
-		        %\vfill\parbox{4.50cm}{1 - OD-1977\\2 - OD-1987\\3 - OD-1997\\4 - OD-2007}\vfill\\
-		    %\hline
-		    	&
-		    	&
-		    	&
-		    	&
-		    	2 - OD-1987\\
-		    %\hline
-		    	&
-		    	&
-		    	&
-		    	&
-		    	3 - OD-1997\\
-		    %\hline
-		    	&
-		    	&
-		    	&
-		    	&
-		    	4 - OD-2007\\
+		    	& & & & 2 - OD-1987\\
+		    	& & & & 3 - OD-1997\\
+		    	& & & & 4 - OD-2007\\
    			\hline
-		        3&
-		        CD_ENTRE&
-		        Código de entrevista&
-		        1&
-		        \vfill\parbox{4.50cm}{0 - Incompleta\\1 - Completa sem viagem\\2 - Completa com viagem}\vfill\\
+		        \layoutColA{3}{3}&
+		        \layoutColB{3}{CD_ENTRE}&
+		        \layoutColC{3}{Código de entrevista}&
+		        \layoutColD{3}{1}&
+		        0 - Incompleta\\
+		    	& & & & 1 - Completa sem viagem\\
+		    	& & & & 2 - Completa com viagem\\
    			\hline
-		        4&
-		        DIA_SEM&
-		        Dia da semana&
-		        1&
-		        \vfill\parbox{4.50cm}{2 - Segunda-Feira\\3 - Terça-Feira\\4 - Quarta-Feira\\5 - Quinta-Feira\\6 - Sexta-Feira}\vfill\\
+		        \layoutColA{5}{4}&
+		        \layoutColB{5}{DIA_SEM}&
+		        \layoutColC{5}{Dia da Semana}&
+		        \layoutColD{5}{1}&
+		        2 - Segunda-Feira\\
+		    	& & & & 3 - Terça-Feira\\
+		    	& & & & 4 - Quarta-Feira\\
+		    	& & & & 5 - Quinta-Feira\\
+		    	& & & & 6 - Sexta-Feira\\
    			\hline
-		        5&
-		        ZONA_DOM&
-		        Zona do domicílio da OD original&
-		        3&
-		        \vfill\parbox{4.50cm}{1 a 243 em 1977\\1 a 254 em 1987\\1 a 389 em 1997\\1 a 460 em 2007}\vfill\\
+		        \layoutColA{4}{5}&
+		        \layoutColB{4}{ZONA_DOM}&
+		        \layoutColC{4}{Zona do domicílio da OD original}&
+		        \layoutColD{4}{3}&
+		        1 a 243 em 1977\\
+		    	& & & & 1 a 254 em 1987\\
+		    	& & & & 1 a 389 em 1997\\
+		    	& & & & 1 a 460 em 2007\\
    			\hline
-		        6&
-		        SUBZONA&
-		        Subzona do domicílio da OD original&
-		        3&
-		        \vfill\parbox{4.50cm}{1 a 633 em 1977\\1 a 9 em 1987\\1 a 9 em 1997\\ não consta em 2007}\vfill\\
+		        \layoutColA{4}{6}&
+		        \layoutColB{4}{SUBZONA}&
+		        \layoutColC{4}{Subzona do domicílio da OD original}&
+		        \layoutColD{4}{3}&
+		        1 a 633 em 1977\\
+		    	& & & & 1 a 9 em 1987\\
+		    	& & & & 1 a 9 em 1997\\
+		    	& & & & não consta em 2007\\
    			\hline
-		        7&
-		        MUN_DOM&
-		        Município do domicílio&
-		        2&
-		        \vfill\parbox{4.50cm}{1 a 27 em 1977\\1 a 39 em 1987\\1 a 39 em 1997\\ 1 a 39 em 2007}\vfill\\
+		        \layoutColA{4}{7}&
+		        \layoutColB{4}{MUN_DOM}&
+		        \layoutColC{4}{Município do domicílio}&
+		        \layoutColD{4}{2}&
+		        1 a 27 em 1977\\
+		    	& & & & 1 a 39 em 1987\\
+		    	& & & & 1 a 39 em 1997\\
+		    	& & & & 1 a 39 em 2007\\
    			\hline
 		        8&
-		        CD_DOM_X&
-		        Coordenada X do domicílio&
+		        CO_DOM_X&
+		        \multicolumn{1}{c|}{Coordenada X do domicílio}&
 		        12&
-		        \parbox{4.50cm}{12 dígitos, 2 casas decimais}\\
+				12 dígitos, 2 casas decimais\\
    			\hline
 		        9&
-		        CD_DOM_Y&
-		        Coordenada Y do domicílio&
+		        CO_DOM_Y&
+		        \multicolumn{1}{c|}{Coordenada Y do domicílio}&
 		        12&
-		        \parbox{4.50cm}{12 dígitos, 2 casas decimais}\\
+				12 dígitos, 2 casas decimais\\
    			\hline
-		        10&
-		        ID_DOM&
-		        Identifica domicílio&
-		        \hl{2}&
-		        \vfill\parbox{4.50cm}{1 a ?? em 1977\\1 a ?? em 1987\\1 a ?? em 1997\\ 1 a ?? em 2007}\vfill\\
-   			\hline
-		        11&
-		        F_DOM&
-		        Identifica primeiro registro do domicílio&
-		        1&
-		        \vfill\parbox{4.50cm}{0 - Demais registros\\1 - Primeiro registro}\vfill\\
-			\hline
-		        12&
-		        FE_DOM&
-		        Fator de expansão do domicílio&
-		        10&
-		        10 dígitos, 5 casas decimais\\
+		        \layoutColA{4}{10}&
+		        \layoutColB{4}{ID_DOM}&
+		        \layoutColC{4}{Identifica o domicílio}&
+		        \layoutColD{4}{\hl{2}}&
+		        1 a ?? em 1977\\
+		    	& & & & 1 a ?? em 1987\\
+		    	& & & & 1 a ?? em 1997\\
+		    	& & & & 1 a ?? em 2007\\
 			\hline
 		\end{tabular}
 	}{%
-		\fonte{Elaboração própria}
+		\fonte{Elaboração própria a partir das OD-1977, OD-1987, OD-1997 e OD-2007}
     }
 \end{quadro}
 
@@ -341,9 +346,9 @@ Alguns procedimentos realizados na integração dos bancos de dados não foram �
     \IBGEtab{
         \renewcommand{\arraystretch}{1.5}
         \ABNTEXfontereduzida
-        \caption[Layout]{\label{qua:layout-haydee1}\emph{Layout} do banco de dados integrador das bases OD-1977, OD-1987, OD-1987 e OD2007 - continuação}
+        %\caption[Layout]{\label{qua:layout-haydee1}\emph{Layout} do banco de dados integrador das bases OD-1977, OD-1987, OD-1987 e OD2007 - continuação}
 	}{%
-        \begin{tabular}{|P{0.3cm}|P{2.50cm}|P{5.00cm}|P{1.2cm}|p{4.50cm}|}
+        \begin{tabular}{|P{\layoutTamColA}|P{\layoutTamColB}|P{\layoutTamColC}|P{\layoutTamColD}|p{\layoutTamColE}|}
            \hline
    		       \headerCenterCell{nº} & 
 		       \headerCenterCell{Variável} & 
@@ -351,122 +356,693 @@ Alguns procedimentos realizados na integração dos bancos de dados não foram �
 		       \headerCenterCell{Qtde. Díg.} & 
 		       \headerCenterCell{Códigos e Categorias}\\ 
 		    \hline\hline
-		        13&
-		        NO_DOM&
-		        Número do domicílio&
-		        4&
-		        04 dígitos, número inteiro \\
-			\hline
-		        14&
-		        TIPO_DOM&
-		        Tipo do domicílio&
-		        4&
-		        \vfill\parbox{4.50cm}{1 - particular\\2 - coletivo\\3 - favela}\vfill\\
+		        \layoutColA{2}{11}&
+		        \layoutColB{2}{F_DOM}&
+		        \layoutColC{2}{Identifica o primeiro registro do domicílio}&
+		        \layoutColD{2}{1}&
+		        0 - Demais registros\\
+		    	& & & & 1 - Primeiro registro\\
+		    \hline
+		       	12&
+		        FE_DOM&
+		        \multicolumn{1}{c|}{Fator de expansão do domicílio}&
+		        10&
+				10 dígitos, 2 casas decimais\\		        
+   			\hline		    	
+		        \layoutColA{1}{13}&
+		        \layoutColB{1}{NO_DOM}&
+		        \layoutColC{1}{Número do domicílio}&
+		        \layoutColD{1}{4}&
+		        04 dígitos, número inteiro\\
    			\hline
-		        15&
+		        \layoutColA{3}{14}&
+		        \layoutColB{3}{TIPO_DOM}&
+		        \layoutColC{3}{Tipo do domicílio}&
+		        \layoutColD{3}{1}&
+		        1 - particular\\
+		    	& & & & 2 - coletivo\\
+		    	& & & & 3 - favela\\
+		    \hline
+		       	15&
 		        TOT_FAM&
-		        Total de famílias no domicílio&
+		        \multicolumn{1}{c|}{Total de famílias no domicílio}&
 		        2&
-		        02 dígitos, número inteiro \\
-   			\hline
-		        16&
-		        ID_FAM&
-		        Identifica família&
-		        \hl{2}&
-		        02 dígitos, número inteiro \\
-   			\hline
-		        17&
-		        F_FAM&
-		        Identifica primeiro registro da família&
-		        1&
-		        \vfill\parbox{4.50cm}{0 - Demais registros\\1 - Primeiro registro}\vfill\\
-   			\hline
-		        18&
+				02 dígitos, número inteiro\\			        
+   			\hline		    	
+		        \layoutColA{1}{16}&
+		        \layoutColB{1}{ID_FAM}&
+		        \layoutColC{1}{Identifica família}&
+		        \layoutColD{1}{\hl{2}}&
+		        02 dígitos, número inteiro\\	
+   			\hline		    	
+		        \layoutColA{2}{17}&
+		        \layoutColB{2}{F_FAM}&
+		        \layoutColC{2}{Identifica primeiro registro da família}&
+		        \layoutColD{2}{1}&
+		        0 - Demais registros\\	
+		        & & & & 1 - Primeiro registro\\		        		              
+		    \hline
+		       	18&
 		        FE_FAM&
-		        Fator de expansão da família&
+		        \multicolumn{1}{c|}{Fator de expansão da família}&
 		        10&
-		        10 dígitos, 5 casas decimais\\
-   			\hline
-		        19&
-		        NO_FAM&
-		        Número da família&
-		        2&
-		        02 dígitos, número inteiro \\
-   			\hline
-		        20&
-		        COND_MORA&
-		        Condição de moradia&
-		        1&
-		        \vfill\parbox{4.50cm}{0 - Não Respondeu\\1 - Alugada\\2 - Própria\\3 - Outros}\vfill\\
-   			\hline
-		        21&
-		        QT_AUTO&
-		        Quantidade de automóveis&
-		        1&
-		        01 dígito, número inteiro \\
-   			\hline
-		        22&
-		        QT_BICI&
-		        Quantidade de bicicletas&
-		        1&
-		        01 dígito, número inteiro \\
-   			\hline
-		        23&
-		        QT_MOTO&
-		        Quantidade de motocicletas&
-		        1&
-		        01 dígito, número inteiro \\
-   			\hline
-		        24&
-		        CD_RENFAM&
-		        Código de renda familiar&
-		        1&
-		        \vfill\parbox{4.50cm}{1 - Renda declarada e maior que zero\\2 - Renda declarada como zero\\3 - Renda atribuída}\vfill\\
-   			\hline
-		        25&
-		        REN_FAM&
-		        Renda familiar&
-		        8&
-		        08 dígitos, 2 casas decimais\\
-   			\hline
-		        26&
-		        ID_PESS&
-		        Identifica pessoa&
-		        \hl{2}&
-		        02 dígitos, número inteiro \\
-   			\hline
-		        27&
-		        F_PESS&
-		        Identifica primeiro registro da pessoa&
-		        1&
-		        \vfill\parbox{4.50cm}{0 - Demais registros\\1 - Primeiro registro}\vfill\\
-   			\hline
-		        28&
+				10 dígitos, 2 casas decimais\\	
+   			\hline		    	
+		        \layoutColA{1}{19}&
+		        \layoutColB{1}{NO_FAM}&
+		        \layoutColC{1}{Número da família}&
+		        \layoutColD{1}{2}&
+		        02 dígitos, número inteiro\\
+   			\hline		    	
+		        \layoutColA{4}{20}&
+		        \layoutColB{4}{COND_MORA}&
+		        \layoutColC{4}{Condição de moradia}&
+		        \layoutColD{4}{1}&
+		        0 - não respondeu\\
+		        & & & & 1 - alugada\\
+		    	& & & & 2 - própria\\
+		    	& & & & 3 - outros\\ 	
+   			\hline		    	
+		        \layoutColA{1}{21}&
+		        \layoutColB{1}{QT_AUTO}&
+		        \layoutColC{1}{Quantidade de automóveis}&
+		        \layoutColD{1}{1}&
+		        01 dígito, número inteiro\\
+   			\hline		    	
+		        \layoutColA{1}{22}&
+		        \layoutColB{1}{QT_BICI}&
+		        \layoutColC{1}{Quantidade de bicicletas}&
+		        \layoutColD{1}{1}&
+		        01 dígito, número inteiro\\
+   			\hline		    	
+		        \layoutColA{1}{23}&
+		        \layoutColB{1}{QT_MOTO}&
+		        \layoutColC{1}{Quantidade de motocicletas}&
+		        \layoutColD{1}{1}&
+		        01 dígito, número inteiro\\		        
+   			\hline		    	
+		        \layoutColA{3}{24}&
+		        \layoutColB{3}{CD_RENFAM}&
+		        \layoutColC{3}{Código de renda familiar}&
+		        \layoutColD{3}{1}&
+		        1 - Renda declarada e maior que zero\\
+		        & & & & 2 - Renda declarada como zero\\
+		    	& & & & 3 - Renda atribuída*\\
+   			\hline		    	
+		        \layoutColA{1}{25}&
+		        \layoutColB{1}{REN_FAM}&
+		        \layoutColC{1}{Renda familiar}&
+		        \layoutColD{1}{8}&
+		        08 dígitos, 2 casas decimais\\			    	
+   			\hline		    	
+		        \layoutColA{1}{26}&
+		        \layoutColB{1}{ID_PESS}&
+		        \layoutColC{1}{Identifica pessoa}&
+		        \layoutColD{1}{2}&
+		        02 dígitos, número inteiro\\		
+   			\hline		    	
+		        \layoutColA{2}{27}&
+		        \layoutColB{2}{F_PESS}&
+		        \layoutColC{2}{Identifica o primeiro registro da pessoa}&
+		        \layoutColD{2}{1}&
+		        0 - Demais registros\\
+		        & & & & 1 - Primeiro registro\\	
+		    \hline
+		       	28&
 		        FE_PESS&
-		        Fator de expansão da pessoa&
+		        \multicolumn{1}{c|}{Fator de expansão da pessoa}&
 		        10&
-		        10 dígitos, 5 casas decimais\\
-   			\hline
-		        29&
-		        NO_PESS&
-		        Número da pessoa&
-		        2&
+				10 dígitos, 2 casas decimais\\	
+   			\hline		    	
+		        \layoutColA{1}{29}&
+		        \layoutColB{1}{NO_PESS}&
+		        \layoutColC{1}{Número da pessoa}&
+		        \layoutColD{1}{2}&
 		        02 dígitos, número inteiro \\
-			\hline
-		        30&
-		        SIT_FAM&
-		        Situação familiar&
-		        1&
-		        \vfill\parbox{4.50cm}{1 - Pessoa responsável\\2 - Cônjuge/Companheiro(a)\\3 - Filho(a)/Enteado(a)\\4 - Outro parente / agregado\\5 - Empregado residente\\6 - Outros (visitante não residente / parente do empregado)}\vfill\\
-   			\hline			
+   			\hline		    	
 		\end{tabular}
 	}{%
-		\fonte{Compilação de informações obtidas por meio de correspondência eletrônica com Metrô-SP}
-		\nota{*\hl{FALTA TERMINAR QUADRO DO LAYOUT -> terminar em 23 de novembro}}
+		\fonte{Elaboração própria a partir das OD-1977, OD-1987, OD-1997 e OD-2007}
+		\nota{*\hl{Atribuição da renda...}}
+    }
+\end{quadro}
+
+\clearpage
+\begin{quadro}[htb]
+    \IBGEtab{
+        \renewcommand{\arraystretch}{1.5}
+        \ABNTEXfontereduzida
+        %\caption[Layout]{\label{qua:layout-haydee1}\emph{Layout} do banco de dados integrador das bases OD-1977, OD-1987, OD-1987 e OD2007 - continuação}
+	}{%
+        \begin{tabular}{|P{\layoutTamColA}|P{\layoutTamColB}|P{\layoutTamColC}|P{\layoutTamColD}|p{\layoutTamColE}|}
+           \hline
+   		       \headerCenterCell{nº} & 
+		       \headerCenterCell{Variável} & 
+		       \headerCenterCell{Conteúdo} & 
+		       \headerCenterCell{Qtde. Díg.} & 
+		       \headerCenterCell{Códigos e Categorias}\\ 
+		    \hline\hline
+		        \layoutColA{6}{30}&
+		        \layoutColB{6}{SIT_FAM}&
+		        \layoutColC{6}{Situação familiar}&
+		        \layoutColD{6}{1}&
+		        1 - Pessoa responsável\\
+		        & & & & 2 - Cônjuge/Companheiro(a)\\
+		        & & & & 3 - Filho(a)/Enteado(a)\\
+		        & & & & 4 - Outro parente / agregado\\
+		        & & & & 5 - Empregado residente\\
+		        & & & & 6 - Outros (visitante não residente / parente do empregado)\\
+		    \hline
+		       	31&
+		        IDADEM&
+		        \multicolumn{1}{c|}{Idade}&
+		        02&
+				02 dígitos, número inteiro\\
+		    \hline				
+		        \layoutColA{2}{32}&
+		        \layoutColB{2}{SEXO}&
+		        \layoutColC{2}{Sexo}&
+		        \layoutColD{2}{1}&
+		        1 - Masculino\\
+		        & & & & 2 - Feminino\\
+		    \hline				
+		        \layoutColA{2}{33}&
+		        \layoutColB{2}{ESTUDA}&
+		        \layoutColC{2}{A pessoa estuda atualmente?}&
+		        \layoutColD{2}{1}&
+		        1 - Sim\\
+		        & & & & 2 - Não\\
+		    \hline				
+		        \layoutColA{4}{34}&
+		        \layoutColB{4}{GRAU_INSTR}&
+		        \layoutColC{4}{Grau de instrução da pessoa}&
+		        \layoutColD{4}{1}&
+		        1 - Não alfabetizado / Fundamental incompleto\\
+		        & & & & 2 - Fundamental completo / Médio incompleto\\
+		        & & & & 3 - Médio completo / Superior incompleto\\
+   		        & & & & 4 - Superior completo\\
+		    \hline				   		        
+		        \layoutColA{8}{35}&
+		        \layoutColB{8}{OCUP}&
+		        \layoutColC{8}{Condição de ocupação da pessoa}&
+		        \layoutColD{8}{1}&
+		        0 - Não respondeu\\
+		        & & & & 1 - Estudante\\
+		        & & & & 2 - Dono(a) de casa\\
+   		        & & & & 3 - Aposentado(a)\\   		        
+		        & & & & 4 - Sem ocupação\\
+		        & & & & 5 - Desempregado(a)\\
+   		        & & & & 6 - Em licença\\   		        
+		        & & & & 7 - Trabalhador(a) no mercado de trabalho\\
+   			\hline				   		        
+		        \layoutColA{9}{36}&
+		        \layoutColB{9}{SETOR_ATIV}&
+		        \layoutColC{9}{Setor de atividade (do 1º trabalho)}&
+		        \layoutColD{9}{1}&
+		        1 - Agrícola\\
+		        & & & & 2 - Construção Civil\\
+		        & & & & 3 - Indústria\\
+   		        & & & & 4 - Comércio\\   		        
+		        & & & & 5 - Administração Pública\\
+		        & & & & 6 - Serviços de Transporte\\
+   		        & & & & 7 - Outros Serviços\\   		        
+		        & & & & 8 - Outros\\
+		        & & & & 9 - Não se aplica\\		        
+			\hline      			
+		\end{tabular}
+	}{%
+		\fonte{Elaboração própria a partir das OD-1977, OD-1987, OD-1997 e OD-2007}
+    }
+\end{quadro}
+
+\clearpage
+\begin{quadro}[htb]
+    \IBGEtab{
+        \renewcommand{\arraystretch}{1.5}
+        \ABNTEXfontereduzida
+        %\caption[Layout]{\label{qua:layout-haydee1}\emph{Layout} do banco de dados integrador das bases OD-1977, OD-1987, OD-1987 e OD2007 - continuação}
+	}{%
+        \begin{tabular}{|P{\layoutTamColA}|P{\layoutTamColB}|P{\layoutTamColC}|P{\layoutTamColD}|p{\layoutTamColE}|}
+           \hline
+   		       \headerCenterCell{nº} & 
+		       \headerCenterCell{Variável} & 
+		       \headerCenterCell{Conteúdo} & 
+		       \headerCenterCell{Qtde. Díg.} & 
+		       \headerCenterCell{Códigos e Categorias}\\ 
+		    \hline\hline
+		        \layoutColA{3}{37}&
+		        \layoutColB{3}{COND_REN_I}&
+		        \layoutColC{3}{Condição de Renda Individual}&
+		        \layoutColD{3}{1}&
+		        1 - Tem renda\\
+		        & & & & 2 - Não tem renda\\
+		        & & & & 3 - Não renspondeu\\
+		    \hline
+		       	38&
+		        VL_REN_IM&
+		        \multicolumn{1}{c|}{Valor da Renda Individual}&
+		        08&
+				08 dígitos, 2 casas decimais\\
+   			\hline
+		        \layoutColA{4}{39}&
+		        \layoutColB{4}{ZONA_ESC}&
+		        \layoutColC{4}{Zona da escola da OD original}&
+		        \layoutColD{4}{3}&
+		        1 a 243 em 1977\\
+		    	& & & & 1 a 254 em 1987\\
+		    	& & & & 1 a 389 em 1997\\
+		    	& & & & 1 a 460 em 2007\\
+   			\hline
+		        \layoutColA{4}{40}&
+		        \layoutColB{4}{SUBZONA_ESC}&
+		        \layoutColC{4}{Subzona da escola da OD original}&
+		        \layoutColD{4}{3}&
+		        1 a 633 em 1977\\
+		    	& & & & 1 a 9 em 1987\\
+		    	& & & & 1 a 9 em 1997\\
+		    	& & & & não consta em 2007\\
+   			\hline
+		        \layoutColA{4}{41}&
+		        \layoutColB{4}{MUN_ESC}&
+		        \layoutColC{4}{Município da escola}&
+		        \layoutColD{4}{2}&
+		        1 a 27 em 1977\\
+		    	& & & & 1 a 39 em 1987\\
+		    	& & & & 1 a 39 em 1997\\
+		    	& & & & 1 a 39 em 2007\\
+   			\hline
+		        42&
+		        CO_ESC_X&
+		        \multicolumn{1}{c|}{Coordenada X da escola}&
+		        12&
+				12 dígitos, 2 casas decimais\\
+   			\hline
+		        43&
+		        CO_ESC_Y&
+		        \multicolumn{1}{c|}{Coordenada Y da escola}&
+		        12&
+				12 dígitos, 2 casas decimais\\
+   			\hline
+		        \layoutColA{4}{44}&
+		        \layoutColB{4}{ZONA_TRAB1}&
+		        \layoutColC{4}{Zona do trabalho 1 da OD original}&
+		        \layoutColD{4}{3}&
+		        1 a 243 em 1977\\
+		    	& & & & 1 a 254 em 1987\\
+		    	& & & & 1 a 389 em 1997\\
+		    	& & & & 1 a 460 em 2007\\
+   			\hline
+		        \layoutColA{4}{45}&
+		        \layoutColB{4}{SUBZONA_TRAB1}&
+		        \layoutColC{4}{Subzona do trabalho 1 da OD original}&
+		        \layoutColD{4}{3}&
+		        1 a 633 em 1977\\
+		    	& & & & 1 a 9 em 1987\\
+		    	& & & & 1 a 9 em 1997\\
+		    	& & & & não consta em 2007\\
+   			\hline
+		        \layoutColA{4}{46}&
+		        \layoutColB{4}{MUN_TRAB1}&
+		        \layoutColC{4}{Município do trabalho 1}&
+		        \layoutColD{4}{2}&
+		        1 a 27 em 1977\\
+		    	& & & & 1 a 39 em 1987\\
+		    	& & & & 1 a 39 em 1997\\
+		    	& & & & 1 a 39 em 2007\\
+   			\hline
+		        47&
+		        CO_TRAB1_X&
+		        \multicolumn{1}{c|}{Coordenada X do trabalho 1}&
+		        12&
+				12 dígitos, 2 casas decimais\\
+   			\hline
+		        48&
+		        CO_TRAB1_Y&
+		        \multicolumn{1}{c|}{Coordenada Y do trabalho 1}&
+		        12&
+				12 dígitos, 2 casas decimais\\	    		    
+			\hline      			
+		\end{tabular}
+	}{%
+		\fonte{Elaboração própria a partir das OD-1977, OD-1987, OD-1997 e OD-2007}
     }
 \end{quadro}
 
 
+\clearpage
+\begin{quadro}[htb]
+    \IBGEtab{
+        \renewcommand{\arraystretch}{1.5}
+        \ABNTEXfontereduzida
+        %\caption[Layout]{\label{qua:layout-haydee1}\emph{Layout} do banco de dados integrador das bases OD-1977, OD-1987, OD-1987 e OD2007 - continuação}
+	}{%
+        \begin{tabular}{|P{\layoutTamColA}|P{\layoutTamColB}|P{\layoutTamColC}|P{\layoutTamColD}|p{\layoutTamColE}|}
+           \hline
+   		       \headerCenterCell{nº} & 
+		       \headerCenterCell{Variável} & 
+		       \headerCenterCell{Conteúdo} & 
+		       \headerCenterCell{Qtde. Díg.} & 
+		       \headerCenterCell{Códigos e Categorias}\\ 
+		    \hline\hline
+		        \layoutColA{4}{49}&
+		        \layoutColB{4}{ZONA_TRAB2}&
+		        \layoutColC{4}{Zona do trabalho 2 da OD original}&
+		        \layoutColD{4}{3}&
+		        1 a 243 em 1977\\
+		    	& & & & 1 a 254 em 1987\\
+		    	& & & & 1 a 389 em 1997\\
+		    	& & & & 1 a 460 em 2007\\
+   			\hline
+		        \layoutColA{4}{50}&
+		        \layoutColB{4}{SUBZONA_TRAB2}&
+		        \layoutColC{4}{Subzona do trabalho 2 da OD original}&
+		        \layoutColD{4}{3}&
+		        1 a 633 em 1977\\
+		    	& & & & 1 a 9 em 1987\\
+		    	& & & & 1 a 9 em 1997\\
+		    	& & & & não consta em 2007\\
+   			\hline
+		        \layoutColA{4}{51}&
+		        \layoutColB{4}{MUN_TRAB2}&
+		        \layoutColC{4}{Município do trabalho 2}&
+		        \layoutColD{4}{2}&
+		        1 a 27 em 1977\\
+		    	& & & & 1 a 39 em 1987\\
+		    	& & & & 1 a 39 em 1997\\
+		    	& & & & 1 a 39 em 2007\\
+   			\hline
+		        52&
+		        CO_TRAB2_X&
+		        \multicolumn{1}{c|}{Coordenada X do trabalho 2}&
+		        12&
+				12 dígitos, 2 casas decimais\\
+   			\hline
+		        53&
+		        CO_TRAB2_Y&
+		        \multicolumn{1}{c|}{Coordenada Y do trabalho 2}&
+		        12&
+				12 dígitos, 2 casas decimais\\	  
+   			\hline
+		        \layoutColA{1}{54}&
+		        \layoutColB{1}{ID_VIAG}&
+		        \layoutColC{1}{Identifica viagem}&
+		        \layoutColD{1}{\hl{??}}&
+		        \hl{??} dígitos, número inteiro\\		
+   			\hline		    	
+		        \layoutColA{2}{55}&
+		        \layoutColB{2}{F_VIAG}&
+		        \layoutColC{2}{Identifica o primeiro registro da viagem}&
+		        \layoutColD{2}{1}&
+		        0 - Demais registros\\
+		        & & & & 1 - Primeiro registro\\	
+		    \hline
+		       	56&
+		        FE_VIAG&
+		        \multicolumn{1}{c|}{Fator de expansão da viagem}&
+		        10&
+				10 dígitos, 2 casas decimais\\	
+   			\hline		    	
+		        \layoutColA{1}{57}&
+		        \layoutColB{1}{NO_VIAG}&
+		        \layoutColC{1}{Número da viagem}&
+		        \layoutColD{1}{2}&
+		        02 dígitos, número inteiro \\				
+			\hline      							
+		       	58&
+		        TOT_VIAG&
+		        \multicolumn{1}{c|}{Total de viagens da pessoa}&
+		        2&
+		        02 dígitos, número inteiro \\				
+			\hline      			
+		        \layoutColA{4}{59}&
+		        \layoutColB{4}{ZONA_ORIG}&
+		        \layoutColC{4}{Zona de origem da viagem da OD original}&
+		        \layoutColD{4}{3}&
+		        1 a 243 em 1977\\
+		    	& & & & 1 a 254 em 1987\\
+		    	& & & & 1 a 389 em 1997\\
+		    	& & & & 1 a 460 em 2007\\
+   			\hline
+		        \layoutColA{4}{60}&
+		        \layoutColB{4}{SUBZONA_ORIG}&
+		        \layoutColC{4}{Subzona de origem da viagem da OD original}&
+		        \layoutColD{4}{3}&
+		        1 a 633 em 1977\\
+		    	& & & & 1 a 9 em 1987\\
+		    	& & & & 1 a 9 em 1997\\
+		    	& & & & não consta em 2007\\
+   			\hline
+		        \layoutColA{4}{61}&
+		        \layoutColB{4}{MUN_ORIG}&
+		        \layoutColC{4}{Município de origem da viagem}&
+		        \layoutColD{4}{2}&
+		        1 a 27 em 1977\\
+		    	& & & & 1 a 39 em 1987\\
+		    	& & & & 1 a 39 em 1997\\
+		    	& & & & 1 a 39 em 2007\\
+   			\hline
+		        62&
+		        CO_ORIG_X&
+		        \multicolumn{1}{c|}{Coordenada X da origem}&
+		        12&
+				12 dígitos, 2 casas decimais\\
+   			\hline
+		        63&
+		        CO_ORIG_Y&
+		        \multicolumn{1}{c|}{Coordenada Y da origem}&
+		        12&
+				12 dígitos, 2 casas decimais\\	
+			\hline      				
+		\end{tabular}
+	}{%
+		\fonte{Elaboração própria a partir das OD-1977, OD-1987, OD-1997 e OD-2007}
+    }
+\end{quadro}
+
+\clearpage
+\begin{quadro}[htb]
+    \IBGEtab{
+        \renewcommand{\arraystretch}{1.5}
+        \ABNTEXfontereduzida
+        %\caption[Layout]{\label{qua:layout-haydee1}\emph{Layout} do banco de dados integrador das bases OD-1977, OD-1987, OD-1987 e OD2007 - continuação}
+	}{%
+        \begin{tabular}{|P{\layoutTamColA}|P{\layoutTamColB}|P{\layoutTamColC}|P{\layoutTamColD}|p{\layoutTamColE}|}
+           \hline
+   		       \headerCenterCell{nº} & 
+		       \headerCenterCell{Variável} & 
+		       \headerCenterCell{Conteúdo} & 
+		       \headerCenterCell{Qtde. Díg.} & 
+		       \headerCenterCell{Códigos e Categorias}\\ 
+		    \hline\hline
+		        \layoutColA{4}{64}&
+		        \layoutColB{4}{ZONA_DEST}&
+		        \layoutColC{4}{Zona de destino da viagem da OD original}&
+		        \layoutColD{4}{3}&
+		        1 a 243 em 1977\\
+		    	& & & & 1 a 254 em 1987\\
+		    	& & & & 1 a 389 em 1997\\
+		    	& & & & 1 a 460 em 2007\\
+   			\hline
+		        \layoutColA{4}{65}&
+		        \layoutColB{4}{SUBZONA_DEST}&
+		        \layoutColC{4}{Subzona de destino da viagem da OD original}&
+		        \layoutColD{4}{3}&
+		        1 a 633 em 1977\\
+		    	& & & & 1 a 9 em 1987\\
+		    	& & & & 1 a 9 em 1997\\
+		    	& & & & não consta em 2007\\
+   			\hline
+		        \layoutColA{4}{66}&
+		        \layoutColB{4}{MUN_DEST}&
+		        \layoutColC{4}{Município de destino da viagem}&
+		        \layoutColD{4}{2}&
+		        1 a 27 em 1977\\
+		    	& & & & 1 a 39 em 1987\\
+		    	& & & & 1 a 39 em 1997\\
+		    	& & & & 1 a 39 em 2007\\
+   			\hline
+		        67&
+		        CO_DEST_X&
+		        \multicolumn{1}{c|}{Coordenada X do destino}&
+		        12&
+				12 dígitos, 2 casas decimais\\
+   			\hline
+		        68&
+		        CO_DEST_Y&
+		        \multicolumn{1}{c|}{Coordenada Y do destino}&
+		        12&
+				12 dígitos, 2 casas decimais\\	
+   			\hline
+		        69&
+		        DIST_VIAG&
+		        \multicolumn{1}{c|}{Distância da viagem (m)}&
+		        08&
+				08 dígitos, 2 casas decimais\\				
+   			\hline
+		        \layoutColA{9}{70}&
+		        \layoutColB{9}{MOTIVO_ORIG}&
+		        \layoutColC{9}{Motivo na origem}&
+		        \layoutColD{9}{1}&
+		        1 - Trabalho (indústria)\\
+		        & & & & 2 - Trabalho (comércio)\\
+		        & & & & 3 - Trabalho (serviços)\\
+   		        & & & & 4 - Educação\\   		        
+		        & & & & 5 - Compras\\
+		        & & & & 6 - Saúde\\
+   		        & & & & 7 - Lazer\\   		        
+		        & & & & 8 - Residência\\
+		        & & & & 9 - Outros\\		        
+   			\hline
+		        \layoutColA{9}{71}&
+		        \layoutColB{9}{MOTIVO_DEST}&
+		        \layoutColC{9}{Motivo no destino}&
+		        \layoutColD{9}{1}&
+		        1 - Trabalho (indústria)\\
+		        & & & & 2 - Trabalho (comércio)\\
+		        & & & & 3 - Trabalho (serviços)\\
+   		        & & & & 4 - Educação\\   		        
+		        & & & & 5 - Compras\\
+		        & & & & 6 - Saúde\\
+   		        & & & & 7 - Lazer\\   		        
+		        & & & & 8 - Residência\\
+		        & & & & 9 - Outros\\	
+   			\hline	  					
+		\end{tabular}
+	}{%
+		\fonte{Elaboração própria a partir das OD-1977, OD-1987, OD-1997 e OD-2007}
+    }
+\end{quadro}
+
+\clearpage
+\begin{quadro}[htb]
+    \IBGEtab{
+        \renewcommand{\arraystretch}{1.5}
+        \ABNTEXfontereduzida
+        %\caption[Layout]{\label{qua:layout-haydee1}\emph{Layout} do banco de dados integrador das bases OD-1977, OD-1987, OD-1987 e OD2007 - continuação}
+	}{%
+        \begin{tabular}{|P{\layoutTamColA}|P{\layoutTamColB}|P{\layoutTamColC}|P{\layoutTamColD}|p{\layoutTamColE}|}
+           \hline
+   		       \headerCenterCell{nº} & 
+		       \headerCenterCell{Variável} & 
+		       \headerCenterCell{Conteúdo} & 
+		       \headerCenterCell{Qtde. Díg.} & 
+		       \headerCenterCell{Códigos e Categorias}\\ 
+		    \hline\hline
+		        \layoutColA{9}{72}&
+		        \layoutColB{9}{MODO1}&
+		        \layoutColC{9}{Modo 1}&
+		        \layoutColD{9}{2}&
+		        1 - Ônibus de linha\\
+		        & & & & 2 - Ônibus escolar / empresa\\
+		        & & & & 3 - Dirigindo automóvel\\
+   		        & & & & 4 - Passageiro de automóvel\\   		        
+		        & & & & 5 - Táxi\\
+		        & & & & 6 - Lotação / van\\
+   		        & & & & 7 - Metrô\\   		        
+		        & & & & 8 - Trem\\
+		        & & & & 9 - Motocicleta\\				
+		        & & & & 10 - Bicicleta\\						        
+		        & & & & 11 - A pé\\						        
+		        & & & & 12 - Outros\\	
+   			\hline			    
+		        73&
+		        MODO2&
+		        \multicolumn{1}{c|}{Modo 2}&
+		        2&
+				idem Modo 1\\	
+   			\hline	
+		        74&
+		        MODO3&
+		        \multicolumn{1}{c|}{Modo 3}&
+		        2&
+				idem Modo 1\\	
+   			\hline	
+		        75&
+		        MODO4&
+		        \multicolumn{1}{c|}{Modo 4}&
+		        2&
+				idem Modo 1\\	
+   			\hline	
+		        76&
+		        MODO_PRIN&
+		        \multicolumn{1}{c|}{Modo Principal}&
+		        2&
+				idem Modo 1\\	
+   			\hline	
+		        \layoutColA{3}{77}&
+		        \layoutColB{3}{TIPO_VIAG}&
+		        \layoutColC{3}{Tipo de viagem}&
+		        \layoutColD{3}{1}&
+		        1 - Coletivo\\
+		        & & & & 2 - Individual\\
+		        & & & & 3 - A pé\\
+   			\hline	
+		        78&
+		        H_SAIDA&
+		        \multicolumn{1}{c|}{Hora de saída}&
+		        2&
+				Hora de saída (2 dígitos)\\	
+   			\hline	
+		        79&
+		        MIN_SAIDA&
+		        \multicolumn{1}{c|}{Minuto de saída}&
+		        2&
+				Minutos de saída (2 dígitos)\\
+   			\hline	
+		        80&
+		        ANDA_ORIG&
+		        \multicolumn{1}{c|}{Tempo andando na origem}&
+		        2&
+				Tempo andando na origem (minutos)\\	
+   			\hline	
+		        81&
+		        H_CHEG&
+		        \multicolumn{1}{c|}{Hora de chegada}&
+		        2&
+				Hora de chegada (2 dígitos)\\	
+   			\hline	
+		        82&
+		        MIN_CHEG&
+		        \multicolumn{1}{c|}{Minuto de chegada}&
+		        2&
+				Minutos de chegada (2 dígitos)\\
+   			\hline	
+		        83&
+		        ANDA_DEST&
+		        \multicolumn{1}{c|}{Tempo andando no destino}&
+		        2&
+				Tempo andando no destino (minutos)\\	
+   			\hline	
+		        84&
+		        DURACAO&
+		        \multicolumn{1}{c|}{Duração da viagem}&
+		        2&
+				Duração da viagem (minutos)\\	
+   			\hline
+		        85&
+		        TIPO_EST_AUTO&
+		        \multicolumn{1}{c|}{Tipo de estacionamento}&
+		        \hl{2}&
+				\hl{??}\\	
+   			\hline
+		        86&
+		        VALOR_EST&
+		        \multicolumn{1}{c|}{Duração da viagem}&
+		        2&
+				Duração da viagem (minutos)\\	
+   			\hline					
+		        87&
+		        ID_VIAG&
+		        \multicolumn{1}{c|}{Número de ordem do registro*}&
+		        \hl{??}&
+				\hl{??} dígitos, número inteiro\\	
+   			\hline											   					
+		\end{tabular}
+	}{%
+		\fonte{Elaboração própria a partir das OD-1977, OD-1987, OD-1997 e OD-2007}
+		\nota{* \hl{}}
+    }
+\end{quadro}
 
 \clearpage
 \section{Análises Preliminares}\label{sec:analises-preliminares}
@@ -609,6 +1185,14 @@ Em 2007, foi adotado o critério ABEP e a equação \eqref{eq:reg-renda-07} expl
 
 \hl{explicar como foram trazidos os valores para o valor presente (outubro de 2007)}
 
+\begin{equation}\label{eq:reg-renda-1997}
+RFM = e^{~5,672~+~0,03259*PONT}
+\end{equation}
+
+\begin{equation}\label{eq:reg-renda-2007}
+RFM = e^{~5,864~+~0,084*PONT}
+\end{equation}
+
 \hl{fazer essas transformações no banco e rodar análises f(rend\_ind) e f(renda\_fam)}
 
 \clearpage
@@ -633,7 +1217,7 @@ Na Tabela \ref{tab:dur-med-viag} são apresentadas as durações médias de viag
 	           \headerCenterCell{Ano} &
    	           \headerCenterCell{Duração Média de Viagem para Mulheres (min)} &
    	           \headerCenterCell{Duração Média de Viagem para Homens (min)} &
-   	           \headerCenterCell{Desvio Padrão da Duração Média de Viagem para Mulheres} &   	           
+   	           \headerCenterCell{Desvio Padrão da Duração Média de Viagem para Mulheres}&   	           
    	           \headerCenterCell{Desvio Padrão da Duração Média de Viagem para Homens} &   	           
    	           \headerCenterCell{Diferença entre as durações médias (Dur\_mulher - Dur\_homem)}\\
 		    \midrule \midrule

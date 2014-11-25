@@ -1,0 +1,197 @@
+\begin{table}[htbp]
+\caption{caption}
+\begin{center}
+\begin{tabular}{|p{1cm}|l|l|c|c|c|c|c|c|c|c|l|}
+\hline
+\multicolumn{1}{|l|}{\textbf{LAYOUT PESQUISA ORIGEM DESTINO 2007}} & \textbf{} & \textbf{} & \textbf{} & \textbf{} & \textbf{} & \textbf{} & \textbf{} & \textbf{} & \textbf{} & \textbf{} & \multicolumn{1}{r|}{\textbf{}} \\ \hline
+\multicolumn{1}{|l|}{\textbf{}} & \textbf{} & \textbf{} & \multicolumn{ 4}{c|}{\textbf{Correspondência com outros layouts (colunas)}} & \textbf{} & \textbf{} & \textbf{} & \textbf{} & \multicolumn{1}{r|}{\textbf{}} \\ \hline
+\textbf{} & \textbf{Variável} & \textbf{Conteúdo} & \textbf{OD 1977} & \textbf{OD 1987} & \textbf{OD 1997} & \textbf{OD 2007} & \textbf{} & \textbf{Início} & \textbf{Fim} & \textbf{Compr} & \textbf{Códigos} \\ \hline
+\textbf{} & \textbf{} & \textbf{} & \textbf{} & \textbf{} & \textbf{} & \textbf{} & \textbf{} & \textbf{} & \textbf{} & \textbf{} & \textbf{} \\ \hline
+1 & ANO & Ano de Referência da Pesquisa OD & gerar & gerar & gerar & gerar &  & 1 & 2 & 2 & 1 - OD 1977 \\ \hline
+ &  &  &  &  &  &  &  &  &  &  & 2 - OD 1987 \\ \hline
+ &  &  &  &  &  &  &  &  &  &  & 3 - OD 1997 \\ \hline
+ &  &  &  &  &  &  &  &  &  &  & 4 - OD 2007 \\ \hline
+2 & CD\_ENTRE & Código de Entrevista & 16 & N/D & N/D & 9 &  & 3 & 3 & 1 & 5 - Completa sem Viagem  \\ \hline
+ &  &  &  &  &  &  &  &  &  &  & 6 - Completa com Viagem \\ \hline
+3 & DIA\_SEM & Dia da Semana & N/D & 68 & 36 & 78 &  & 4 & 4 & 1 & 2 - Segunda-Feira \\ \hline
+ &  &  &  &  &  &  &  &  &  &  & 3 - Terça-Feira \\ \hline
+ &  &  &  &  &  &  &  &  &  &  & 4 - Quarta-Feira \\ \hline
+ &  &  &  &  &  &  &  &  &  &  & 5 - Quinta-Feira \\ \hline
+ &  &  &  &  &  &  &  &  &  &  & 6 - Sexta-Feira \\ \hline
+4 & ZONA\_DOM & Zona do Domicílio & 1 & 1 & 1 & 1 &  & 5 & 7 & 3 & XX a YY \\ \hline
+5 & MUN\_DOM & Município  de Domicílio & 3 & 4 & 4 & 2 &  & 8 & 9 & 2 & XX a YY \\ \hline
+6 & CO\_DOM\_X & Coordenada X Domicílio & calcular & calcular & calcular & 3 &  & 10 & 21 & 12 & 12 dígitos 2 casas decimais \\ \hline
+7 & CO\_DOM\_Y & Coordenada Y Domicílio & calcular & calcular & calcular & 4 &  & 22 & 33 & 12 & 12 dígitos 2 casas decimais \\ \hline
+8 & ID\_DOM & Identifica Domicílio & 8 & 6 & 7 & 5 &  & 34 & 40 & 7 &  \\ \hline
+9 & F\_DOM & Identifica Primeiro Registro do Domicílio & 9 & 7 & 8 & 6 &  & 41 & 41 & 1 & 0 - Demais Registros \\ \hline
+ &  &  &  &  &  &  &  &  &  &  & 1- Primeiro Registro do Domicílio \\ \hline
+10 & FE\_DOM & Fator de Expansão do Domicílio & 10 & 8 & 9 & 7 &  & 42 & 51 & 10 & 10 dígitos 5 casas decimais \\ \hline
+11 & NO\_DOM & Número do Domicílio & 11 & 9 & 10 & 8 &  & 52 & 55 & 4 &  \\ \hline
+11 & TIPO\_DOM & Tipo de Domicílio & 12 & 11 & 11 & 11 &  & 56 & 56 & 1 & 1 – Particular \\ \hline
+ &  &  &  &  &  &  &  &  &  &  & 2 – Coletivo \\ \hline
+ &  &  &  &  &  &  &  &  &  &  & 3 – Favela \\ \hline
+12 & TOT\_FAM & Total de Familias no Domicílio & 20 & 12 & 12 & 13 &  & 57 & 58 & 2 &  \\ \hline
+13 & ID\_FAM & Identifica Família & gerar & gerar & 15 & 14 &  & 59 & 67 & 9 &  \\ \hline
+14 & F\_FAM & Identifica Primeiro Registro da Família & 17 & 13 & 16 & 15 &  & 68 & 68 & 1 & 0 - Demais Registros \\ \hline
+ &  &  &  &  &  &  &  &  &  &  & 1- Primeiro Registro da Família \\ \hline
+15 & FE\_FAM & Fator de Expansão da Família & 18 & 14 & 17 & 16 &  & 69 & 78 & 10 & 10 dígitos 5 casas decimais \\ \hline
+16 & NO\_FAM & Número da Família & 19 & 15 & 18 & 17 &  & 79 & 80 & 2 &  \\ \hline
+17 & CONDMORA & Condição de Moradia &  &  &  &  &  & 81 & 81 & 1 & 1 - Alugada \\ \hline
+ &  &  &  &  &  &  &  &  &  &  & 2 - Própria \\ \hline
+ &  &  &  &  &  &  &  &  &  &  & 3 - Outros \\ \hline
+ &  &  &  &  &  &  &  &  &  &  & 4 - Não respondeu \\ \hline
+18 & QT\_AUTO & Automóveis & 21 & 25 & 29 & 28 &  & 83 & 83 & 1 &  \\ \hline
+19 & QT\_BICICLE & Bicicletas & N/D & N/D & N/D & 33 &  & 84 & 84 & 1 &  \\ \hline
+20 & QT\_MOTO & Motos & N/D & N/D & N/D & 27 &  & 82 & 82 & 1 &  \\ \hline
+21 & CD\_RENFA & Código de Renda Familiar & 22 & 32 & 38 & 40 &  & 85 & 85 & 1 & 1 - Renda Familiar Declarada e Maior que Zero \\ \hline
+ &  &  &  &  &  &  &  &  &  &  & 2 – Renda Familiar Declarada como Zero \\ \hline
+ &  &  &  &  &  &  &  &  &  &  & 3 - Renda Atribuída \\ \hline
+22 & REND\_FAM & Renda Familiar & 23 & 33 & 39 & 39 &  & 86 & 93 & 8 & 8 dígitos 2 casas decimais \\ \hline
+23 & ID\_PESS & Identifica Pessoa & gerar & gerar & gerar & 41 &  & 86 & 97 & 12 &  \\ \hline
+24 & F\_PESS & Identifica Primeiro Registro da Pessoa & 24 & 37 & 42 & 42 &  & 98 & 98 & 1 & 0 - Demais registros \\ \hline
+ &  &  &  &  &  &  &  &  &  &  & 1- Primeiro registro da pessoa \\ \hline
+25 & FE\_PESS & Fator de Expansão da Pessoa & 25 & 38 & 43 & 43 &  & 99 & 108 & 10 & 10 dígitos 5 casas decimais \\ \hline
+26 & NO\_PESS & Número da Pessoa & gerar & gerar & gerar &  &  & 109 & 110 & 2 &  \\ \hline
+27 & SIT\_FAM & Situação Familiar & 27 & 40 & 45 & 45 &  & 111 & 111 & 1 & 1 – Pessoa Responsável \\ \hline
+ &  &  &  &  &  &  &  &  &  &  & 2 – Cônjuge/Companheiro(a) \\ \hline
+ &  &  &  &  &  &  &  &  &  &  & 3 – Filho(a)/Enteado(a) \\ \hline
+ &  &  &  &  &  &  &  &  &  &  & 4 - Outro Parente / Agregado \\ \hline
+ &  &  &  &  &  &  &  &  &  &  & 5 - Empregado Residente \\ \hline
+ &  &  &  &  &  &  &  &  &  &  & 6 - Outros (visitante não residente / parente do empregado) \\ \hline
+28 & IDADE & Idade & 28 & 41 & 46 & 46 &  & 112 & 113 & 2 & (anos) \\ \hline
+29 & SEXO & Gênero & 29 & 43 & 47 & 47 &  & 114 & 114 & 1 & 1 - Masculino \\ \hline
+ &  &  &  &  &  &  &  &  &  &  & 2 - Feminino \\ \hline
+30 & ESTUDA & Estuda Atualmente? & N/D & 44 & 48 & 48 &  & 115 & 115 & 1 & 1 - Não \\ \hline
+ &  &  &  &  &  &  &  &  &  &  & 2 - Creche/Pré-Escola \\ \hline
+ &  &  &  &  &  &  &  &  &  &  & 3 - 1º Grau /Fundamental; 2º Grau/Médio; Superior/Universitário \\ \hline
+ &  &  &  &  &  &  &  &  &  &  & 4 - Outros \\ \hline
+31 & GRAU\_INS & Grau de Instrução & 30 & 45 & 49 & 49 &  & 116 & 116 & 1 & 1 - Não-Alfabetizado/Fundamental Incompleto \\ \hline
+ &  &  &  &  &  &  &  &  &  &  & 2 - Fundamental Completo/Médio Incompleto \\ \hline
+ &  &  &  &  &  &  &  &  &  &  & 3 - Médio Completo/Superior Incompleto \\ \hline
+ &  &  &  &  &  &  &  &  &  &  & 4 - Superior completo \\ \hline
+ &  &  &  &  &  &  &  &  &  &  &  \\ \hline
+32 & SETOR\_ATIV & Setor de Atividade (do 1º Trabalho) & 32 & 46 & 52 & 65 e/ou 74 &  & 117 & 118 & 2 & 1 - Agrícola \\ \hline
+ &  &  &  &  &  &  &  &  &  &  & 2 - Construção Civil \\ \hline
+ &  &  &  &  &  &  &  &  &  &  & 3 - Indústria \\ \hline
+ &  &  &  &  &  &  &  &  &  &  & 4 - Comércio \\ \hline
+ &  &  &  &  &  &  &  &  &  &  & 5 - Administração Pública \\ \hline
+ &  &  &  &  &  &  &  &  &  &  & 6 - Serviços de Transporte \\ \hline
+ &  &  &  &  &  &  &  &  &  &  & 7 - Serviços \\ \hline
+ &  &  &  &  &  &  &  &  &  &  & 8 - Serviços Autônomos \\ \hline
+ &  &  &  &  &  &  &  &  &  &  & 9 - Outros \\ \hline
+ &  &  &  &  &  &  &  &  &  &  & 10 - Não se aplica \\ \hline
+ &  &  &  &  &  &  &  &  &  &  &  \\ \hline
+33 & COND\_REN\_I & Condição de Renda Individual & 33 & 49 & 53 & 51 &  & 119 & 119 & 1 & 1 - Tem Renda \\ \hline
+ &  &  &  &  &  &  &  &  &  &  & 2 - Não Tem Renda \\ \hline
+ &  &  &  &  &  &  &  &  &  &  & 3 - Não Respondeu \\ \hline
+34 & VL\_REN\_I & Renda Individual & 34 & 52 & 54 & 52 &  & 120 & 127 & 8 & 8 dígitos 2 casas decimais \\ \hline
+35 & ZONA\_ESC & Zona da Escola (1) & 35 & 53 & 56 & 53 &  & 128 & 130 & 3 & XX a YY \\ \hline
+36 & MUN\_ESC & Município da Escola & 37 & 56 & 60 & 54 &  & 131 & 132 & 2 & XX a YY \\ \hline
+37 & CO\_ESC\_X & Coordenada X Escola & calcular & calcular & calcular & 55 &  & 133 & 144 & 12 & 12 dígitos 2 casas decimais \\ \hline
+38 & CO\_ESC\_Y & Coordenada Y Escola & calcular & calcular & calcular & 56 &  & 145 & 156 & 12 & 12 dígitos 2 casas decimais \\ \hline
+39 & ZONA\_TRAB1 & Zona do Primeiro Trabalho & 40 & 57 & 62 & 58 &  & 157 & 159 & 3 & XX a YY \\ \hline
+40 & MUN\_TRAB1 & Município do Primeiro Trabalho & 42 & 60 & 66 & 59 &  & 160 & 161 & 2 & XX a YY \\ \hline
+41 & CO\_TRAB1\_X & Coordenada X 1º Trabalho & calcular & calcular & calcular & 60 &  & 162 & 173 & 12 & 12 dígitos 2 casas decimais \\ \hline
+42 & CO\_TRAB1\_Y & Coordenada Y 1º Trabalho & calcular & calcular & calcular & 61 &  & 174 & 185 & 12 & 12 dígitos 2 casas decimais \\ \hline
+43 & ZONA\_TRAB2 & Zona do Segundo Trabalho & 43 & 61 & 69 & 67 &  & 186 & 188 & 3 & XX a YY \\ \hline
+44 & MUN\_TRBA2 & Município do Segundo Trabalho & 45 & 64 & 73 & 68 &  & 189 & 190 & 2 & XX a YY \\ \hline
+45 & CO\_TRAB2\_X & Coordenada X 2º Trabalho & calcular & calcular & calcular & 69 &  & 191 & 202 & 12 & 12 dígitos 2 casas decimais \\ \hline
+46 & CO\_TRAB2\_Y & Coordenada Y 2º Trabalho & calcular & calcular & calcular & 70 &  & 203 & 214 & 12 & 12 dígitos 2 casas decimais \\ \hline
+47 & ID-VIAG & Identifica Viagem & 46 & N/D & 76 & N/D &  & 215 & 228 & 14 &  \\ \hline
+48 & F\_VIAG & Identifica Primeiro Registro da Viagem & gerar & gerar & gerar & gerar &  & 229 & 229 & 1 & 0 - Demais registros \\ \hline
+ &  &  &  &  &  &  &  &  &  &  & 1- Primeiro registro da viagem \\ \hline
+49 & FE\_VIAG & Fator de Expansão da Viagem & 47 & 67 & 77 & 77 &  & 230 & 239 & 10 & 10 dígitos 5 casas decimais \\ \hline
+50 & NO\_VIAG & Número da Viagem & 75 & 65 & N/D & 76 &  & 240 & 241 & 2 &  \\ \hline
+51 & TOT\_VIAG & Total de Viagens da Pessoa & calcular & calcular & calcular & 79 &  & 242 & 243 & 2 &  \\ \hline
+52 & ZONA\_O & Zona de Origem & 48 & 69 & 78 & 80 &  & 244 & 246 & 3 & 1 a 460 \\ \hline
+53 & MUN\_O & Município de Origem & 50 & 72 & 82 & 81 &  & 247 & 248 & 2 & 1 a 39 \\ \hline
+54 & CO\_O\_X & Coordenada X Origem & calcular & calcular & calcular & 82 &  & 249 & 260 & 12 & 12 dígitos 2 casas decimais \\ \hline
+55 & CO\_O\_Y & Coordenada Y Origem & calcular & calcular & calcular & 83 &  & 261 & 272 & 12 & 12 dígitos 2 casas decimais \\ \hline
+56 & ZONA\_D & Zona de Destino & 53 & 73 & 85 & 84 &  & 273 & 275 & 3 & 1 a 460 \\ \hline
+57 & MUN\_D & Município de Destino & 55 & 76 & 89 & 85 &  & 276 & 277 & 2 & 1 a 39 \\ \hline
+58 & CO\_D\_X & Coordenada X Destino & calcular & calcular & calcular & 86 &  & 278 & 289 & 12 & 12 dígitos 2 casas decimais \\ \hline
+59 & CO\_D\_Y & Coordenada Y Destino & calcular & calcular & calcular & 87 &  & 290 & 301 & 12 & 12 dígitos 2 casas decimais \\ \hline
+60 & DIST\_VIAG & Distância da viagem (em metros) - euclidiana & calcular & calcular & calcular & 123 &  & 302 & 309 & 8 & 8 dígitos 2 casas decimais \\ \hline
+61 & MOTIVO\_O & Motivo na Origem & 58 & 77 & 92 & 110 &  & 310 & 310 & 1 & 1 - Trabalho/Indústria \\ \hline
+ &  &  &  &  &  &  &  &  &  &  & 2 - Trabalho/Comércio \\ \hline
+ &  &  &  &  &  &  &  &  &  &  & 3 - Trabalho/Serviços \\ \hline
+ &  &  &  &  &  &  &  &  &  &  & 4 - Educação \\ \hline
+ &  &  &  &  &  &  &  &  &  &  & 5 - Compras \\ \hline
+ &  &  &  &  &  &  &  &  &  &  & 6 - Saúde \\ \hline
+ &  &  &  &  &  &  &  &  &  &  & 7 - Lazer \\ \hline
+ &  &  &  &  &  &  &  &  &  &  & 8 - Residência \\ \hline
+ &  &  &  &  &  &  &  &  &  &  & 9 – Outros \\ \hline
+62 & MOTIVO\_D & Motivo no Destino & 59 & 78 & 93 & 101 &  & 311 & 311 & 1 & 1 - Trabalho/Indústria \\ \hline
+ &  &  &  &  &  &  &  &  &  &  & 2 - Trabalho/Comércio \\ \hline
+ &  &  &  &  &  &  &  &  &  &  & 3 - Trabalho/Serviços \\ \hline
+ &  &  &  &  &  &  &  &  &  &  & 4 - Educação \\ \hline
+ &  &  &  &  &  &  &  &  &  &  & 5 - Compras \\ \hline
+ &  &  &  &  &  &  &  &  &  &  & 6 - Saúde \\ \hline
+ &  &  &  &  &  &  &  &  &  &  & 7 - Lazer \\ \hline
+ &  &  &  &  &  &  &  &  &  &  & 8 - Residência \\ \hline
+ &  &  &  &  &  &  &  &  &  &  & 9 – Outros \\ \hline
+63 & MODO1 & Modo 1 & 60 & 80 & 96 & 104 &  & 312 & 313 & 2 & 01 – Ônibus \\ \hline
+ &  &  &  &  &  &  &  &  &  &  & 02 – Ônibus Escolar / Empresa \\ \hline
+ &  &  &  &  &  &  &  &  &  &  & 03 - Dirigindo Automóvel \\ \hline
+ &  &  &  &  &  &  &  &  &  &  & 04 - Passageiro de Automóvel \\ \hline
+ &  &  &  &  &  &  &  &  &  &  & 05 - Táxi \\ \hline
+ &  &  &  &  &  &  &  &  &  &  & 06 - Lotação / Perua / Van / Microônibus \\ \hline
+ &  &  &  &  &  &  &  &  &  &  & 07 - Metrô \\ \hline
+ &  &  &  &  &  &  &  &  &  &  & 08 - Trem \\ \hline
+ &  &  &  &  &  &  &  &  &  &  & 09 - Moto \\ \hline
+64 & MODO2 & Modo 2 & 61 & 81 & 97 & 105 &  & 314 & 315 & 2 & 01 – Ônibus \\ \hline
+ &  &  &  &  &  &  &  &  &  &  & 02 – Ônibus Escolar / Empresa \\ \hline
+ &  &  &  &  &  &  &  &  &  &  & 03 - Dirigindo Automóvel \\ \hline
+ &  &  &  &  &  &  &  &  &  &  & 04 - Passageiro de Automóvel \\ \hline
+ &  &  &  &  &  &  &  &  &  &  & 05 - Táxi \\ \hline
+ &  &  &  &  &  &  &  &  &  &  & 06 - Lotação / Perua / Van / Microônibus \\ \hline
+ &  &  &  &  &  &  &  &  &  &  & 07 - Metrô \\ \hline
+ &  &  &  &  &  &  &  &  &  &  & 08 - Trem \\ \hline
+ &  &  &  &  &  &  &  &  &  &  & 09 - Moto \\ \hline
+65 & MODO3 & Modo 3 & 62 & 82 & 98 & 106 &  & 316 & 317 & 2 & 01 – Ônibus \\ \hline
+ &  &  &  &  &  &  &  &  &  &  & 02 – Ônibus Escolar / Empresa \\ \hline
+ &  &  &  &  &  &  &  &  &  &  & 03 - Dirigindo Automóvel \\ \hline
+ &  &  &  &  &  &  &  &  &  &  & 04 - Passageiro de Automóvel \\ \hline
+ &  &  &  &  &  &  &  &  &  &  & 05 - Táxi \\ \hline
+ &  &  &  &  &  &  &  &  &  &  & 06 - Lotação / Perua / Van / Microônibus \\ \hline
+ &  &  &  &  &  &  &  &  &  &  & 07 - Metrô \\ \hline
+ &  &  &  &  &  &  &  &  &  &  & 08 - Trem \\ \hline
+ &  &  &  &  &  &  &  &  &  &  & 09 - Moto \\ \hline
+ &  &  &  &  &  &  &  &  &  &  & 12 - Outros \\ \hline
+66 & MODO4 & Modo 4 & N/D & N/D & 99 & 107 &  & 318 & 319 & 2 & 01 – Ônibus \\ \hline
+ &  &  &  &  &  &  &  &  &  &  & 02 – Ônibus Escolar / Empresa \\ \hline
+ &  &  &  &  &  &  &  &  &  &  & 03 - Dirigindo Automóvel \\ \hline
+ &  &  &  &  &  &  &  &  &  &  & 04 - Passageiro de Automóvel \\ \hline
+ &  &  &  &  &  &  &  &  &  &  & 05 - Táxi \\ \hline
+ &  &  &  &  &  &  &  &  &  &  & 06 - Lotação / Perua / Van / Microônibus \\ \hline
+ &  &  &  &  &  &  &  &  &  &  & 07 - Metrô \\ \hline
+ &  &  &  &  &  &  &  &  &  &  & 08 - Trem \\ \hline
+ &  &  &  &  &  &  &  &  &  &  & 09 - Moto \\ \hline
+67 & MODO\_PRINC & Modo Principal & 63 & 91 & 108 & 115 &  & 320 & 321 & 2 & 01 – Ônibus \\ \hline
+ &  &  &  &  &  &  &  &  &  &  & 02 – Ônibus Escolar / Empresa \\ \hline
+ &  &  &  &  &  &  &  &  &  &  & 03 - Dirigindo Automóvel \\ \hline
+ &  &  &  &  &  &  &  &  &  &  & 04 - Passageiro de Automóvel \\ \hline
+ &  &  &  &  &  &  &  &  &  &  & 05 - Táxi \\ \hline
+ &  &  &  &  &  &  &  &  &  &  & 06 - Lotação / Perua / Van / Microônibus \\ \hline
+ &  &  &  &  &  &  &  &  &  &  & 07 - Metrô \\ \hline
+ &  &  &  &  &  &  &  &  &  &  & 08 - Trem \\ \hline
+ &  &  &  &  &  &  &  &  &  &  & 09 - Moto \\ \hline
+ &  &  &  &  &  &  &  &  &  &  & 12 - Outros \\ \hline
+68 & TIPOVG & Tipo de Viagem  & 64 & 92 & 109 & 116 &  & 322 & 322 & 1 & 1 - Coletivo \\ \hline
+ &  &  &  &  &  &  &  &  &  &  & 2 - Individual \\ \hline
+ &  &  &  &  &  &  &  &  &  &  & 3 - A pé \\ \hline
+69 & H\_SAIDA & Hora Saída & 65 & 83 & 101 & 108 &  & 323 & 324 & 2 & Hora de Saída \\ \hline
+70 & MIN\_SAIDA & Minuto Saída & 66 & 84 & 102 & 109 &  & 325 & 326 & 2 & Minuto de Saída \\ \hline
+71 & ANDA\_O & Tempo Andando na Origem & 67 & 85 & 103 & 110 &  & 327 & 328 & 2 & Em minutos \\ \hline
+72 & H\_CHEG & Hora Chegada & 68 & 86 & 104 & 111 &  & 329 & 330 & 2 & Hora de Chegada \\ \hline
+73 & MIN\_CHEG & Minuto Chegada & 69 & 87 & 105 & 112 &  & 331 & 332 & 2 & Minuto de Chegada \\ \hline
+74 & ANDA\_D & Tempo Andando no Destino & 70 & 88 & 106 & 113 &  & 333 & 334 & 2 & Em minutos \\ \hline
+75 & DURACAO & Duração da Viagem & 71 & 90 & 107 & 114 &  & 335 & 337 & 3 & Em minutos \\ \hline
+76 & TIPO\_EST\_AUTO & Tipo de Estacionamento do Automóvel & 72 & 89 & N/D & 118 &  & 338 & 338 & 1 & compatibilizar categorias \\ \hline
+77 & VALOR\_EST & Valor do Estacionamento do Automóvel & 73 & N/D & N/D & 119 &  & 339 & 342 & 4 &  \\ \hline
+78 & ID\_ORDEM & Número de Ordem do Registro & 76 & 93 & 110 & 122 &  & 343 & 348 & 6 & 1 a XXXXXX \\ \hline
+\end{tabular}
+\end{center}
+\label{label}
+\end{table}
+
