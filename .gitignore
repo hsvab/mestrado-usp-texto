@@ -1,4 +1,5 @@
 imagens/*-eps-converted-to.pdf
+dissertacao.pdf
 *.aux
 *.idx
 *.lof
@@ -15,7 +16,6 @@ imagens/*-eps-converted-to.pdf
 *.glo
 *.glsdefs
 *.ist
-*.pdf
 *.sbl
 *.sgl
 *.vrl
