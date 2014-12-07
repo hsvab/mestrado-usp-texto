@@ -1,35 +1,29 @@
-\newcommand{\partbr}{\index{\emph{Participa.br}}}
-\newcommand{\participatorio}{\index{\emph{Participatório}}}
-\newcommand{\gabdig}{\index{\emph{Gabinete Digital}}}
-\newcommand{\edem}{\index{\emph{e-Democracia}}}
-\newcommand{\ptrans}{\index{\emph{Portal da Transparência}}}
-
-\definecolor{lightblue}{rgb}{.80,.85,1}
-\definecolor{lightred}{rgb}{1,.80,.85}
-\definecolor{lightgreen}{rgb}{.80,1,.85}
-
-% COMANDOS PARA NOTAS DE "TODO"
-\newcounter{todocounter}
-%To-do que indica necessidade de correção de referência
-\newcommand{\corrigeref}[1]{
-    \sethlcolor{lightgreen}
-    #1\hl{(Corrigir referência)}\todonum[color=lightgreen]{Corrigir Referência}
-    \sethlcolor{yellow}
-}
-%To-do que destaca 'highlight' o texto e adiciona a nota também
-\newcommand{\todohl}[2]{
-    \hl{#1}\todonum{#2}
-}
-%To-do da cor vermelha, revisão do texto necessária
-\newcommand{\todorevisar}[1]{
-    \sethlcolor{lightred}
-    \hl{#1}\todonum[color=lightred]{Revisar o trecho}
-    \sethlcolor{yellow}
-}
-%To-do da cor azul, vindo de "Recorte e cole", possivelmente não vai ficar
-\newcommand{\todojogado}[1]{#1\todonum[color=blue!40]{Texto vindo de Recorte e Cole}}
-%To-do padrão numerado. Contém um parâmetro opcional para referência da localização da nota
-\newcommand{\todonum}[2][]{\stepcounter{todocounter}\todo[#1]{\thetodocounter: #2}}
+%\definecolor{lightblue}{rgb}{.80,.85,1}
+%\definecolor{lightred}{rgb}{1,.80,.85}
+%\definecolor{lightgreen}{rgb}{.80,1,.85}
+%
+%% COMANDOS PARA NOTAS DE "TODO"
+%\newcounter{todocounter}
+%%To-do que indica necessidade de correção de referência
+%\newcommand{\corrigeref}[1]{
+%    \sethlcolor{lightgreen}
+%    #1\hl{(Corrigir referência)}\todonum[color=lightgreen]{Corrigir Referência}
+%    \sethlcolor{yellow}
+%}
+%%To-do que destaca 'highlight' o texto e adiciona a nota também
+%\newcommand{\todohl}[2]{
+%    \hl{#1}\todonum{#2}
+%}
+%%To-do da cor vermelha, revisão do texto necessária
+%\newcommand{\todorevisar}[1]{
+%    \sethlcolor{lightred}
+%    \hl{#1}\todonum[color=lightred]{Revisar o trecho}
+%    \sethlcolor{yellow}
+%}
+%%To-do da cor azul, vindo de "Recorte e cole", possivelmente não vai ficar
+%\newcommand{\todojogado}[1]{#1\todonum[color=blue!40]{Texto vindo de Recorte e Cole}}
+%%To-do padrão numerado. Contém um parâmetro opcional para referência da localização da nota
+%\newcommand{\todonum}[2][]{\stepcounter{todocounter}\todo[#1]{\thetodocounter: #2}}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % AMBIENTE E LISTA DE QUADROS
@@ -132,55 +126,55 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Refazendo comando de capa e folha de rosto
-\renewcommand{\imprimircapa}{%
-  \begin{capa}%
-    \center
-    
-    \imprimirinstituicao
-
-    \ABNTEXchapterfont\large\imprimirautor
-
-    \vfill
-    \ABNTEXchapterfont\bfseries\LARGE\imprimirtitulo
-    \vfill
-
-    \large\imprimirlocal
-
-    \large\imprimirdata
-
-    \vspace*{1cm}
-  \end{capa}
-}
-
-\renewcommand{\folhaderostocontent}{
-    \begin{center}
-
-      %\vspace*{1cm}
-      %\imprimirinstituicao
-
-      {\ABNTEXchapterfont\large\imprimirautor}
-
-      \vspace*{\fill}\vspace*{\fill}
-      \begin{center}
-      \ABNTEXchapterfont\bfseries\Large\imprimirtitulo
-      \end{center}
-      \vspace*{\fill}
-
-      \hspace{.45\textwidth}
-      \begin{minipage}{.5\textwidth}
-      \SingleSpacing
-      \imprimirpreambulo
-      \end{minipage}%
-      \vspace*{\fill}
-
-      {\large\imprimirorientadorRotulo~\imprimirorientador\par}
-      \large\imprimircoorientadorRotulo~\imprimircoorientador
-      \vspace*{\fill}
-
-      {\large\imprimirlocal}
-      \par
-      {\large\imprimirdata}
-      \vspace*{1cm}
-
-    \end{center}
-  }
+%\renewcommand{\imprimircapa}{%
+%  \begin{capa}%
+%    \center
+%    
+%    \imprimirinstituicao
+%
+%    \ABNTEXchapterfont\large\imprimirautor
+%
+%    \vfill
+%    \ABNTEXchapterfont\bfseries\LARGE\imprimirtitulo
+%    \vfill
+%
+%    \large\imprimirlocal
+%
+%    \large\imprimirdata
+%
+%    \vspace*{1cm}
+%  \end{capa}
+%}
+%
+%\renewcommand{\folhaderostocontent}{
+%    \begin{center}
+%
+%      %\vspace*{1cm}
+%      %\imprimirinstituicao
+%
+%      {\ABNTEXchapterfont\large\imprimirautor}
+%
+%      \vspace*{\fill}\vspace*{\fill}
+%      \begin{center}
+%      \ABNTEXchapterfont\bfseries\Large\imprimirtitulo
+%      \end{center}
+%      \vspace*{\fill}
+%
+%      \hspace{.45\textwidth}
+%      \begin{minipage}{.5\textwidth}
+%      \SingleSpacing
+%      \imprimirpreambulo
+%      \end{minipage}%
+%      \vspace*{\fill}
+%
+%      {\large\imprimirorientadorRotulo~\imprimirorientador\par}
+%      \large\imprimircoorientadorRotulo~\imprimircoorientador
+%      \vspace*{\fill}
+%
+%      {\large\imprimirlocal}
+%      \par
+%      {\large\imprimirdata}
+%      \vspace*{1cm}
+%
+%    \end{center}
+%  }
