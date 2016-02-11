@@ -1,0 +1,220 @@
+% ---
+% Capitulo Pesquisa OD
+% ---
+\chapter{Pesquisa Origem Destino (OD)}\label{chap:pesquisa-od}
+
+\section{Periodicidade e Objetivos da Pesquisa OD}\label{sec:period-obj}
+
+A Pesquisa Origem Destino (Pesquisa OD) é realizada a cada dez anos pela Companhia do Metropolitano de São Paulo (Metrô-SP), a partir de 1967. Assim, até hoje foram realizadas cinco Pesquisas OD (1967, 1977, 1987, 1997 e 2007), das quais este trabalho abrangerá as quatro últimas, cobrindo uma janela temporal de 30 anos. O intervalo de dez anos foi considerado pelo Metrô-SP muito longo mediante as rápidas transformações no espaço urbano; assim, em 2002 e em 2012 foram feitas Pesquisas de Aferição, com menor amostragem e zonas mais agregadas. Cabe esclarecer que estas pesquisas de aferição não serão objeto de análise do presente estudo.
+
+A Pesquisa OD nasceu com a missão de compor uma base de dados que servisse de suporte a decisões de planejamento de transporte urbano na Região Metropolitana de São Paulo, que hoje abarca 38 municípios, além de São Paulo. Atualmente, além de cumprir esse papel, também é ferramenta de suporte para o planejamento urbano de maneira mais sistêmica, bem como para a formulação de políticas públicas segmentadas, nas áreas de educação, saúde e segurança pública, por exemplo \cite{MANUALOD2007}.
+
+\section{Descrição Sucinta}\label{sec:descr}
+
+A Pesquisa OD é composta de duas partes complementares, a saber, a Pesquisa Domiciliar e a Pesquisa de Linha de Contorno. A Pesquisa Domiciliar tem como escopo as viagens internas à Região Metropolitana de São Paulo (RMSP); nela são escolhidos os domicílios por amostragem, cujo critério será melhor discutido adiante, em que todos habitantes respondem a um questionário estruturado referente às viagens feitas no dia útil anterior à pesquisa. Já a Pesquisa de Linha de Contorno monitora pontos de entrada e saída (limites) da RMSP a fim de captar as viagens com origem dentro da RMSP e destino fora, vice-versa, ou ainda viagens que a atravessam. O presente trabalho tem como foco as viagens feitas internamente à RMSP, portanto, as bases de dados consideradas serão apenas aquelas advindas das Pesquisas Domiciliares.
+
+A Pesquisa OD considera a dimensão espacial dos deslocamentos considerando as zonas de origem e de destino. Tais zonas tiveram seus limites alterados e área de cobertura expandida desde 1967. Na Tabela \ref{tab:carac-dados} é possível observar quantos municípios da RMSP foram envolvidos em cada pesquisa e em quantas zonas eram divididos. A correspondência entre as diversas zonas é feita por uma unidade de compatibilização chamada Unidade de Correspondência de Zona (UCOD), em relação às quais todas zonas têm referência. Para que seja possível realizar uma análise de evolução temporal conjugando dados de diversas OD é preciso organizar todas as informações de maneira coerente, assim, é apresentado no Anexo \ref{chap:anexo_ucod} as 67 UCOD  com as respectivas zonas correspondentes para 1977, 1987, 1997 e 2007. Para tal consolidação ser feita, parte das informações foi recebida do Metrô-SP e parte foi fruto de compilação própria.
+
+
+\begin{table}[htb]
+    \IBGEtab{%\renewcommand{\arraystretch}{1.5}%%\ABNTEXfontereduzida%
+	    \renewcommand{\arraystretch}{1.5}
+        \caption{Caracaterísticas Amostrais das Pesquisas OD}
+		\label{tab:carac-dados}
+    }{%
+	    \begin{tabular}{P{2.00cm} P{4.0cm} P{4.0cm}}
+            \toprule
+	           \headerTabCenterCell{Ano} &
+   	           \headerTabCenterCell{Municípios da RMSP} &
+		       \headerCell{Zona}\\
+		    \midrule \midrule
+				1967&
+				15&
+		        206\\
+		    \midrule
+		        1977&
+		        27&
+		        243\\
+		    \midrule
+		        1987&
+		        38&
+		        254\\
+		    \midrule
+		        1997&
+		        39&
+		        389\\    
+		    \midrule
+		        2007&
+		        39&
+		        460\\    
+			\bottomrule	
+		\end{tabular}
+    }{%
+		\fonte{Compilação a partir de {\cite{OD77,OD87,OD97,OD07}}}
+		}
+\end{table}
+
+\section{Dados Coletados}\label{sec:OD-dados-coletados}
+
+A Pequisa OD coleta dados referentes a domicílios, famílias, indivíduos e viagens, o que possibilita buscar relações entre características de deslocamentos e de indivíduos (e respectivas famílias e domicílios), e também características socioeconômicas. Em 1987, 1997 e 2007 a amostra de domicílios é do tipo estratificada por faixas de consumo de energia elétrica%
+\footnote{Na década de 1970 a companhia telefônica TELESP realizou um cadastro de domicílios, que foram categorizados segundo o padrão arquitetônico percebido externamente à residência. Nessa categorização eram considerados critérios como, por exemplo, se a construção é do tipo geminada ou não, etc. Os domicílios eram então classificados de 1 a 5, em que 1 significa o melhor parâmetro e 5 o pior (favela). O Metrô-SP utilizou esse cadastro da TELESP para fazer a estratificação da amostra de domicílios para a Pesquisa OD-1977.} - isso se dá por dois fatores: (i) as concessionárias possuem bases cadastrais de registro de domicílios mais confiáveis e representativas; (ii) ``o consumo de energia elétrica tem correlação com a renda familiar, que por sua vez tem correlação com o número de viagens da família'' \cite[p.10]{MANUALOD2007}. Esse esquema de amostragem estratificada buscou, em todos anos obter nível de confiança de 95\%. Nas zonas em que não foi possível utilizar esse arranjo, foi feita amostra causal simples, com erros em torno de 7,5\%. Na Tabela \ref{tab:tam-amostra} é possível observar algum dados relativos às amostras.
+%TODO confirmar esse 7.5% com Emilia, bem como de o IC foi 95% sempre
+
+Definido o tamanho da amostra total, define-se o tamanho de amostra para cada zona e, a partir daí, procede-se um sorteio de endereços por faixa de consumo energético - etapa esta realizada pelas concessionárias, que fornecem ao Metrô-SP apenas os endereços dos domicílios selecionados, além de alguns adicionais para substituição caso necessário. Os selecionados recebem comunicação oficial por carta do Metrô-SP contendo as informações pertinentes à pesquisa. Quando no domicílio, os(as) pesquisadores(as) aplicam o questionário a todas pessoas que moram ali.
+
+
+\begin{table}[htb]
+    \IBGEtab{%\renewcommand{\arraystretch}{1.5}%%\ABNTEXfontereduzida%
+	    \renewcommand{\arraystretch}{1.5}
+        \caption{Características Gerais das Pesquisas OD}
+		\label{tab:tam-amostra}
+    }{%
+	    \begin{tabular}{P{2.00cm} P{4.0cm} P{4.0cm} P{4.0cm}}
+            \toprule
+	           \headerTabCenterCell{Ano} &
+   	           \headerTabCenterCell{Domicílios} &
+		       \headerCell{Pessoas entrevistadas do sexo feminino} &
+   		       \headerCell{Pessoas entrevistadas do sexo masculino}\\
+		    \midrule \midrule
+				1977&
+				26.132&
+				55.868&
+		        52.163\\
+		    \midrule
+				1987&
+				26.070&
+				57.637&
+		        53.176\\
+		    \midrule
+				1997&
+				23.841&
+				51.454&
+		        47.326\\
+		    \midrule
+		        2007&
+		        29.957&
+		        49.116&
+		        42.289\\    
+		    \midrule
+		        Total&
+		        106.000&
+		        214.075&
+		        194.954\\   
+			\bottomrule	
+		\end{tabular}
+    }{%
+		\fonte{Compilação a partir de \cite{OD77,OD87,OD97,OD07}}
+		}
+\end{table}
+
+A coleta, consistência e digitação do dados são de responsabilidade de institutos de pesquisa contratados pelo Metrô-SP e que variaram ao longo do tempo. Após a consolidação primeira do banco de dados, é calculado e aplicado um fator de expansão aos resultados amostrais dos domicílios segundo a expressão \eqref{eq:fator-expansao-dom}.
+Depois determina-se, por consequência, um fator de correção referente às famílias e às pessoas. As viagens de quem usou o modo metrô são expandidas levando em consideração a entrada de passageiros no sistema Metrô-SP na data de referência da pesquisa. Situação análoga ocorre com o trem metropolitano. As viagens de quem usou outro modo que não metrô e/ou trem teve seu fator de expansão de viagens determinado pelo total de passageiros transportados pelo sistema de ônibus (em 2007 foram utilizados os dados provenientes de Bilhete Único da SPTrans).
+
+\begin{equation}\label{eq:fator-expansao-dom}
+\mbox{Fator de expansão de domicílio}_i = \frac{\mbox{Total de domicílios da zona}_i}{\mbox{domicílios da amostra da zona}_i}
+\end{equation}
+
+%Referênciando a equação \ref{eq:fator-expansao} ou usando \eqref{eq:fator-expansao}.
+
+%\begin{equation}\label{eq:fator-expansao-fam}
+%\mbox{Fator de expansão da família}_i = \frac{\mbox{Total de famílias da zona}_i}{\mbox{famílias da amostra da zona}_i}
+%\end{equation}
+
+%\begin{equation}\label{eq:fator-expansao-pess}
+%\mbox{Fator de expansão da pessoa}_i = \frac{\mbox{Total de pessoas da zona}_i}{\mbox{pessoas da amostra da zona}_i}
+%\end{equation}
+
+%Verificar com Emilia: de onde vem os totais (numeradores da expressões) dos fatores de expansão das família e das pessoas? Pq o total de domicílios vem do cadastro das concessionárias, mas e os outros totais?
+
+Vale fazer algumas considerações acerca da renda familiar. Nem todas as pessoas respondem qual é a renda familiar, e como trata-se de uma das informações mais importantes para descrever o comportamento das pessoas \cite{SHEARMUR2006}. 
+%%%%%%%%%%% DEPOIS CONFERIR ESTA REFERÊNCIA %%%%%%%%%%%
+
+Nos casos em que a renda não foi informado pelo(a) entrevistado(a), ela é atribuída, mas não sem critério. A atribuição da renda familiar baseou-se na pontuação estabelecida por um critério nacional%
+\footnote{Em 1987 foi usado o Critério ABA, em 1997 foi usado o critério ABIMEPE e, em 2007 foi utilizado o Critério Brasil, todos muitos semelhantes em metodologia que visa a classificação em categorias de capacidade de consumo segundo a posse de bens de consumo e do grau de instrução ``do chefe da família''
+Fonte: \url{http://www.abep.org/new/criterioBrasil.aspx} Acesso em 17 de novembro de 2014.},
+que variou ao longo do tempo - tais informações podem ser vistas no Quadro \ref{qua:atrib-renda}.
+
+\begin{quadro}[htb]
+    \IBGEtab{
+        \renewcommand{\arraystretch}{1.5}
+        \ABNTEXfontereduzida
+        \caption[Dados para atribuição de renda familiar]{\label{qua:atrib-renda}Dados para atribuição de renda familiar}
+	}{%
+        \begin{tabular}{|P{2.0cm}|P{4.00cm}|P{5.00cm}|}
+           \hline
+		       \headerCenterCell{Ano} & 
+		       \headerCenterCell{Mês de Referência} & 
+		       \headerCenterCell{Classificação de Referência para Atribuição da Renda}\\ 
+		    \hline\hline
+		        1977&
+		    	setembro&
+		        Função do Salário Mínimo\\
+		    \hline
+		    	1987&
+		        setembro&
+		        Critério ABA/ABIMEPE (análogo ao Critério Brasil)\\
+		    \hline
+		    	1997&
+		        outubro&
+		        Critério Brasil (ABIMEPE)\\
+		    \hline
+		    	2007&
+		        outubro&
+		        Critério Brasil (ABEP)\\
+			\hline
+		\end{tabular}
+	}{%
+		\fonte{Compilação de informações obtidas por meio de correspondência eletrônica com Emilia Mayumi Hiroi, Coordenadora de Pesquisa e Avaliação de Transporte do Metrô-SP}
+    }
+\end{quadro}
+
+Com isso, nos casos em que as pessoas não informaram a renda mas declararam os bens de consumo da família, a  variável ``renda familiar mensal'' foi atribuída por meio das equações de regressão\footnote{As equações de regressão de 1987, 1997 e 2007 foram obtidas por meio de correspondência eletrônica com Emilia Mayumi Hiroi, Coordenadora de Pesquisa e Avaliação de Transporte do Metrô-SP.} 
+\eqref{eq:reg-renda-87}, \eqref{eq:reg-renda-97} e \eqref{eq:reg-renda-07}, cuja função é estimar o poder de compra da família. Nesses critérios de classificação econômica existe a orientação de que a categoria automóvel não deve considerar táxis, vans, \emph{pickups} usadas para fretes ou qualquer veículo usado para atividades profissionais, nem tampouco devem ser considerados veículos de uso misto (lazer e profissional) \cite{CRITERIOBRASIL}. Essa mesma orientação em relação aos automóveis é feita pelos manuais das Pesquisas OD \cite{OD77, OD87, OD97, OD07} tornando o conjunto coerente.
+
+\begin{equation}\label{eq:reg-renda-87}
+RFM_{87} = e^{~(9,126~+~0,05051*PONTUACAO_{ABA})}
+\end{equation}
+
+\begin{equation}\label{eq:reg-renda-97}
+RFM_{97} = e^{~(5,672~+~0,03259*PONTUACAO_{ABIMEPE})}
+\end{equation}
+
+\begin{equation}\label{eq:reg-renda-07}
+RFM_{07} = e^{~(5,864~+~0,084*PONTUACAO_{BRASIL})}
+\end{equation}
+
+Nas famílias em que não se obteve nem declaração da renda, nem informações suficientes sobre bens de consumo, a renda foi atribuída à família a partir da mediana da zona a que pertencia e com mesmo grau de instrução do(a) ``chefe da família''.
+
+\section{Conceitos Adotados}\label{sec:conceitos}
+
+A seguir, são replicados alguns conceitos utilizados pelo Metrô-SP no desenvolvimento das Pesquisas OD, a saber, \emph{zona}, \emph{família}, \emph{respondente qualificado}, \emph{modo coletivo}, \emph{modo individual}, \emph{modo não motorizado}, \emph{modo motorizado}, \emph{modo principal}, \emph{viagem}, \emph{viagem a pé}: 
+
+\begin{compactitem}[]
+\item (i) É considerada \emph{família}: uma pessoa que more só, ou um conjunto de pessoas ligadas por laços de parentesco ou de dependência econômica que morem no mesmo domicílio; ou, ainda, conjunto de, no máximo, cinco pessoas que mesmo não tendo laço de parentesco morem num mesmo domicílio. O(a) empregado(a) doméstico(a) que more com algum outro parente na casa do patrão será considerada como outra família, mas caso o(a) empregado(a) more sozinho(a) na residência onde trabalha, será considerado(a) como parte da família do empregador.
+
+\item (ii) Compõem o \emph{modo coletivo} o metrô, o trem, o ônibus, o microônibus, o transporte fretado, o transporte escolar, a lotação, a van, o trólebus.
+
+\item (iii) Compõem o \emph{modo individual} o automóvel, o táxi, a motocicleta e a bicicleta.
+
+\item (iv) São considerados \emph{modos não motorizados} os modos a pé e bicicleta.
+
+\item (v) São considerados \emph{modos motorizados} os demais modos exceto a pé e bicicleta.
+
+\item (vi) \emph{Modo principal} é o modo de maior hierarquia dentre os modos utilizados numa mesma viagem. Conforme estabelecido pelo Metrô-SP, a hierarquia desses modos é a seguinte, nesta ordem, do que predomina sobre qual: metrô, trem, ônibus, transporte fretado, transporte escolar, lotação, táxi, dirigindo automóvel, passageiro de automóvel, motocicleta, bicicleta, outros e a pé.
+
+\item (vii) \emph{Respondente qualificado} é a pessoa com 10 anos ou mais, residente no domicílio sorteado e capaz de responder às perguntas feitas pelo pesquisador. Uma pessoa responsável pode fornecer informações referentes às pessoas menores de 10 anos; ou pessoas que não fossem capazes de responder ao questionário.
+% A idade de corte foi sempre 10 anos? Orlando ahca que não... obter manual de pesquisa OD de 1977 com Orlando [após Quali]
+
+\item (viii) \emph{Viagem} é uma atividade secundária e refere-se ao deslocamento de uma pessoa, por motivo específico, entre dois pontos determinados (origem e destino), utilizando, para isso, um ou mais modos de transporte. Sendo nominado como origem o local onde a pessoa entrevistada se encontrava quando iniciou o seu deslocamento, e como destino o local para onde a pessoa entrevistada se dirigiu (destino final).
+
+\item (ix) \emph{Viagem a pé} é aquela realizada integralmente a pé, da origem ao destino. Além disso, só será contabilizada como viagem a pé se a distância percorrida é superior a 500 metros (ou cinco quadras) ou se o motivo da viagem (na origem ou no destino) é trabalho ou escola, independente da distância percorrida.
+
+\item (x) \emph{Zona} de pesquisa é a unidade territorial de levantamento da origem e do destino das viagens
+\end{compactitem}
+
+\section{Limitações}\label{sec:limitacoes}
+
+Como este estudo baseia-se em dados secundários é preciso estar ciente das limitações que conceitos e metodologia de pesquisa adotados podem trazer. O conceito de família é bastante centrado na unidade do domicílio, o que pode desconsiderar laços afetivos e redes de solidariedade que as famílias ensejam, mesmo estando em domicílios separados. Por exemplo, uma criança pequena cujos pais precisam trabalhar, pode significar que vá haver viagens motivo escola, com um dos pais, mais provavelmente a mulher, servindo passageiro. Entretanto, a depender da oferta de serviços do local de residência, pode ser que não haja vaga em creche disponível. Pode ser ainda que a família não disponha de  condições financeiras para pagar uma escola particular para essa criança. Um arranjo muitas vezes adotado é deixar a criança com avós ou tios que morem próximos. Isso representa impacto no padrão de mobilidade e também uma ``economia'' que o arranjo familiar proporciona. Esses arranjos e nuances pouco serão percebidos a partir destas bases de dados, pela forma com que foram construídas.
+
+Outra limitação que merece atenção, é a hierarquia estabelecida entre os modos. Muito embora haja a descrição dos modos utilizados (até três em 1977 e 1987 e até quatro em 1997 e 2007), a duração da viagem disponível no banco de dados é a duração total, geralmente atribuída ao modo principal. Contudo, as viagens por modos não motorizados são as menos ``fortes'' na hierarquia de modos, sendo consideradas praticamente se forem exclusivas. Isso dificulta e às vezes impossibilita analisar devidamente os modos não motorizados dentro das cadeias de viagens. 
+Ademais, existe uma subrepresentatividade das viagens a pé devido ao conceito adotado. E espera-se que estas viagens sejam importantes na descrição diferencial dos padrões de deslocamento de acordo com os gêneros. A mulher é responsável pela maior parte das tarefas ligadas à administração doméstica \cite{ROOT1999,VANCE2007}, o que inclui compras rápidas e próximas à residência ou levar filhos(as) à escola \cite{FOX1983,FAGNANI1983,IBIPO1992,MCNUCKIN2005,SCHWANEN2002,SONG2003,CRANE2007}, muitas vezes, a pé \cite{VASCONCELLOS2001}.
