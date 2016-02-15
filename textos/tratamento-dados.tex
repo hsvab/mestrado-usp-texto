@@ -7,66 +7,68 @@
 
 Afim de tornar possível comparar dados das diversas Pesquisas OD objetos deste trabalho (1977, 1987, 1997 e 2007) foi necessário conhecer o banco de dados de cada edição, e para que seja possível analisar a evolução de padrões de mobilidade e de comportamento, é preciso que os dados dos diversos bancos sejam comparáveis. Para isso, foi desenvolvido o desenho de um Banco de Dados Unificado (BDU), com função de integrar e compatibilizar as informações julgadas relevantes até este momento, e também aquelas que acredita-se possam vir a ser úteis em etapas posteriores do trabalho. Os \emph{layouts} dos bancos de dados originais podem ser observados no Anexo \ref{chap:anexo_layouts}, e o do banco integrador pode ser visto no Quadro \ref{qua:layout-haydee} a seguir.
 
-Inicialmente, nos bancos de dados originais, foram identificadas as variáveis correspondentes entre os diversos anos e o BDU. Para cada variável e para cada ano foram feitas transformações para que fosse possível gerar um único banco de dados final, possível de ser empilhado - essas transformações estão descritas no Capítulo \ref{chap:trat-dados}. Devido ao tamanho dos bancos de dados, a preparação dos dados não foi feita em planilhas eletrônicas convencionais, mas por meio de códigos em linguagem \textit{python}. A estrutura dos códigos apresentados no Anexo \ref{chap:anexo_rotinas} é dividida em 5 blocos: (i) \textit{Set up} inicial com chamadas de bibliotecas e configurações; (ii) Definição de \textit{loggers}; (iii) Definição de funções gerais; (iv) Definição da função principal; e (v) Chamada para execução da função principal.\\ 
+Inicialmente, nos bancos de dados originais, foram identificadas as variáveis correspondentes entre os diversos anos e o BDU. Para cada variável e para cada ano foram feitas transformações para que fosse possível gerar um único banco de dados final, possível de ser ``empilhado'' - essas transformações estão descritas neste capítulo. Devido ao tamanho dos bancos de dados, sua preparação não foi feita em planilhas eletrônicas convencionais, mas por meio de códigos em linguagem \textit{python}. A estrutura dos códigos apresentados no Anexo \ref{chap:anexo_rotinas} é dividida em 5 blocos: (i) \textit{Set up} inicial com chamadas de bibliotecas e configurações; (ii) Definição de \textit{loggers}; (iii) Definição de funções gerais; (iv) Definição da função principal; e (v) Chamada para execução da função principal.\\ 
 
 \begin{compactitem}[]
 \item (i) \textit{Set up}: foram utilizadas as bibliotecas \textit{math}, para as funções matemáticas, e \textit{pandas}, as análises de dados.\\
 
 \item (ii) Definição de \textit{loggers}\footnote{\textit{Logger} é uma rotina utilizada para acompanhar o processamento dos dados.}: foram estabelecidos dois \textit{loggers}, o \textit{log_output} que salva o conteúdo num arquivo de saída (de texto, com extensão .log) e o \textit{log_tela}, que além de salvar o conteúdo no arquivo de saída também mostra esse conteúdo na tela.\\
 
-\item (iii) Definição de funções gerais: são definidas 5 funções gerais assessórias que serão utilizadas pelas funções gerais ``passo”. Ou seja, as 66 funções gerais ``passo'' são que, de fato, fazem o trabalho de transformação variável a variável. As assessórias servem para que estas possam ler os arquivos .csv e realizar testes de consistência, entre outras tarefas.\\
+\item (iii) Definição de funções gerais: são definidas 5 funções gerais assessórias que serão utilizadas pelas funções gerais ``passo”. Ou seja, as 66 funções gerais ``passo'' são as que, de fato, fazem o trabalho de transformação variável a variável. As assessórias servem para que estas possam ler os arquivos .csv e realizar testes de consistência, entre outras tarefas.\\
 
-São funções gerais assessórias:
-\item - consulta_refext: traz valor de referência externa (em arquivo csv) baseado em valor de referência do arquivo de origem;
-\item - verifica_dummy: verifica se uma variável, do tipo \textit{dummy}, contém algum valor diferente de 0 ou de 1; 
-\item - verifica_range: verifica se uma variável, do tipo número inteiro, contém algum valor fora de um intervalo especificado.
-\item - corrige_renda: corrige a renda indicada aplicando um deflator que é passado como parâmetro; e
-\item - coord: preenche as colunas de coordenadas ``CO_DOM_X'', ``CO_DOM_Y'', ``CO_ESC_X'', ``CO_ESC_Y'', ``CO_TRAB1_X'', ``CO_TRAB1_Y'', ``CO_TRAB2_X''; ``CO_TRAB2_Y'', ``CO_ORIG_X'', ``CO_ORIG_Y'', ``CO_DEST_X'' e ``CO_DEST_Y'', segundo consulta ao arquivo externo com correspondência entre subzonas e suas coordenadas x e y.\\
+%São funções gerais assessórias:
+%\item - consulta_refext: traz valor de referência externa (em arquivo csv) baseado em valor de referência do arquivo de origem;
+%\item - verifica_dummy: verifica se uma variável, do tipo \textit{dummy}, contém algum valor diferente de 0 ou de 1; 
+%\item - verifica_range: verifica se uma variável, do tipo número inteiro, contém algum valor fora de um intervalo especificado.
+%\item - corrige_renda: corrige a renda indicada aplicando um deflator que é passado como parâmetro; e
+%\item - coord: preenche as colunas de coordenadas ``CO_DOM_X'', ``CO_DOM_Y'', ``CO_ESC_X'', ``CO_ESC_Y'', ``CO_TRAB1_X'', ``CO_TRAB1_Y'', ``CO_TRAB2_X''; ``CO_TRAB2_Y'', ``CO_ORIG_X'', ``CO_ORIG_Y'', ``CO_DEST_X'' e ``CO_DEST_Y'', segundo consulta ao arquivo externo com correspondência entre subzonas e suas coordenadas x e y.\\
+%
+%São funções gerais ``passo'':
+%\item - passo_ano: preenche a coluna ``ANO'' segundo as categorias do Quadro \ref{qua:layout-haydee};
+%\item - passo_dia_sem: preenche a coluna ``DIA_SEM'' segundo as categorias do Quadro \ref{qua:layout-haydee};
+%\item - passo_ucod: preenche a coluna ``UCOD'' segundo consulta ao arquivo externo com correspondência entre zonas e ucods;
+%\item - passo_zona_dom, passo_subzona_dom e passo_mun_dom: checa se existe algum erro no intervalo pertinente, respectivamente, às zonas, subzonas e municípios do domicílio de cada ano conforme Quadro \ref{qua:layout-haydee};
+%\item - passo_f_dom: checa se existe algum erro (número diferente de 0 ou 1) na coluna ``F_DOM'';
+%\item - passo_tipo_dom: checa se existe algum erro no intervalo pertinente aos tipos de domicílio conforme Quadro \ref{qua:layout-haydee};
+%\item - passo_f_fam: checa se existe algum erro (número diferente de 0 ou 1) na coluna ``F_FAM'';
+%\item - passo_cond_mora: faz transformações nas categorias da variável ``COND_MORA'' e checa se existe algum erro no intervalo pertinente à condição de moradia conforme Quadro \ref{qua:layout-haydee};
+%\item - passo_ren_fam: corrige a renda familiar segundo o parâmetro deflator passado pela função principal e armazena os valores na coluna ``REN_FAM'';
+%\item - passo_cd_renfam: faz transformações nas categorias da variável``CD_RENFAM'' e checa se existe algum erro no intervalo pertinente à renda individual conforme Quadro \ref{qua:layout-haydee};
+%\item - passo_f_pess: checa se existe algum erro (número diferente de 0 ou 1) em ``F_PESS'';
+%\item - passo_sit_fam:  faz transformações nas categorias da variável ``SIT_FAM'' e checa se existe algum erro no intervalo pertinente à situação familiar conforme Quadro \ref{qua:layout-haydee};
+%\item - passo_sexo: faz transformações nas categorias da variável ``SEXO'' de forma que seja uma \textit{dummy} que indica se pessoa é mulher ou não e checa se existe algum erro (número diferente de 0 ou 1);
+%\item - passo_grau_instr: faz transformações nas categorias da variável ``GRAU_INSTR'' e checa se existe algum erro no intervalo pertinente ao grau de instrução conforme Quadro \ref{qua:layout-haydee};
+%\item - passo_estuda: atribui \textit{dummy} que indica se pessoa estuda ou não, ou seja, se zona da escola for zero (0) então, pessoa não estuda (0), caso contrário, a pessoa estuda (1); além de checar se existe algum erro (número diferente de 0 ou 1);
+%\item - passo_ocup: faz transformações nas categorias da variável ``OCUP'' e checa se existe algum erro no intervalo pertinente à condição de ocupação da pessoa conforme Quadro \ref{qua:layout-haydee};
+%\item - passo_setor_ativ: faz transformações nas categorias da variável ``SETOR_ATIV'' e checa se existe algum erro no intervalo pertinente à condição de ocupação da pessoa conforme Quadro \ref{qua:layout-haydee}; 
+%\item - passo_ren_ind: corrige a renda familiar segundo o parâmetro deflator passado pela função principal e armazena os valores na coluna ``REN_IND'';
+%\item - passo_cd_renind: faz transformações nas categorias da variável ``CD_RENIND'' de forma que seja uma \textit{dummy} que indica se pessoa tem renda ou não e checa se existe algum erro (número diferente de 0 ou 1);
+%\item - passo_f_viag: checa se existe algum erro (número diferente de 0 ou 1) na coluna ``F_VIAG";
+%\item - passo_fe_viag: não se mexe na coluna ``FE_VIAG'';
+%\item - passo_zona_esc, passo_subzona_esc e passo_mun_esc: checa se existe algum erro no intervalo pertinente, respectivamente, às zonas, subzonas e municípios da escola de cada ano conforme Quadro \ref{qua:layout-haydee};
+%\item - passo_zona_trab1, passo_subzona_trab1 e passo_mun_trab1: checa se existe algum erro no intervalo pertinente, respectivamente, às zonas, subzonas e municípios do trabalho 1 de cada ano conforme Quadro \ref{qua:layout-haydee};
+%\item - passo_zona_trab2, passo_subzona_trab2 e passo_mun_trab2: checa se existe algum erro no intervalo pertinente, respectivamente, às zonas, subzonas e municípios do trabalho 2 de cada ano conforme Quadro \ref{qua:layout-haydee};
+%\item - passo_zona_orig, passo_subzona_orig e passo_mun_orig: checa se existe algum erro no intervalo pertinente, respectivamente, às zonas, subzonas e municípios da origem da viagem de cada ano conforme Quadro \ref{qua:layout-haydee};
+%\item - passo_zona_dest, passo_subzona_dest e passo_mun_dest: checa se existe algum erro no intervalo pertinente, respectivamente, às zonas, subzonas e municípios do destino da viagem de cada ano conforme Quadro \ref{qua:layout-haydee};
+%\item - passo_serv_pas_orig e passo_serv_pas_dest: atribui \textit{dummy} que indica se pessoa serve passageiro ou não transformando as categorias das variáveis ``SERV_PAS_ORIG'' e ``SERV_PAS_DEST'', respectivamente, e checa se existe algum erro no intervalo pertinente ao ato de servir passageiro conforme Quadro \ref{qua:layout-haydee};
+%\item - passo_motivo_orig e passo_motivo_dest: faz transformações nas categorias das variáveis ``MOTIVO_ORIG'' e ``MOTIVO_DEST'', respectivamente, e checa se existe algum erro no intervalo pertinente ao motivo conforme Quadro \ref{qua:layout-haydee};
+%\item - passo_modo1, passo_modo2, passo_modo3 e passo_modo4: faz transformações nas categorias das variáveis ``MODO1'', ``MODO2'', ``MODO3'' e ``MODO4'', respectivamente, e checa se existe algum erro no intervalo pertinente aos modos de transporte usados segundo o Quadro \ref{qua:layout-haydee};
+%\item - passo_modo_prin: faz transformações nas categorias da variável ``MODO_PRIN'' e checa se existe algum erro no intervalo pertinente ao principal modo de transporte usado segundo o Quadro \ref{qua:layout-haydee};
+%\item - passo_tipo_est_auto: faz transformações nas categorias da variável ``TIPO_EST_AUTO'' e checa se existe algum erro no intervalo pertinente ao principal modo de transporte usado segundo o Quadro \ref{qua:layout-haydee};
+%\item - passo_valor_est_auto: corrige o valor do estacionamento segundo o parâmetro deflator passado pela função principal e armazena os valores na coluna ``VALOR_EST_AUTO'', caso essa variável não existe, não se mexe na coluna e os valores serão tomados como \textit{NA};
+%\item - passo_no_dom: gera o número do domicílio sendo que para cada ``ZONA_DOM'' o ``NO_DOM'' será atualizado sempre que ``F_DOM'' for igual a 1; caso contrário, se ``F_DOM'' for igual a zero, então``NO_DOM'' será igual ao ``NO_DOM'' da linha anterior;
+%\item - passo_no_fam:  gera o número da família sendo que para cada ``ID_DOM'' o ``NO_FAM'' será incrementado sempre que ``F_FAM'' for igual a 1; caso contrário, se ``F_FAM'' for igual a 0, então
+%o ``NO_FAM'' será igual ao ``NO_FAM'' da linha anterior; 
+%\item - passo_no_pess: gera o número da pessoa sendo que para cada ``ID_FAM'' o ``NO_PESS'' será atualizado sempre que ``F_PESS'' for igual a 1; caso contrário, se ``F_PESS'' for igual a zero, então ``NO_PESS'' será igual ao ``NO_PESS'' da linha anterior;
+%\item - passo_no_viag: gera o número da viagem sendo que para cada ``ID_PESS'' o ``NO_VIAG'' começa com 1 e será incrementado sempre que ``F_VIAG'' for igual a 1; caso contrário, se ``F_VIAG'' for igual a 0, então o ``NO_VIAG'' será igual ao ``NO_VIAG'' da linha anterior. Para garantir a representatividade do caso em que as pessoas responderam o questionário e não realizaram viagem,   quando o ``FE_VIAG'' for não nulo e ``ZONA_ORIG'' e ``ZONA_DEST'' forem ambas nulas simultaneamente o ``NO_VIAG'' será igual a 0;
+%\item - passo_id_dom: gera o ``ID_DOM'' que é composto por 8 dígitos, em que o primeiro é o ano conforme Quadro \ref{qua:layout-haydee}, do segundo ao quarto dígitos tem-se a zona, e do quinto ao oitavo dígitos tem-se o número do domicílio;
+%\item - passo_id_fam: gera o ``ID_FAM'' que é composto por 10 dígitos, em que os 8 primeiros correspondem ao ``ID_DOM'' e os dois últimos ao ``NO_FAM''; 
+%\item - passo_id_pess: gera o ``ID_PESS'' que é composto por 12 dígitos, em que os 10 primeiros correspondem ao ``ID_FAM'' e os dois últimos ao ``NO_PESS''; 
+%\item - passo_id_viag: gera o ``ID_VIAG'' que é composto por 14 dígitos, em que os 12 primeiros correspondem ao ``ID_PESS'' e os dois últimos ao ``NO_VIAG'';
+%\item - passo_tot_viag: calcula e confere o campo ``TOT_VIAG'' baseado no máximo valor de ``NO_VIAG'' para cada pessoa;
+%\item - passo_cd_entre: substitui-se os valores da coluna “CD_ENTRE” segundo os valores de “TOT_VIAG”, considerando que todas entrevistas são consideradas "completas", segundo informação do Metrô.\\
 
-São funções gerais ``passo'':
-\item - passo_ano: preenche a coluna ``ANO'' segundo as categorias do Quadro \ref{qua:layout-haydee};
-\item - passo_dia_sem: preenche a coluna ``DIA_SEM'' segundo as categorias do Quadro \ref{qua:layout-haydee};
-\item - passo_ucod: preenche a coluna ``UCOD'' segundo consulta ao arquivo externo com correspondência entre zonas e ucods;
-\item - passo_zona_dom, passo_subzona_dom e passo_mun_dom: checa se existe algum erro no intervalo pertinente, respectivamente, às zonas, subzonas e municípios do domicílio de cada ano conforme Quadro \ref{qua:layout-haydee};
-\item - passo_f_dom: checa se existe algum erro (número diferente de 0 ou 1) na coluna ``F_DOM'';
-\item - passo_tipo_dom: checa se existe algum erro no intervalo pertinente aos tipos de domicílio conforme Quadro \ref{qua:layout-haydee};
-\item - passo_f_fam: checa se existe algum erro (número diferente de 0 ou 1) na coluna ``F_FAM'';
-\item - passo_cond_mora: faz transformações nas categorias da variável ``COND_MORA'' e checa se existe algum erro no intervalo pertinente à condição de moradia conforme Quadro \ref{qua:layout-haydee};
-\item - passo_ren_fam: corrige a renda familiar segundo o parâmetro deflator passado pela função principal e armazena os valores na coluna ``REN_FAM'';
-\item - passo_cd_renfam: faz transformações nas categorias da variável``CD_RENFAM'' e checa se existe algum erro no intervalo pertinente à renda individual conforme Quadro \ref{qua:layout-haydee};
-\item - passo_f_pess: checa se existe algum erro (número diferente de 0 ou 1) em ``F_PESS'';
-\item - passo_sit_fam:  faz transformações nas categorias da variável ``SIT_FAM'' e checa se existe algum erro no intervalo pertinente à situação familiar conforme Quadro \ref{qua:layout-haydee};
-\item - passo_sexo: faz transformações nas categorias da variável ``SEXO'' de forma que seja uma \textit{dummy} que indica se pessoa é mulher ou não e checa se existe algum erro (número diferente de 0 ou 1);
-\item - passo_grau_instr: faz transformações nas categorias da variável ``GRAU_INSTR'' e checa se existe algum erro no intervalo pertinente ao grau de instrução conforme Quadro \ref{qua:layout-haydee};
-\item - passo_estuda: atribui \textit{dummy} que indica se pessoa estuda ou não, ou seja, se zona da escola for zero (0) então, pessoa não estuda (0), caso contrário, a pessoa estuda (1); além de checar se existe algum erro (número diferente de 0 ou 1);
-\item - passo_ocup: faz transformações nas categorias da variável ``OCUP'' e checa se existe algum erro no intervalo pertinente à condição de ocupação da pessoa conforme Quadro \ref{qua:layout-haydee};
-\item - passo_setor_ativ: faz transformações nas categorias da variável ``SETOR_ATIV'' e checa se existe algum erro no intervalo pertinente à condição de ocupação da pessoa conforme Quadro \ref{qua:layout-haydee}; 
-\item - passo_ren_ind: corrige a renda familiar segundo o parâmetro deflator passado pela função principal e armazena os valores na coluna ``REN_IND'';
-\item - passo_cd_renind: faz transformações nas categorias da variável ``CD_RENIND'' de forma que seja uma \textit{dummy} que indica se pessoa tem renda ou não e checa se existe algum erro (número diferente de 0 ou 1);
-\item - passo_f_viag: checa se existe algum erro (número diferente de 0 ou 1) na coluna ``F_VIAG";
-\item - passo_fe_viag: não se mexe na coluna ``FE_VIAG'';
-\item - passo_zona_esc, passo_subzona_esc e passo_mun_esc: checa se existe algum erro no intervalo pertinente, respectivamente, às zonas, subzonas e municípios da escola de cada ano conforme Quadro \ref{qua:layout-haydee};
-\item - passo_zona_trab1, passo_subzona_trab1 e passo_mun_trab1: checa se existe algum erro no intervalo pertinente, respectivamente, às zonas, subzonas e municípios do trabalho 1 de cada ano conforme Quadro \ref{qua:layout-haydee};
-\item - passo_zona_trab2, passo_subzona_trab2 e passo_mun_trab2: checa se existe algum erro no intervalo pertinente, respectivamente, às zonas, subzonas e municípios do trabalho 2 de cada ano conforme Quadro \ref{qua:layout-haydee};
-\item - passo_zona_orig, passo_subzona_orig e passo_mun_orig: checa se existe algum erro no intervalo pertinente, respectivamente, às zonas, subzonas e municípios da origem da viagem de cada ano conforme Quadro \ref{qua:layout-haydee};
-\item - passo_zona_dest, passo_subzona_dest e passo_mun_dest: checa se existe algum erro no intervalo pertinente, respectivamente, às zonas, subzonas e municípios do destino da viagem de cada ano conforme Quadro \ref{qua:layout-haydee};
-\item - passo_serv_pas_orig e passo_serv_pas_dest: atribui \textit{dummy} que indica se pessoa serve passageiro ou não transformando as categorias das variáveis ``SERV_PAS_ORIG'' e ``SERV_PAS_DEST'', respectivamente, e checa se existe algum erro no intervalo pertinente ao ato de servir passageiro conforme Quadro \ref{qua:layout-haydee};
-\item - passo_motivo_orig e passo_motivo_dest: faz transformações nas categorias das variáveis ``MOTIVO_ORIG'' e ``MOTIVO_DEST'', respectivamente, e checa se existe algum erro no intervalo pertinente ao motivo conforme Quadro \ref{qua:layout-haydee};
-\item - passo_modo1, passo_modo2, passo_modo3 e passo_modo4: faz transformações nas categorias das variáveis ``MODO1'', ``MODO2'', ``MODO3'' e ``MODO4'', respectivamente, e checa se existe algum erro no intervalo pertinente aos modos de transporte usados segundo o Quadro \ref{qua:layout-haydee};
-\item - passo_modo_prin: faz transformações nas categorias da variável ``MODO_PRIN'' e checa se existe algum erro no intervalo pertinente ao principal modo de transporte usado segundo o Quadro \ref{qua:layout-haydee};
-\item - passo_tipo_est_auto: faz transformações nas categorias da variável ``TIPO_EST_AUTO'' e checa se existe algum erro no intervalo pertinente ao principal modo de transporte usado segundo o Quadro \ref{qua:layout-haydee};
-\item - passo_valor_est_auto: corrige o valor do estacionamento segundo o parâmetro deflator passado pela função principal e armazena os valores na coluna ``VALOR_EST_AUTO'', caso essa variável não existe, não se mexe na coluna e os valores serão tomados como \textit{NA};
-\item - passo_no_dom: gera o número do domicílio sendo que para cada ``ZONA_DOM'' o ``NO_DOM'' será atualizado sempre que ``F_DOM'' for igual a 1; caso contrário, se ``F_DOM'' for igual a zero, então``NO_DOM'' será igual ao ``NO_DOM'' da linha anterior;
-\item - passo_no_fam:  gera o número da família sendo que para cada ``ID_DOM'' o ``NO_FAM'' será incrementado sempre que ``F_FAM'' for igual a 1; caso contrário, se ``F_FAM'' for igual a 0, então
-o ``NO_FAM'' será igual ao ``NO_FAM'' da linha anterior; 
-\item - passo_no_pess: gera o número da pessoa sendo que para cada ``ID_FAM'' o ``NO_PESS'' será atualizado sempre que ``F_PESS'' for igual a 1; caso contrário, se ``F_PESS'' for igual a zero, então ``NO_PESS'' será igual ao ``NO_PESS'' da linha anterior;
-\item - passo_no_viag: gera o número da viagem sendo que para cada ``ID_PESS'' o ``NO_VIAG'' começa com 1 e será incrementado sempre que ``F_VIAG'' for igual a 1; caso contrário, se ``F_VIAG'' for igual a 0, então o ``NO_VIAG'' será igual ao ``NO_VIAG'' da linha anterior. Para garantir a representatividade do caso em que as pessoas responderam o questionário e não realizaram viagem,   quando o ``FE_VIAG'' for não nulo e ``ZONA_ORIG'' e ``ZONA_DEST'' forem ambas nulas simultaneamente o ``NO_VIAG'' será igual a 0;
-\item - passo_id_dom: gera o ``ID_DOM'' que é composto por 8 dígitos, em que o primeiro é o ano conforme Quadro \ref{qua:layout-haydee}, do segundo ao quarto dígitos tem-se a zona, e do quinto ao oitavo dígitos tem-se o número do domicílio;
-\item - passo_id_fam: gera o ``ID_FAM'' que é composto por 10 dígitos, em que os 8 primeiros correspondem ao ``ID_DOM'' e os dois últimos ao ``NO_FAM''; 
-\item - passo_id_pess: gera o ``ID_PESS'' que é composto por 12 dígitos, em que os 10 primeiros correspondem ao ``ID_FAM'' e os dois últimos ao ``NO_PESS''; 
-\item - passo_id_viag: gera o ``ID_VIAG'' que é composto por 14 dígitos, em que os 12 primeiros correspondem ao ``ID_PESS'' e os dois últimos ao ``NO_VIAG'';
-\item - passo_tot_viag: calcula e confere o campo ``TOT_VIAG'' baseado no máximo valor de ``NO_VIAG'' para cada pessoa;
-\item - passo_cd_entre: substitui-se os valores da coluna “CD_ENTRE” segundo os valores de “TOT_VIAG”, considerando que todas entrevistas são consideradas "completas", segundo informação do Metrô.\\
+\item (iv) Definição da função principal: principia lendo o banco de dados original (arquivo tipo OD__.csv) e também outros arquivos auxiliares de dados estruturados, como o ucod__.csv, o setor_ativ__.csv e o coord_subzonas__.csv – sendo um arquivo desses para cada OD analisada. Logo, temos 4 arquivos .csv principais de entrada e 12 auxiliares. O arquivo ucod__.csv contém a relação de cada zona e sua respectiva UCOD, o arquivo setor_ativ__.csv contém a relação de código do setor de atividade do banco original e o respectivo código no banco unificado. O arquivo coord_subzonas__.csv contém as coordenadas dos centroides das subzonas extraídos a partir dos arquivos de mapas e que não constavam originalmente do banco de dados. No caso de 1977, não se conseguiu o arquivo do MapInfo com a granularidade das subzonas, portanto, foram utilizadas as coordenadas dos centroides das zonas. Na sequência, as colunas que não existiam originalmente no banco de dados são geradas e reordenadas. Existe uma variável de controle (``passo'') que a cada passo executado incrementa 1. São chamadas as funções gerais. Vale notar que ficaram para o final aquelas relacionadas à geração dos IDs, variáveis fundamentais para indexação correta do BDU. Assim, primeiro deve-se executar a função NO_DOM (número do domicílio) e depois a ID_DOM (identificador de domicílio). Analogamente isso ocorre com NO_FAM e ID_FAM (sobre as famílias), NO_PESS e ID_PESS (sobre as pessoas) e NO_VIAG e ID_VIAG (sobre as viagens). Não havia expectativa inicial de que seria necessário gerar essa indexação, porém, a falta de um manual que explicasse a composição dos IDs presentes nos bancos de dados originais inviabilizou sua utilização. A vantagem de gerar nova indexação (ver Figura \ref{fig:id-esquema}) é que se tem maior controle do seu significado, possibilitando ainda incorporar informações como o ANO, informação não considerada nas bases originais.\\
 
 \begin{figure}[htb]%
     \caption{\label{fig:id-esquema}Esquema indicativo da formação dos IDs}%
@@ -76,12 +78,17 @@ o ``NO_FAM'' será igual ao ``NO_FAM'' da linha anterior;
 %    \fonte{Elaboração própria}
 \end{figure}%
 
-\item (iv) Definição da função principal: principia lendo o banco de dados original (arquivo tipo OD__.csv) e também outros arquivos auxiliares de dados estruturados, como o ucod__.csv, o setor_ativ__.csv e o coord_subzonas__.csv – sendo um arquivo desses para cada OD analisada. Logo, temos 4 arquivos .csv principais de entrada e 12 auxiliares. O arquivo ucod__.csv contém a relação de cada zona e sua respectiva UCOD, o arquivo setor_ativ__.csv contém a relação de código do setor de atividade do banco original e o respectivo código no banco unificado. O arquivo coord_subzonas__.csv contém as coordenadas dos centroides das subzonas extraídos a partir dos arquivos de mapas e que não constavam originalmente do banco de dados. No caso de 1977, não se conseguiu o arquivo do MapInfo com a granularidade das subzonas, portanto, foram utilizadas as coordenadas dos centroides das zonas. Na sequência, As colunas que não existiam originalmente no banco de dados são geradas e reordenadas. Existe uma variável de controle (``passo'') que a cada passo executado incrementa 1. São chamadas as funções gerais. Vale notar que ficaram para o final aquelas relacionadas à geração dos IDs, variáveis fundamentais para indexação correta do BDU. Assim, primeiro deve-se executar a função NO_DOM (número do domicílio) e depois a ID_DOM (identificador de domicílio). Analogamente isso ocorre com NO_FAM e ID_FAM (sobre as famílias), NO_PESS e ID_PESS (sobre as pessoas) e NO_VIAG e ID_VIAG (sobre as viagens). Não havia expectativa inicial de que seria necessário gerar essa indexação, porém, a falta de um manual que explicasse a composição dos IDs presentes nos bancos de dados originais inviabilizou sua utilização. A vantagem de gerar nova indexação (ver Figura \ref{fig:id-esquema}) é que se tem maior controle do seu significado, possibilitando ainda incorporar informações como o ANO, informação não considerada nas bases originais. Por fim, são chamadas as funções gerais referentes à quantidade e à distância da viagem (TOT_VIAG e DIST_VIAG).\\
-
 \item (v) Chamada da função principal: é a parte mais enxuta em termos de código, pois trata apenas da chamada da função principal (\textit{main}), que por sua vez chama as funções gerais.
 
 \end{compactitem} 
 
+\newpage
+Vale destacar que, todo esse tratamento de dados visou a compatibilização de categorias entre as diversas Pesquisas OD, que às vezes não continham as mesmas variáveis, ou ainda, não continham as mesmas categorias para uma determinada variável.
+Um dos princípios adotados para nova categorização foi agregar para não perder informação. 
+Por exemplo, se em 1977 havia as duas categorias ``sem instrução'' e ``primário incompleto'' e, em 1987, havia a categoria ``não alfabetizado/4ª série incompleta'', optou-se por unir as duas categorias de 1977 numa única denominada ``não alfabetizado / fundamental incompleto''. 
+Como exemplo, ainda em grau de instrução, do ponto de vista prático houve alterações significativas como: nomenclatura utilizada para os ciclos escolares, formas de ingresso (houve época em que havia um ``vestibulinho'' em algumas escolas para ingressar no ginásio) e quantidade de anos de cada ciclo. 
+Além disso, os significados sociais atribuídos à ``mesma variável'' grau de instrução são diferentes ao longo do tempo: ter curso superior no fim da década de 1970 era diferente e muito mais valorado socialmente do que em 2007.
+Ou seja, foi feito esforço para minimizar a perda de informações, contudo, algumas limitações são inerentes aos estudos longitudinais e informações são inevitavelmente perdidas, seja pela agregação do dado, seja pela descontinuidade na disponibilização dessa informação.
 
 Foi feito um \textbf{teste de consistência} que consistiu em identificar, para um mesmo indivíduo, que realizou viagem, se a zona de destino da viagem \textit{i} é igual à zona de origem da viagem \textit{i+1}. Inicialmente, foram encontradas 548 observações em 1977\footnote{É preciso considerar que a base de dados 1977 é bastante antiga, rodada originalmente em computadores de grande porte numa época em que não havia computadores pessoais, e que passou por muitas migrações e manipulações até hoje.} que não passaram nesse crivo.  Foi feita análise mais minuciosa desses considerando as variáveis de idade, situação familiar, renda individual, horário de saída e horário de chegada. Observou-se que eram casos de linhas \textit{i} invertidas com as subsequentes, portanto, foram feitas as inversões de linhas e corrigidos 546 registros. Os 2 registros remanescentes foram corrigidos manualmente. Todos os registros de 1987 passaram no teste de consistência. Em 1997, 7 registros não passaram no teste de consistência e, após análise mais cuidadosa, parecia tratar-se de linhas duplicadas, logo, esses 7 registros foram excluídos. Situação semelhante ocorreu com 1 registro de 2007, que também foi excluído.
 
@@ -367,7 +374,7 @@ O Quadro \ref{qua:layout-haydee} apresenta as variáveis do BDU, suas descriçõ
 		        & & & & 3 - Filho(a)/Enteado(a)\\
 		        & & & & 4 - Outro parente / agregado\\
 		        & & & & 5 - Empregado residente\\
-		        & & & & 6 - Outros (visitante não residente / parente do empregado)\\
+		        & & & & 6 - Outros\\
 		    \hline
 		       	M&
 		        IDADE&
@@ -646,8 +653,8 @@ O Quadro \ref{qua:layout-haydee} apresenta as variáveis do BDU, suas descriçõ
 		        \layoutColB{2}{F_VIAG}&
 		        \layoutColC{2}{Identificador de viagem}&
 		        \layoutColD{2}{01}&
-		        0 - Demais registros\\
-		        & & & & 1 - Primeiro registro\\	
+		        0 - Não fez viagem\\
+		        & & & & 1 - Fez viagem\\	
 		    \hline
 		       	M&
 		        FE_VIAG&
@@ -942,7 +949,7 @@ O Quadro \ref{qua:layout-haydee} apresenta as variáveis do BDU, suas descriçõ
 		        VALOR_EST&
 		        \multicolumn{1}{c|}{Valor do estacionamento}&
 		        02&
-				03 dígitos, 2 casas decimais (R\$/mês, ref. out/2007)\\	
+				06 dígitos, 2 casas decimais (R\$/mês, ref. out/2007)\\	
    			\hline											   					
 		\end{tabular}
 	}{%
@@ -952,7 +959,9 @@ O Quadro \ref{qua:layout-haydee} apresenta as variáveis do BDU, suas descriçõ
 
 \section{Critérios de Validação}\label{sec:bd-validacao}
 
-Algumas variáveis (colunas) inicialmente não identificadas como de interesse para este trabalho foram descartadas. Dado o interesse em investigar o comportamento de homens e mulheres nos deslocamentos diários, o critério utilizado para a exclusão de observações (linhas) foi a variável ``SEXO'' ser igual a 0 na base de dados. Assim, após a preparação da base e da execução de testes de consistência, foram excluídas 1561 linhas - todas pertencentes a 1977 e cujo fator de expansão de viagens também era igual a 0. O pequeno impacto na quantidade de domicílios, pessoas e viagens (registros) está expresso na Tabela \ref{tab:qtde-viagens}. 
+Algumas variáveis (colunas) inicialmente não identificadas como de interesse para este trabalho foram descartadas dos bancos originais.
+Dado o interesse em investigar o comportamento de homens e mulheres nos deslocamentos diários, o critério utilizado para a exclusão de observações (linhas) foi a variável ``SEXO'' ser igual a 0 na base de dados.
+Assim, após a preparação da base e da execução de testes de consistência, foram excluídas 1561 linhas - todas pertencentes a 1977 e cujo fator de expansão de viagens também era igual a 0. O impacto na quantidade de domicílios, pessoas e viagens (registros) está expresso na Tabela \ref{tab:qtde-viagens}. 
 
 \begin{table}[htb]
     \IBGEtab{%\renewcommand{\arraystretch}{1.5}%%\ABNTEXfontereduzida%
@@ -964,7 +973,7 @@ Algumas variáveis (colunas) inicialmente não identificadas como de interesse p
 		\toprule
 		\multirow{2}{*}{\textbf{Ano}} & \multicolumn{2}{c}{\textbf{Número de Domicílios}} & \multicolumn{2}{c}{\textbf{Número de Pessoas}} & \multicolumn{2}{c}{\textbf{Número de Viagens}} \\ \cline{2-7}
 		& \textbf{Antes} & \textbf{Depois} & \textbf{Antes} & \textbf{Depois} & \textbf{Antes} & \textbf{Depois} \\ \midrule \midrule
-				1977 & 26.132 & 24.613 & 108.069 & 108.027 & 230.606 & 229.045\\ \hline
+				1977 & 26.132 & 24.613 & 108.069 & 108.028 & 230.606 & 229.045\\ \hline
 				1987 & 26.070 & 26.070 & 110.813 & 110.813 & 223.926 & 223.926\\ \hline
 				1997 & 23.841 & 23.841 & 98.780 & 98.780 & 199.647 & 199.647\\ \hline
 		        2007 & 29.957 & 29.957 & 91.405 & 91.405 & 196.698 & 196.698\\ \hline  
@@ -980,20 +989,23 @@ Os critérios para a adoção de ``NA'' foram os seguintes:
 \begin{compactitem}[]
 \item (i) Quando em um ano específico não havia informação levantada para uma determinada variável.
 \item (ii) Quando, mesmo essa variável tendo sido levantada, não houve preenchimento ou resposta.
-\item (iii) Quando uma determinada informação não existe pelo do fato de que a viagem não foi feita.
+\item (iii) Quando uma determinada informação não existe pelo do fato de que não foi feita viagem.
 \end{compactitem}
 
 
 \section{Formulação de Novas Variáveis}\label{sec:bd-novas-var}
 
-Foram criadas variáveis de interesse, relativas a viagens, pessoas ou famílias, para gerar informações necessárias de forma a subsidiar as análises subsequentes. Além dessas, também foram criadas 4 \textit{dummies} de ano (ANO_77, ANO_87, ANO_97 e ANO_97) para que fosse possível, nas regressões, tentar captar o efeito do tempo.
+Foram criadas variáveis de interesse, relativas a viagens, pessoas ou famílias, para gerar informações necessárias para subsidiar as análises subsequentes.
+Além dessas, também foram criadas 4 \textit{dummies} de ano (ANO_77, ANO_87, ANO_97 e ANO_97) para que fosse possível, nas regressões, tentar captar o efeito do tempo.
 
 \subsection{Variáveis relativas às viagens}\label{subsec:novas-var-viag}
 
 \begin{compactitem}
 
-\item \textbf{Faixa horária e \textit{dummies} de período}: A variável FAIXA_HORARIA foi criada para classificar as viagens em faixas horárias, considerando o horário de término da viagem obtido a partir da variáveis H_CHEG (hora de chegada) e MIN_CHEG (minuto de chegada). Isso porque o horário de chegada corresponde ao horário de início da atividade que motivou a viagem, e são as atividades que, de fato, interessam e motivam o comportamento humano. 
-Foram adotadas sete categorias para a divisão dos períodos do dia, derivados do estudo de \citeauthoronline{VESPUCCI2003} (\citeyear{VESPUCCI2003}). Para cada faixa horária, foi gerada uma \textit{dummy} de período correspondente. Tal divisão, também adotada por \citeauthoronline{GERMANI2005} (\citeyear{GERMANI2005}), foi a que melhor refletiu as concentrações de atividades e é a seguinte:
+\item \textbf{Faixa horária e \textit{dummies} de período}: A variável FAIXA_HORARIA foi criada para classificar as viagens em faixas horárias, considerando o horário de término da viagem obtido a partir das variáveis H_CHEG (hora de chegada) e MIN_CHEG (minuto de chegada).
+Isso porque o horário de chegada corresponde ao horário de início da atividade que motivou a viagem, e são as atividades que, de fato, interessam e motivam o comportamento humano. 
+Foram adotadas sete categorias para a divisão dos períodos do dia, derivados do estudo de \citeauthoronline{VESPUCCI2003} (\citeyear{VESPUCCI2003}).
+Para cada faixa horária, foi gerada uma \textit{dummy} de período correspondente. Tal divisão, também adotada por \citeauthoronline{GERMANI2005} (\citeyear{GERMANI2005}), foi a que melhor refletiu as concentrações de atividades e é a seguinte:
     \begin{compactitem}[]
     \item 0 -> não fez viagem 
     \item 1 -> madrugada (entre 0h01 e 5h00), originou a \textit{dummy} VIAG_PER_MADRUG
@@ -1005,7 +1017,8 @@ Foram adotadas sete categorias para a divisão dos períodos do dia, derivados d
     \item 7 -> noite (22h01 e 0h), originou a \textit{dummy} VIAG_PER_NOITE
     \end{compactitem}\
 
-\item \textbf{Contagem da utilização dos modos}: Como cada viagem pode comportar a utilização de até 4 modos\footnote{As pesquisas OD-77 e OD-87 previam campo para até 3 modos, já as pesquisas OD-97 e OD-07 previam a utilização de até 4 modos por viagem.} é feita a contagem de quantas vezes um determinado modo foi utilizado em uma viagem. Quem não fez viagem terá toda as variáveis listadas a seguir setadas com 0. A consolidação da quantidade de modos diferentes utilizados na viagem é sumarizado na variável VIAG_NO_MODOS. 
+\item \textbf{Contagem da utilização dos modos}: Como cada viagem pode comportar a utilização de até 4 modos\footnote{As pesquisas OD-77 e OD-87 previam campo para até 3 modos, já as pesquisas OD-97 e OD-07 previam a utilização de até 4 modos por viagem.} é feita a contagem de quantas vezes um determinado modo foi utilizado em uma viagem.
+Quem não fez viagem terá toda as variáveis listadas a seguir definidas como iguais a 0. A consolidação da quantidade de modos diferentes utilizados na viagem é sumarizado na variável VIAG_NO_MODOS. 
 
     \begin{compactitem}[]
     \item VIAG_MODO_ONIBUS -> viagens feitas por ônibus de linha (municipal ou intermunicipal), ônibus escolar, ônibus de empresa, lotação e van
@@ -1016,22 +1029,23 @@ Foram adotadas sete categorias para a divisão dos períodos do dia, derivados d
     \item VIAG_MODO_BICI -> viagens feitas por bicicleta
     \item VIAG_MODO_APE -> viagens feitas a pé
     \item VIAG_MODO_OUTROS -> viagens não contempladas pelas categorias anteriores
-    \item VIAG_NO_MODOS -> quantos modos diferentes fora utilizados, por viagem, de acordo com estas categorias
+    \item VIAG_NO_MODOS -> quantos modos diferentes foram utilizados, por viagem, de acordo com estas categorias
     \end{compactitem}\
 
 \item \textbf{\textit{Dummies} dos motivos de viagem}: Cada viagem só tem um motivo na origem e um motivo no destino.
 Foram considerados os motivos do destino (que relacionam-se com a atividade fim daquele deslocamento) e criados seis marcadores, conforme pode ser observado a seguir. 
-\citeauthoronline{VESPUCCI2003}\footnote{Fez estudos sobre a sequência diária de atividades e cadeias de viagens a partir das pesquisas OD-87 e OD-97.} (\citeyear{VESPUCCI2003}) e \citeauthoronline{GERMANI2005}\footnote{Fez estudos sobre comportamento de demanda usando método de alinhamento de sequências multidimensionais a partir da pesquisa OD-97.} (\citeyear{GERMANI2005}) agregam as viagens de manutenção de compras e saúde com as de lazer e outros, além de desagregar as viagens de motivo residência em temporária e final. 
-\citeauthoronline{DALMASO2009}\footnote{Fez estudos sobre a identificação e caracterização de grupos de indivíduos segundo padrões de sequências de atividades multidimensionais a partir da pesquisa OD-97.} (\citeyear{DALMASO2009}) verificou que os resultados eram muito parecidos categorizando o motivo residência temporária (com realização de outras viagens posteriormente) e final (sem realização de outras viagens posteriormente).
+\citeauthoronline{VESPUCCI2003}\footnote{Fez estudos sobre a sequência diária de atividades e cadeias de viagens a partir das pesquisas OD-87 e OD-97.} (\citeyear{VESPUCCI2003}) e \citeauthoronline{GERMANI2005}\footnote{Fez estudos sobre comportamento de demanda usando método de alinhamento de sequências multidimensionais a partir da pesquisa OD-97.} (\citeyear{GERMANI2005}) agregam as viagens denominadas de manutenção  (como compras e saúde) com as de lazer e outros, além de desagregar as viagens de motivo residência em temporária e final. 
+\citeauthoronline{DALMASO2009}\footnote{Fez estudos sobre a identificação e caracterização de grupos de indivíduos segundo padrões de sequências de atividades multidimensionais a partir da pesquisa OD-97.} (\citeyear{DALMASO2009}) verificou que os resultados desta categorização eram muito parecidos.
 Além disso, este autor constatou que havia grandes diferenças nos resultados mantendo o motivo manutenção único ou desmembrando-o em compras/saúde e lazer/outros.
-Por fim, ele considerou o motivo ``servir passageiro'', que significa que a pessoa ao fazer uma viagem para acompanhar alguém (à escola, ao médico, etc.) não faz essa viagem por um motivo seu, mas acompanhando o motivo da outra pessoa, a quem ``serve''. Optou-se por seguir essa divisão de categorias de motivos de \citeauthoronline{DALMASO2009} porque a revisão de literatura indica que as mulheres são as principais cuidadoras do núcleo familiar, assim, espera-se que apresentem maior frequência no motivo ``servir passageiro''.
+Por fim, ele considerou o motivo ``servir passageiro'', que significa que a pessoa ao fazer uma viagem para acompanhar alguém (à escola, ao médico, etc.) não faz essa viagem por um motivo seu, mas acompanhando o motivo da outra pessoa, a quem ``serve''.
+Optou-se por seguir a divisão de categorias de motivos de \citeauthoronline{DALMASO2009} (unificação de motivo residência, separação do motivo manutenção e explicitação do motivo servir passageiro) porque a revisão de literatura indica que as mulheres são as principais cuidadoras do núcleo familiar, assim, espera-se que apresentem maior frequência nos motivos ``servir passageiro'' e, talvez, no ``manutenção/compras'' do que os homens.
     \begin{compactitem}[]
-    \item VIAG_MOTIVO_SERV_PAS -> marcador da viagem motivo servir passageiro
-    \item VIAG_MOTIVO_TRAB -> marcador da viagem motivo trabalho
-    \item VIAG_MOTIVO_EDUC -> marcador da viagem motivo educação
-    \item VIAG_MOTIVO_RES -> marcador da viagem motivo residência
-    \item VIAG_MOTIVO_MANUT_COMPRAS -> marcador da viagem motivo manutenção da casa (compras) ou da família (saúde)
-    \item VIAG_MOTIVO_LAZER_OUTROS -> marcador da viagem motivo destino lazer ou outros
+    \item VIAG_MOTIVO_SERV_PAS -> \textit{dummy} da viagem motivo servir passageiro
+    \item VIAG_MOTIVO_TRAB -> \textit{dummy} da viagem motivo trabalho
+    \item VIAG_MOTIVO_EDUC -> \textit{dummy} da viagem motivo educação
+    \item VIAG_MOTIVO_RES -> \textit{dummy} da viagem motivo residência
+    \item VIAG_MOTIVO_MANUT_COMPRAS -> \textit{dummy} da viagem motivo manutenção da casa (compras) ou da família (saúde)
+    \item VIAG_MOTIVO_LAZER_OUTROS -> \textit{dummy} da viagem motivo destino lazer ou outros
     \end{compactitem}\
 
 \item \textbf{\textit{Dummies} de viagens inter-zonas}: Foi criado um marcador que indicasse quando uma viagem teve sua zona de destino distinta da sua zona de origem. Não se busca mensurar distância ou tempo, mas a eventual superação de barreiras urbanas. Uma viagem intrazonal pode ser mais longa (em tempo e distância) que uma viagem interzonal, e mesmo assim ser preferível. Em São Paulo, por exemplo, a distância de uma margem a outra da Marginal Pinheiros, ou mesmo o tempo levado apenas para atravessar um de suas pontes, não representam valores muito grandes. Porém, é comum que os munícipes optem por fazer suas atividades (e deslocamentos) apenas de um lado do rio, pois este constitui-se uma barreira urbana, um ponto de impedância no sistema de deslocamentos. O desenho do zoneamento das pesquisas OD não foi formulado com a intenção de evidenciar as barreiras urbanas, mas mesmo assim, as reflete.
@@ -1081,42 +1095,48 @@ Por fim, ele considerou o motivo ``servir passageiro'', que significa que a pess
     \item mais de R\$5700 (inclusive) -> mais de 15 SM        
     \end{compactitem}\
 
-\item \textbf{Contagem da utilização dos modos}: Baseadas nas variáveis de contagem de modo das viagens, foram feitos agrupamentos por pessoas, e somadas a quantidade de vezes que um determinado modo é utilizado para cada pessoa - ver Equação \eqref{eq:pess-modo}.
-A variável PESS_NO_MODOS sintetiza a quantidade de modos diferentes que a pessoa utilizou ao longo do dia.
+\newpage
+\item \textbf{Contagem da utilização dos modos}: Baseadas nas variáveis de contagem de modo foi calculada a variável PESS_NO_MODOS, que sintetiza a quantidade de modos diferentes que a pessoa utilizou ao longo do dia, segundo a Equação \eqref{eq:pess-modo}, onde K é o número de categorias dos modos.
 
 \begin{equation}\label{eq:pess-modo}
-PESS\_MODO_{k}=\displaystyle\sum_{i=1}^{n}VIAG\_MODO_{k}
-\end{equation}\\
+\begin{split}
+PESS\_NO\_MODOS=\displaystyle\sum_{k=1}^{K}USO\_MODO_{k},\ \text{onde}:\\
+\begin{cases}
+        USO\_MODO_{k}=0 & \ \text{se}\  VIAG\_MODO_{k}=0\\
+        USO\_MODO_{k}=1 & \ \text{se}\  VIAG\_MODO_{k} \neq 0\\
+\end{cases}
+\end{split}
+\end{equation}
 
-\item \textbf{Contagem dos motivos de viagem}: Baseadas nas \textit{dummies} dos motivos das viagens, foram feitos agrupamentos por pessoas, e somadas a quantidade de vezes que um determinado motivo foi declarado para cada pessoa - ver Equação \eqref{eq:pess-motivo}.
+\item \textbf{Contagem dos motivos de viagem}: Baseadas nas \textit{dummies} dos motivos das viagens, foram feitos agrupamentos por pessoas, e somadas a quantidade de vezes que um determinado motivo foi declarado para cada pessoa - ver Equação \eqref{eq:pess-motivo}, onde n é o número de viagens da pessoa.
 A variável PESS_NO_MOTIVOS sintetiza a quantidade de motivos diferentes que levou a pessoa a se deslocar ao longo do dia.
 
 \begin{equation}\label{eq:pess-motivo}
-PESS\_MOTIVO_{k}=\displaystyle\sum_{i=1}^{n}VIAG\_MOTIVO_{k}
-\end{equation}\\
+PESS\_NO\_MOTIVOS=\displaystyle\sum_{i=1}^{n}VIAG\_MOTIVO_{i}
+\end{equation}
 
-\item \textbf{Distância total}: A informação das distâncias percorridas por viagem já está armazenada na variável DIST_VIAG do BDU. A variável PESS_DIST_TOTAL sumariza essa informação para a pessoa, conforme Equação \eqref{eq:pess-dist-tot}.
+\item \textbf{Distância total}: A informação das distâncias percorridas por viagem já está armazenada na variável DIST_VIAG do BDU. A variável PESS_DIST_TOT sumariza essa informação para a pessoa, conforme Equação \eqref{eq:pess-dist-tot}, onde n é o número de viagens da pessoa.
 
 \begin{equation}\label{eq:pess-dist-tot}
-PESS\_DIST\_TOT=\displaystyle\sum_{i=1}^{n}DIST\_VIAG
-\end{equation}\\
+PESS\_DIST\_TOT=\displaystyle\sum_{i=1}^{n}DIST\_VIAG_{i}
+\end{equation}
 
-\item \textbf{Distância média}: A distância média percorrida pela pessoa é a distância total da pessoa dividida pelo seu número total de viagens - ver Equação \eqref{eq:pess-dist-med}.
+\item \textbf{Distância média}: A distância média percorrida pela pessoa é a distância total da pessoa dividida pelo seu número total de viagens - ver Equação \eqref{eq:pess-dist-med}, onde n é o número de viagens da pessoa.
 
 \begin{equation}\label{eq:pess-dist-med}
-PESS\_DIST\_MED=\frac{\displaystyle\sum_{i=1}^{n}DIST\_VIAG}{TOT\_VIAG}
-\end{equation}\\
+PESS\_DIST\_MED=\frac{\displaystyle\sum_{i=1}^{n}DIST\_VIAG_{i}}{TOT\_VIAG}
+\end{equation}
 
-\item \textbf{Duração total}: A informação das distâncias percorridas por viagem já está armazenada na variável DURACAO do BDU. A variável PESS_DURACAO_TOTAL sumariza essa informação para a pessoa, conforme Equação \eqref{eq:pess-dur-tot}.
+\item \textbf{Duração total}: A informação das distâncias percorridas por viagem já está armazenada na variável DURACAO do BDU. A variável PESS_DURACAO_TOT sumariza essa informação para a pessoa, conforme Equação \eqref{eq:pess-dur-tot}, onde n é o número de viagens da pessoa.
 
 \begin{equation}\label{eq:pess-dur-tot}
-PESS\_DURACAO\_TOT=\displaystyle\sum_{i=1}^{n}DURACAO
-\end{equation}\\
+PESS\_DURACAO\_TOT=\displaystyle\sum_{i=1}^{n}DURACAO_{i}
+\end{equation}
 
-\item \textbf{Duração média}: A duração média percorrida pela pessoa é a duração total da pessoa dividida pelo seu número total de viagens - ver Equação \eqref{eq:pess-dur-med}
+\item \textbf{Duração média}: A duração média percorrida pela pessoa é a duração total da pessoa dividida pelo seu número total de viagens - ver Equação \eqref{eq:pess-dur-med}, onde n é o número de viagens da pessoa.
 
 \begin{equation}\label{eq:pess-dur-med}
-PESS\_DURACAO\_MED=\frac{\displaystyle\sum_{i=1}^{n}DURACAO}{TOT\_VIAG}
+PESS\_DURACAO\_MED=\frac{\displaystyle\sum_{i=1}^{n}DURACAO_{i}}{TOT\_VIAG}
 \end{equation}\\
 
 \end{compactitem}
@@ -1138,37 +1158,43 @@ PESS\_DURACAO\_MED=\frac{\displaystyle\sum_{i=1}^{n}DURACAO}{TOT\_VIAG}
     \item de R\$3800 (inclusive) até R\$7600 (exclusive) -> Classe B
     \item mais de R\$7600 (inclusive) -> Classe A
     \end{compactitem}\
-    
-\item \textbf{Distância total}:  A informação das distâncias percorridas por viagem já está armazenada na variável DIST_VIAG do BDU. A variável FAM_DIST_TOTAL sumariza essa informação para a família, conforme Equação \eqref{eq:fam-dist-tot}.
+
+\item \textbf{Número total de viagens da família}: A variável FAM_VIAG_TOT é calculada como a soma do número de viagens de cada pessoa da família - ver Equação \eqref{eq:fam-viag-tot}, onde p é o número de pessoas da família.
+
+\begin{equation}\label{eq:fam-viag-tot}
+FAM\_VIAG\_TOT=\displaystyle\sum_{j=1}^{p}TOT\_VIAG_{j}
+\end{equation}
+
+\newpage
+\item \textbf{Distância total}:  A informação das distâncias percorridas por viagem já está armazenada na variável DIST_VIAG do BDU. A variável FAM_DIST_TOT sumariza essa informação para a família, conforme Equação \eqref{eq:fam-dist-tot}, onde p é o número de pessoas da família.
 
 \begin{equation}\label{eq:fam-dist-tot}
-FAM\_DIST\_TOT=\displaystyle\sum_{i=1}^{n}DIST\_VIAG
-\end{equation}\\
+FAM\_DIST\_TOT=\displaystyle\sum_{j=1}^{p}PESS\_DIST\_TOT_{j}
+\end{equation}
 
-\item \textbf{Distância média}:  A distância média percorrida da família é a soma das distâncias das pessoas dividida pelo seu total de viagens da família - ver Equação \eqref{eq:fam-dist-med}.
+\item \textbf{Distância média}: A distância média de uma viagem da famílias, calculada como a soma das distâncias das pessoas dividida pelo seu total de viagens da família - ver Equação \eqref{eq:fam-dist-med}, onde p é o número de pessoas da família.
 
 \begin{equation}\label{eq:fam-dist-med}
-FAM\_DIST\_MED=\frac{\displaystyle\sum_{i=1}^{n}DIST\_VIAG}{FAM\_VIAG\_TOT}
+FAM\_DIST\_MED=\frac{\displaystyle\sum_{j=1}^{p}PESS\_DIST\_TOT_{j}}{FAM\_VIAG\_TOT}
 \end{equation}\\
 
-\item \textbf{Duração total}: A duração total das viagens da família são armazenadas na variável FAM_DURACAO_TOTAL, que sumariza essa informação para a família, conforme Equação \eqref{eq:fam-dur-tot}.
+\item \textbf{Duração total}: A duração total das viagens da família são armazenadas na variável FAM_DURACAO_TOT, que sumariza essa informação para a família, conforme Equação \eqref{eq:fam-dur-tot}, onde p é o número de pessoas da família.
 
 \begin{equation}\label{eq:fam-dur-tot}
-FAM\_DURACAO\_TOT=\displaystyle\sum_{i=1}^{n}DURACAO
-\end{equation}\\
+FAM\_DURACAO\_TOT=\displaystyle\sum_{j=1}^{p}PESS\_DURACAO\_TOT_{j}
+\end{equation}
 
-\item \textbf{Duração média}: A duração média das viagens da família são armazenadas na variável FAM_DURACAO_MED, que toma a duração total da família dividida pelo seu número total de viagens da família - ver Equação \eqref{eq:fam-dur-med}
+\item \textbf{Duração média}: A duração média de uma viagem da família é armazenada na variável FAM_DURACAO_MED, que soma a duração total das pessoas da família e divide pelo seu número total de viagens da família - ver Equação \eqref{eq:fam-dur-med}, onde p é o número de pessoas da família.
 
 \begin{equation}\label{eq:fam-dur-med}
-FAM\_DURACAO\_MED=\frac{\displaystyle\sum_{i=1}^{n}DURACAO}{FAM\_VIAG\_TOT}
+FAM\_DURACAO\_MED=\frac{\displaystyle\sum_{j=1}^{p}PESS\_DURACAO\_TOT_{j}}{FAM\_VIAG\_TOT}
 \end{equation}\\
 
 \item \textbf{Presença de automóveis na família}: Foi gerada uma \textit{dummy} (PRESENCA_AUTO) para indicar a presença de automóvel na família.
 Segundo \apudonline{STRAMBI2001}{PEIXOTO2002} a motorização é um fator de grande influência sobre o padrão de mobilidade. 
 \citeauthoronline{PEIXOTO2002}\ (\citeyear{PEIXOTO2002}), ao estudar a evolução temporal da mobilidade na Região Metropolitana de Porto Alegre, entre 1986 e 1997, detectou ser a posse de veículos uma característica importante para segmentação de grupos de comportamento semelhantes.
-Geralmente, a utilização do automóvel é decidida dentro de uma determinada dinâmica familiar. %TODO Por refs aqui!!!
-No contexto familiar surgem questões como: em não existindo um automóvel para cada pessoa acima de 18 anos, quem tem a prioridade no uso? Quem trabalha mais longe de casa? Quem tem uma rotina mais complexa? Quem leva os filhos na escola? Quem é autônomo?\\
-%TODO Pegar no texto da Kaia Mais refs sobre motorização
+Geralmente, a utilização do automóvel é decidida dentro de uma determinada dinâmica familiar.
+No contexto familiar surgem questões como: em não existindo um automóvel para cada pessoa habilitada, quem tem a prioridade no uso? Quem trabalha mais longe de casa? Quem tem uma rotina mais complexa? Quem leva os filhos na escola? Quem é autônomo?\\
 
 \item \textbf{Presença de crianças na família}: Como um indicativo do estágio no ciclo de vida familiar \cite{ORTUZAR1994}, foram geradas \textit{dummies} para indicar, na família, a presença de crianças/adolescentes de quatro faixas etárias, a saber: 
 
@@ -1182,7 +1208,7 @@ No contexto familiar surgem questões como: em não existindo um automóvel para
 \item \textbf{Presença de idosos na família}: A presença de idoso na família, também é um indicativo de estágio no ciclo de vida familiar \cite{ORTUZAR1994}, tanto mais expressivo quanto mais a população envelhece. 
 \citeauthoronline{OLIVEIRA2014}\ (\citeyear{OLIVEIRA2014}) ao estudar a correlação e efeitos das composições familiares na
 mobilidade do idoso, considerando aspectos econômicos e sociais, constatou que o tamanho da família afeta negativamente a mobilidade dos idosos e que quanto maior o número de idosos na mesma família, maior sua mobilidade. 
-\citeauthoronline{VASCONCELLOS2001}\ (\citeyear{VASCONCELLOS2001}) aponta que aspectos econômicos e sociais influenciam os padrões de mobilidade das pessoas e destaca, dentre os sociais, a família como um do fatores importantes na tomada de decisões em relação aos deslocamentos e arranjos das atividades diárias. Como o próprio conceito de quem é o idoso vem mudando com o tempo, e este trabalho observa quatro \textit{cross sections} e três décadas, decidiu-se por destacar a presença de idosos em duas faixas etárias:
+\citeauthoronline{VASCONCELLOS2001}\ (\citeyear{VASCONCELLOS2001}) aponta que aspectos econômicos e sociais influenciam os padrões de mobilidade das pessoas e destaca, dentre os sociais, a família como um dos fatores importantes na tomada de decisões em relação aos deslocamentos e arranjos das atividades diárias. Como o próprio conceito de quem é idoso vem mudando com o tempo, e este trabalho observa quatro \textit{cross sections} e três décadas, decidiu-se por destacar a presença de idosos em duas faixas etárias:
 
     \begin{compactitem}[]
     \item PRESENCA_IDOSO_60_70 -> indica se a família conta com pessoa idosa entre 60 e 70 anos
