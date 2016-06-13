@@ -114,7 +114,7 @@ O Quadro \ref{qua:layout-haydee} apresenta as variáveis do BDU, suas descriçõ
     \IBGEtab{
         \renewcommand{\arraystretch}{1.5}
         \ABNTEXfontereduzida
-        \caption[Layout]{\label{qua:layout-haydee}\emph{Layout} do Banco de Dados Unificado}
+        \caption[\textit{Layout} do Banco de Dados Unificado]{\label{qua:layout-haydee}\emph{Layout} do Banco de Dados Unificado}
 	}{%
         \begin{tabular}{|P{\layoutTamColA}|P{\layoutTamColB}|P{\layoutTamColC}|P{\layoutTamColD}|p{\layoutTamColE}|}
            \hline
@@ -980,7 +980,7 @@ Assim, após a preparação da base e da execução de testes de consistência, 
 		        Total & 106.000 & 104.481 & 409.067 & 409.025 & 850.877 & 849.316\\ \bottomrule	
 	\end{tabular}
     }{%
-		\fonte{Compilação a partir de \cite{OD77,OD87,OD97,OD07}}
+		\fonte{Compilação a partir de \citeauthoronline{OD77} (\citeyear{OD77,OD87,OD97,OD07})}
 	}
 \end{table}
 
@@ -1005,32 +1005,84 @@ Além dessas, também foram criadas 4 \textit{dummies} de ano (ANO_77, ANO_87, A
 \item \textbf{Faixa horária e \textit{dummies} de período}: A variável FAIXA_HORARIA foi criada para classificar as viagens em faixas horárias, considerando o horário de término da viagem obtido a partir das variáveis H_CHEG (hora de chegada) e MIN_CHEG (minuto de chegada).
 Isso porque o horário de chegada corresponde ao horário de início da atividade que motivou a viagem, e são as atividades que, de fato, interessam e motivam o comportamento humano. 
 Foram adotadas sete categorias para a divisão dos períodos do dia, derivados do estudo de \citeauthoronline{VESPUCCI2003} (\citeyear{VESPUCCI2003}).
-Para cada faixa horária, foi gerada uma \textit{dummy} de período correspondente. Tal divisão, também adotada por \citeauthoronline{GERMANI2005} (\citeyear{GERMANI2005}), foi a que melhor refletiu as concentrações de atividades e é a seguinte:
-    \begin{compactitem}[]
-    \item 0 -> não fez viagem 
-    \item 1 -> madrugada (entre 0h01 e 5h00), originou a \textit{dummy} VIAG_PER_MADRUG
-    \item 2 -> começo da manhã (entre 5h01 e 9h00), originou a \textit{dummy} VIAG_PER_COM_MAN
-    \item 3 -> manhã (entre 9h01 e 12h), originou a \textit{dummy} VIAG_PER_MANHA
-    \item 4 -> meio-dia tarde (entre 12h01 e 14h), originou a \textit{dummy} VIAG_PER_MEIODIA
-    \item 5 -> tarde (entre 14h01 e 17h), originou a \textit{dummy} VIAG_PER_TARDE
-    \item 6 -> começo da noite (17h01 e 22h), originou a \textit{dummy} VIAG_PER_COM_NOI
-    \item 7 -> noite (22h01 e 0h), originou a \textit{dummy} VIAG_PER_NOITE
-    \end{compactitem}\
+Para cada faixa horária, foi gerada uma \textit{dummy} de período correspondente. Tal divisão, também adotada por \citeauthoronline{GERMANI2005} (\citeyear{GERMANI2005}), foi a que melhor refletiu as concentrações de atividades e pode ser observada no Quadro \ref{qua:dum-per}.
+
+\begin{quadro}[htb]
+    \IBGEtab{
+        \renewcommand{\arraystretch}{1.5}
+        \ABNTEXfontereduzida
+        \caption{\textit{Dummies} de período}
+        \label{qua:dum-per}
+  	}{%
+        \begin{tabular}{P{1.0cm}P{6.0cm}P{5.0cm}}       
+           \hline
+   		       \headerTabCenterCell{Categoria} & 
+		       \headerTabCenterCell{Descrição}&
+		       \headerTabCenterCell{\textit{Dummy} resultante}\\ 		        
+		    \hline\hline
+		    	0 & não fez viagem & - \\
+			\hline
+		    	1 & madrugada (entre 0h01 e 5h00) & VIAG_PER_MADRUG\\
+			\hline
+		    	2 & começo da manhã (entre 5h01 e 9h00) & VIAG_PER_COM_MAN\\
+			\hline			
+		    	3 & manhã (entre 9h01 e 12h) & VIAG_PER_MANHA\\
+			\hline
+		    	4 & meio-dia tarde (entre 12h01 e 14h) & VIAG_PER_MEIODIA\\
+			\hline
+		    	5 & tarde (entre 14h01 e 17h) & VIAG_PER_TARDE\\
+			\hline
+		    	6 & começo da noite (17h01 e 22h) & VIAG_PER_COM_NOI\\
+			\hline			
+		    	7 & noite (22h01 e 0h) & VIAG_PER_NOITE\\
+			\bottomrule												
+		\end{tabular}	    		    	
+	}{%
+		%\fonte{Elaboração própria a partir das OD-1977, OD-1987, OD-1997 e OD-2007}
+    }
+\end{quadro}
+
 
 \item \textbf{Contagem da utilização dos modos}: Como cada viagem pode comportar a utilização de até 4 modos\footnote{As pesquisas OD-77 e OD-87 previam campo para até 3 modos, já as pesquisas OD-97 e OD-07 previam a utilização de até 4 modos por viagem.} é feita a contagem de quantas vezes um determinado modo foi utilizado em uma viagem.
 Quem não fez viagem terá toda as variáveis listadas a seguir definidas como iguais a 0. A consolidação da quantidade de modos diferentes utilizados na viagem é sumarizado na variável VIAG_NO_MODOS. 
+O Quadro \ref{qua:cont-modo} apresenta estas variáveis criadas.
 
-    \begin{compactitem}[]
-    \item VIAG_MODO_ONIBUS -> viagens feitas por ônibus de linha (municipal ou intermunicipal), ônibus escolar, ônibus de empresa, lotação e van
-    \item VIAG_MODO_DIRIG -> viagens feitas por automóvel com a pessoa dirigindo
-    \item VIAG_MODO_PASS -> viagens feitas por automóvel com a pessoa como passageiro, incluindo as viagens de táxi
-    \item VIAG_MODO_TREM -> viagens feitas por metrô ou trem
-    \item VIAG_MODO_MOTO -> viagens feitas por motocicleta
-    \item VIAG_MODO_BICI -> viagens feitas por bicicleta
-    \item VIAG_MODO_APE -> viagens feitas a pé
-    \item VIAG_MODO_OUTROS -> viagens não contempladas pelas categorias anteriores
-    \item VIAG_NO_MODOS -> quantos modos diferentes foram utilizados, por viagem, de acordo com estas categorias
-    \end{compactitem}\
+\begin{quadro}[htb]
+    \IBGEtab{
+        \renewcommand{\arraystretch}{1.5}
+        \ABNTEXfontereduzida
+        \caption{Variáveis de contagem da utilização dos modos}
+        \label{qua:cont-modo}
+  	}{%
+        \begin{tabular}{P{5.0cm}P{8.0cm}}             
+           \hline
+		       \headerTabCenterCell{Variável}&
+		       \headerTabCenterCell{Descrição}\\ 		        
+		    \hline\hline
+		    	VIAG_MODO_ONIBUS & viagens feitas por ônibus de linha (municipal ou intermunicipal), ônibus escolar, ônibus de empresa, lotação e van\\
+			\hline
+		    	VIAG_MODO_DIRIG & viagens feitas por automóvel com a pessoa dirigindo\\
+			\hline
+		    	VIAG_MODO_PASS & viagens feitas por automóvel com a pessoa como passageiro, incluindo as viagens de táxi\\
+			\hline			
+		    	VIAG_MODO_TREM & viagens feitas por metrô ou trem\\
+			\hline
+		    	VIAG_MODO_MOTO & viagens feitas por motocicleta\\
+			\hline
+		    	VIAG_MODO_BICI & viagens feitas por bicicleta\\
+			\hline
+		    	VIAG_MODO_APE & viagens feitas a pé\\
+			\hline			
+		    	VIAG_MODO_OUTROS & viagens não contempladas pelas categorias anteriores\\
+			\hline			
+		    	VIAG_NO_MODOS & quantos modos diferentes foram utilizados, por viagem, de acordo com estas categorias\\
+			\bottomrule												
+		\end{tabular}	    		    	
+	}{%
+		%\fonte{Elaboração própria a partir das OD-1977, OD-1987, OD-1997 e OD-2007}
+    }
+\end{quadro}
+
 
 \item \textbf{\textit{Dummies} dos motivos de viagem}: Cada viagem só tem um motivo na origem e um motivo no destino.
 Foram considerados os motivos do destino (que relacionam-se com a atividade fim daquele deslocamento) e criados seis marcadores, conforme pode ser observado a seguir. 
@@ -1039,61 +1091,148 @@ Foram considerados os motivos do destino (que relacionam-se com a atividade fim 
 Além disso, este autor constatou que havia grandes diferenças nos resultados mantendo o motivo manutenção único ou desmembrando-o em compras/saúde e lazer/outros.
 Por fim, ele considerou o motivo ``servir passageiro'', que significa que a pessoa ao fazer uma viagem para acompanhar alguém (à escola, ao médico, etc.) não faz essa viagem por um motivo seu, mas acompanhando o motivo da outra pessoa, a quem ``serve''.
 Optou-se por seguir a divisão de categorias de motivos de \citeauthoronline{DALMASO2009} (unificação de motivo residência, separação do motivo manutenção e explicitação do motivo servir passageiro) porque a revisão de literatura indica que as mulheres são as principais cuidadoras do núcleo familiar, assim, espera-se que apresentem maior frequência nos motivos ``servir passageiro'' e, talvez, no ``manutenção/compras'' do que os homens.
-    \begin{compactitem}[]
-    \item VIAG_MOTIVO_SERV_PAS -> \textit{dummy} da viagem motivo servir passageiro
-    \item VIAG_MOTIVO_TRAB -> \textit{dummy} da viagem motivo trabalho
-    \item VIAG_MOTIVO_EDUC -> \textit{dummy} da viagem motivo educação
-    \item VIAG_MOTIVO_RES -> \textit{dummy} da viagem motivo residência
-    \item VIAG_MOTIVO_MANUT_COMPRAS -> \textit{dummy} da viagem motivo manutenção da casa (compras) ou da família (saúde)
-    \item VIAG_MOTIVO_LAZER_OUTROS -> \textit{dummy} da viagem motivo destino lazer ou outros
-    \end{compactitem}\
+O Quadro \ref{qua:dummy-motivo} indica as \textit{dummies} de motivo criadas.
 
-\item \textbf{\textit{Dummies} de viagens inter-zonas}: Foi criado um marcador que indicasse quando uma viagem teve sua zona de destino distinta da sua zona de origem. Não se busca mensurar distância ou tempo, mas a eventual superação de barreiras urbanas. Uma viagem intrazonal pode ser mais longa (em tempo e distância) que uma viagem interzonal, e mesmo assim ser preferível. Em São Paulo, por exemplo, a distância de uma margem a outra da Marginal Pinheiros, ou mesmo o tempo levado apenas para atravessar um de suas pontes, não representam valores muito grandes. Porém, é comum que os munícipes optem por fazer suas atividades (e deslocamentos) apenas de um lado do rio, pois este constitui-se uma barreira urbana, um ponto de impedância no sistema de deslocamentos. O desenho do zoneamento das pesquisas OD não foi formulado com a intenção de evidenciar as barreiras urbanas, mas mesmo assim, as reflete.
+\begin{quadro}[htb]
+    \IBGEtab{
+        \renewcommand{\arraystretch}{1.5}
+        \ABNTEXfontereduzida
+        \caption{\textit{Dummies} de motivos de viagem}
+        \label{qua:dummy-motivo}
+  	}{%
+        \begin{tabular}{P{7.0cm}P{6.0cm}}             
+           \hline
+		       \headerTabCenterCell{\textit{Dummy}}&
+		       \headerTabCenterCell{Descrição}\\ 		        
+		    \hline\hline
+		    	VIAG_MOTIVO_SERV_PAS & indica se o motivo da viagem foi servir passageiro\\
+			\hline
+		    	VIAG_MOTIVO_TRAB  & indica se o motivo da viagem foi trabalho\\
+			\hline
+		    	VIAG_MOTIVO_EDUC & indica se o motivo da viagem foi educação\\
+			\hline			
+		    	VIAG_MOTIVO_RES & indica se o motivo da viagem foi residência\\
+			\hline
+		    	VIAG_MOTIVO_MANUT_COMPRAS & indica se o motivo da viagem foi manutenção da casa (compras) ou da família (saúde)\\
+			\hline
+		    	VIAG_MOTIVO_LAZER_OUTROS & indica se o motivo da viagem foi lazer ou outros\\
+			\bottomrule												
+		\end{tabular}	    		    	
+	}{%
+		%\fonte{Elaboração própria a partir das OD-1977, OD-1987, OD-1997 e OD-2007}
+    }
+\end{quadro}
+
+%\item \textbf{\textit{Dummies} de viagens inter-zonas}: Foi criado um marcador que indicasse quando uma viagem teve sua zona de destino distinta da sua zona de origem. Não se busca mensurar distância ou tempo, mas a eventual superação de barreiras urbanas. Uma viagem intrazonal pode ser mais longa (em tempo e distância) que uma viagem interzonal, e mesmo assim ser preferível. Em São Paulo, por exemplo, a distância de uma margem a outra da Marginal Pinheiros, ou mesmo o tempo levado apenas para atravessar um de suas pontes, não representam valores muito grandes. Porém, é comum que os munícipes optem por fazer suas atividades (e deslocamentos) apenas de um lado do rio, pois este constitui-se uma barreira urbana, um ponto de impedância no sistema de deslocamentos. O desenho do zoneamento das pesquisas OD não foi formulado necessariamente com a intenção de evidenciar as barreiras urbanas (deve ser compatível com distritos municipais, setores censitários do IBGE, etc.), mas mesmo assim, as reflete.
 % Pegar mapas e marcar as barreiras urbanas sobre o zoneamento
 % Por referências sobre barreiras urbanas (Andreina, Castells)
 
 \end{compactitem}
 
+\newpage
 \subsection{Variáveis relativas às pessoas}\label{subsec:novas-var-pess}
 
 \begin{compactitem}
 
-\item \textbf{Faixa etária e \textit{dummies} de faixa etária}: A partir da variável IDADE, foi criada a variável FAIXA_ETARIA, seguindo os critérios adotados pelo IBGE, resultando em 21 faixas etárias, conforme pode ser observado a seguir. Para cada faixa etária, foi gerada uma \textit{dummy} correspondente.
-    \begin{compactitem}[]
-    \item 0 -> 0 a 4 anos, originou a \textit{dummy} FX_ET_0
-	\item 1 -> 5 a 9 anos, originou a \textit{dummy} FX_ET_1
-	\item 2 -> 10 a 14 anos, originou a \textit{dummy} FX_ET_2
-	\item 3 -> 15 a 19 anos, originou a \textit{dummy} FX_ET_3
-	\item 4 -> 20 a 24 anos, originou a \textit{dummy} FX_ET_4
-	\item 5 -> 25 a 29 anos, originou a \textit{dummy} FX_ET_5
-	\item 6 -> 30 a 34 anos, originou a \textit{dummy} FX_ET_6
-	\item 7 -> 35 a 39 anos, originou a \textit{dummy} FX_ET_7
-	\item 8 -> 40 a 44 anos, originou a \textit{dummy} FX_ET_8
-	\item 9 -> 45 a 49 anos, originou a \textit{dummy} FX_ET_9
-	\item 10 -> 50 a 54 anos, originou a \textit{dummy} FX_ET_10
-	\item 11 -> 55 a 59 anos, originou a \textit{dummy} FX_ET_11
-	\item 12 -> 60 a 64 anos, originou a \textit{dummy} FX_ET_12
-	\item 13 -> 65 a 69 anos, originou a \textit{dummy} FX_ET_13
-	\item 14 -> 70 a 74 anos, originou a \textit{dummy} FX_ET_14
-	\item 15 -> 75 a 79 anos, originou a \textit{dummy} FX_ET_15
-	\item 16 -> 80 a 84 anos, originou a \textit{dummy} FX_ET_16
-	\item 17 -> 85 a 89 anos, originou a \textit{dummy} FX_ET_17
-	\item 18 -> 90 a 94 anos, originou a \textit{dummy} FX_ET_18
-	\item 19 -> 95 a 99 anos, originou a \textit{dummy} FX_ET_19
-	\item 20 -> mais de 100 anos, originou a \textit{dummy} FX_ET_20
-    \end{compactitem}\
+\item \textbf{Faixa etária e \textit{dummies} de faixa etária}: A partir da variável IDADE, foi criada a variável FAIXA_ETARIA, seguindo os critérios adotados pelo IBGE, resultando em 21 faixas etárias, conforme pode ser observado a seguir. Para cada faixa etária, foi gerada uma \textit{dummy} correspondente, que pode ser observada no Quadro \ref{qua:dum-et}.
 
-\item \textbf{Faixa de renda individual}: Os valores de renda individual foram levados para out/2007 e classificados em sete categorias explicitadas a seguir, conforme a quantidade de salários mínimos (SM)\footnote{O valor de um salário mínimo era R\$380,00 em 2007 segundo a Lei do salário mínimo vigente e disponível em \url{ https://www.planalto.gov.br/ccivil_03/_Ato2007-2010/2007/Lei/L11498.htm} Acesso em 30 de setembro de 2015.}.
-    \begin{compactitem}[]
-    \item 0 -> sem renda
-    \item até R\$380 (exclusive) -> até 1 SM
-    \item de R\$380 (inclusive) até R\$760 (exclusive) -> de 1 a 2 SM
-    \item de R\$760 (inclusive) até R\$1140 (exclusive) -> de 2 a 3 SM
-    \item de R\$1140 (inclusive) até R\$1900 (exclusive) -> de 3 a 5 SM
-    \item de R\$1900 (inclusive) até R\$3800 (exclusive) -> de 5 a 10 SM
-    \item de R\$3800 (inclusive) até R\$5700 (exclusive) -> de 10 a 15 SM 
-    \item mais de R\$5700 (inclusive) -> mais de 15 SM        
-    \end{compactitem}\
+\begin{quadro}[htb]
+    \IBGEtab{
+        \renewcommand{\arraystretch}{1.5}
+        \ABNTEXfontereduzida
+        \caption{\textit{Dummies} de faixa etária}
+        \label{qua:dum-et}
+  	}{%
+        \begin{tabular}{P{1.0cm}P{6.0cm}P{5.0cm}}       
+           \hline
+   		       \headerTabCenterCell{Categoria} & 
+		       \headerTabCenterCell{Descrição}&
+		       \headerTabCenterCell{\textit{Dummy} resultante}\\ 		        
+		    \hline\hline
+		    	0 & 0 a 4 anos & FX_ET_0\\
+			\hline
+		    	1 & 5 a 9 anos & FX_ET_1\\
+			\hline
+		    	2 & 10 a 14 anos & FX_ET_2\\
+			\hline			
+		    	3 & 15 a 19 anos & FX_ET_3\\
+			\hline
+		    	4 & 20 a 24 anos & FX_ET_4\\
+			\hline
+		    	5 & 25 a 29 anos & FX_ET_5\\
+			\hline
+		    	6 & 30 a 34 anos & FX_ET_6\\
+			\hline			
+		    	7 & 35 a 39 anos & FX_ET_7\\
+			\hline
+		    	8 & 40 a 44 anos & FX_ET_8\\
+			\hline
+		    	9 & 45 a 49 anos & FX_ET_9\\
+			\hline			
+		    	10 & 50 a 54 anos & FX_ET_10\\
+			\hline
+		    	11 & 55 a 59 anos & FX_ET_11\\
+			\hline
+		    	12 & 60 a 64 anos & FX_ET_12\\
+			\hline
+		    	13 & 65 a 69 anos & FX_ET_13\\
+			\hline			
+		    	14 & 70 a 74 anos & FX_ET_14\\
+			\hline
+		    	15 & 75 a 79 anos & FX_ET_15\\
+			\hline			
+		    	16 & 80 a 84 anos & FX_ET_16\\
+			\hline
+		    	17 & 85 a 89 anos & FX_ET_17\\
+			\hline
+		    	18 & 90 a 94 anos & FX_ET_18\\
+			\hline
+		    	19 & 95 a 99 anos & FX_ET_19\\
+			\hline			
+		    	20 & mais de 100 anos & FX_ET_20\\
+			\bottomrule												
+		\end{tabular}	    		    	
+	}{%
+		%\fonte{Elaboração própria a partir das OD-1977, OD-1987, OD-1997 e OD-2007}
+    }
+\end{quadro}
+    
+\item \textbf{Faixa de renda individual}: Os valores de renda individual foram levados para out/2007 e classificados em sete categorias explicitadas no Quadro \ref{qua:fx-rend-ind}, conforme a quantidade de salários mínimos (SM)\footnote{O valor de um salário mínimo era R\$380,00 em 2007 segundo a Lei do salário mínimo vigente e disponível em \url{ https://www.planalto.gov.br/ccivil_03/_Ato2007-2010/2007/Lei/L11498.htm} Acesso em 30 de setembro de 2015.}.
+
+\begin{quadro}[htb]
+    \IBGEtab{
+        \renewcommand{\arraystretch}{1.5}
+        \ABNTEXfontereduzida
+        \caption{Categorias da variável Faixa de Renda Individual}
+        \label{qua:fx-rend-ind}
+  	}{%
+        \begin{tabular}{P{1.0cm}P{8.0cm}P{3.0cm}}       
+           \hline
+   		       \headerTabCenterCell{Categoria} & 
+		       \headerTabCenterCell{em R\$} &
+		       \headerTabCenterCell{em Salário Mínimo}\\ 		        
+		    \hline\hline
+		    	0 & 0 & sem renda\\
+			\hline
+		    	1 & até R\$380 (exclusive) & até 1 SM\\
+			\hline
+		    	2 & de R\$380 (inclusive) até R\$760 (exclusive) & de 1 a 2 SM\\
+			\hline			
+		    	3 & de R\$760 (inclusive) até R\$1140 (exclusive) & de 2 a 3 SM\\
+			\hline			
+		    	4 & de R\$1140 (inclusive) até R\$1900 (exclusive) & de 3 a 5 SM\\
+			\hline			
+		    	5 & de de R\$1900 (inclusive) até R\$3800 (exclusive) & de 5 a 10 SM\\
+			\hline			
+		    	6 & de R\$3800 (inclusive) até R\$5700 (exclusive) & de 10 a 15 SM \\
+			\hline			
+		    	7 & mais de R\$5700 (inclusive) & mais de 15 SM\\
+			\bottomrule												
+		\end{tabular}	    		    	
+	}{%
+		%\fonte{Elaboração própria a partir das OD-1977, OD-1987, OD-1997 e OD-2007}
+    }
+\end{quadro}
 
 \newpage
 \item \textbf{Contagem da utilização dos modos}: Baseadas nas variáveis de contagem de modo foi calculada a variável PESS_NO_MODOS, que sintetiza a quantidade de modos diferentes que a pessoa utilizou ao longo do dia, segundo a Equação \eqref{eq:pess-modo}, onde K é o número de categorias dos modos.
@@ -1106,38 +1245,38 @@ PESS\_NO\_MODOS=\displaystyle\sum_{k=1}^{K}USO\_MODO_{k},\ \text{onde}:\\
         USO\_MODO_{k}=1 & \ \text{se}\  VIAG\_MODO_{k} \neq 0\\
 \end{cases}
 \end{split}
-\end{equation}
+\end{equation}\\
 
 \item \textbf{Contagem dos motivos de viagem}: Baseadas nas \textit{dummies} dos motivos das viagens, foram feitos agrupamentos por pessoas, e somadas a quantidade de vezes que um determinado motivo foi declarado para cada pessoa - ver Equação \eqref{eq:pess-motivo}, onde n é o número de viagens da pessoa.
 A variável PESS_NO_MOTIVOS sintetiza a quantidade de motivos diferentes que levou a pessoa a se deslocar ao longo do dia.
 
 \begin{equation}\label{eq:pess-motivo}
 PESS\_NO\_MOTIVOS=\displaystyle\sum_{i=1}^{n}VIAG\_MOTIVO_{i}
-\end{equation}
+\end{equation}\\
 
-\item \textbf{Distância total}: A informação das distâncias percorridas por viagem já está armazenada na variável DIST_VIAG do BDU. A variável PESS_DIST_TOT sumariza essa informação para a pessoa, conforme Equação \eqref{eq:pess-dist-tot}, onde n é o número de viagens da pessoa.
+\item \textbf{Distância total}: A informação das distâncias percorridas por viagem já está armazenada na variável DIST_VIAG do BDU. A variável PESS_DIST_TOT sumariza essa informação para a pessoa, conforme Equação \eqref{eq:pess-dist-tot}.
 
 \begin{equation}\label{eq:pess-dist-tot}
 PESS\_DIST\_TOT=\displaystyle\sum_{i=1}^{n}DIST\_VIAG_{i}
-\end{equation}
+\end{equation}\\
 
-\item \textbf{Distância média}: A distância média percorrida pela pessoa é a distância total da pessoa dividida pelo seu número total de viagens - ver Equação \eqref{eq:pess-dist-med}, onde n é o número de viagens da pessoa.
+\item \textbf{Distância média}: A distância média percorrida pela pessoa é a distância total da pessoa dividida pelo seu número total de viagens - ver Equação \eqref{eq:pess-dist-med}.
 
 \begin{equation}\label{eq:pess-dist-med}
 PESS\_DIST\_MED=\frac{\displaystyle\sum_{i=1}^{n}DIST\_VIAG_{i}}{TOT\_VIAG}
 \end{equation}
 
-\item \textbf{Duração total}: A informação das distâncias percorridas por viagem já está armazenada na variável DURACAO do BDU. A variável PESS_DURACAO_TOT sumariza essa informação para a pessoa, conforme Equação \eqref{eq:pess-dur-tot}, onde n é o número de viagens da pessoa.
+\item \textbf{Duração total}: A informação das distâncias percorridas por viagem já está armazenada na variável DURACAO do BDU. A variável PESS_DURACAO_TOT sumariza essa informação para a pessoa, conforme Equação \eqref{eq:pess-dur-tot}.
 
 \begin{equation}\label{eq:pess-dur-tot}
 PESS\_DURACAO\_TOT=\displaystyle\sum_{i=1}^{n}DURACAO_{i}
 \end{equation}
 
-\item \textbf{Duração média}: A duração média percorrida pela pessoa é a duração total da pessoa dividida pelo seu número total de viagens - ver Equação \eqref{eq:pess-dur-med}, onde n é o número de viagens da pessoa.
+\item \textbf{Duração média}: A duração média percorrida pela pessoa é a duração total da pessoa dividida pelo seu número total de viagens - ver Equação \eqref{eq:pess-dur-med}.
 
 \begin{equation}\label{eq:pess-dur-med}
 PESS\_DURACAO\_MED=\frac{\displaystyle\sum_{i=1}^{n}DURACAO_{i}}{TOT\_VIAG}
-\end{equation}\\
+\end{equation}
 
 \end{compactitem}
 
@@ -1145,19 +1284,42 @@ PESS\_DURACAO\_MED=\frac{\displaystyle\sum_{i=1}^{n}DURACAO_{i}}{TOT\_VIAG}
 
 \begin{compactitem}
 
-\item \textbf{Tamanho da família}: O tamanho da família (variável TOT_PESS) é determinado pelo máximo número da pessoa (NO_PESS) de uma determinada família.\\
-
-\item \textbf{Faixa de renda familiar}: A partir da variável renda familiar, em valores de outubro de 2007, foi criada a variável FAIXA_REN_FAM, que contém a faixa de renda familiar segundo o critério de classificação do IBGE para classes econômicas
-\footnote{Definição de Classe Econômica – Fonte: \url{http://www.sae.gov.br/wp-content/uploads/ebook_ClasseMedia1.pdf} Acesso em 30 de setembro de 2015.} (A, B, C, D e E) – ver categorias abaixo. Portanto, as faixas de renda familiar foram construídas a partir da quantidade de salários mínimos, sendo o valor de um salário mínimo R\$380,00 em 2007
+\item \textbf{Faixa de renda familiar}: A partir da variável renda familiar, em valores de outubro de 2007, foi criada a variável FAIXA_REN_FAM, que contém a faixa de renda familiar segundo o critério de classificação do IBGE para classes econômicas%
+\footnote{Definição de Classe Econômica – Fonte: \url{http://www.sae.gov.br/wp-content/uploads/ebook_ClasseMedia1.pdf} Acesso em 30 de setembro de 2015.} (A, B, C, D e E) – ver Quadro \ref{qua:fx-rend-fam}. Portanto, as faixas de renda familiar foram construídas a partir da quantidade de salários mínimos, sendo o valor de um salário mínimo R\$380,00 em 2007%
 \footnote{Lei do salário mínimo de 2007: \url{ https://www.planalto.gov.br/ccivil_03/_Ato2007-2010/2007/Lei/L11498.htm} Acesso em 30 de setembro de 2015.}.
-    \begin{compactitem}[]
-    \item 0 -> sem renda
-    \item até R\$760 (exclusive) -> Classe E
-    \item de R\$760 (inclusive) até R\$1520 (exclusive) -> Classe D
-    \item de R\$1520 (inclusive) até R\$3800 (exclusive) -> Classe C
-    \item de R\$3800 (inclusive) até R\$7600 (exclusive) -> Classe B
-    \item mais de R\$7600 (inclusive) -> Classe A
-    \end{compactitem}\
+    
+    \begin{quadro}[htb]
+    \IBGEtab{
+        \renewcommand{\arraystretch}{1.5}
+        \ABNTEXfontereduzida
+        \caption{Categorias da variável Faixa de Renda Familiar}
+        \label{qua:fx-rend-fam}
+  	}{%
+        \begin{tabular}{P{1.0cm}P{8.0cm}P{3.0cm}}       
+           \hline
+   		       \headerTabCenterCell{Categoria} & 
+		       \headerTabCenterCell{em R\$} &
+		       \headerTabCenterCell{Classe Econômica}\\ 		        
+		    \hline\hline
+		    	0 & 0 & sem renda\\
+			\hline
+		    	1 & até R\$760 (exclusive) & classe E\\
+			\hline
+		    	2 & de R\$760 (inclusive) até R\$1520 (exclusive) & classe D\\
+			\hline			
+		    	3 & de R\$1520 (inclusive) até R\$3800 (exclusive) & classe C\\
+			\hline			
+		    	4 & de R\$3800 (inclusive) até R\$7600 (exclusive) & classe B\\
+			\hline			
+		    	5 & mais de R\$7600 (inclusive) & classe A\\
+			\bottomrule												
+		\end{tabular}	    		    	
+	}{%
+		%\fonte{Elaboração própria a partir das OD-1977, OD-1987, OD-1997 e OD-2007}
+    }
+\end{quadro}
+
+\item \textbf{Tamanho da família}: O tamanho da família (variável TOT_PESS) é determinado pelo máximo número da pessoa (NO_PESS) de uma determinada família.\\
 
 \item \textbf{Número total de viagens da família}: A variável FAM_VIAG_TOT é calculada como a soma do número de viagens de cada pessoa da família - ver Equação \eqref{eq:fam-viag-tot}, onde p é o número de pessoas da família.
 
@@ -1165,14 +1327,13 @@ PESS\_DURACAO\_MED=\frac{\displaystyle\sum_{i=1}^{n}DURACAO_{i}}{TOT\_VIAG}
 FAM\_VIAG\_TOT=\displaystyle\sum_{j=1}^{p}TOT\_VIAG_{j}
 \end{equation}
 
-\newpage
 \item \textbf{Distância total}:  A informação das distâncias percorridas por viagem já está armazenada na variável DIST_VIAG do BDU. A variável FAM_DIST_TOT sumariza essa informação para a família, conforme Equação \eqref{eq:fam-dist-tot}, onde p é o número de pessoas da família.
 
 \begin{equation}\label{eq:fam-dist-tot}
 FAM\_DIST\_TOT=\displaystyle\sum_{j=1}^{p}PESS\_DIST\_TOT_{j}
 \end{equation}
 
-\item \textbf{Distância média}: A distância média de uma viagem da famílias, calculada como a soma das distâncias das pessoas dividida pelo seu total de viagens da família - ver Equação \eqref{eq:fam-dist-med}, onde p é o número de pessoas da família.
+\item \textbf{Distância média}: A distância média de viagem da família, calculada como a soma das distâncias das pessoas dividida pelo seu total de viagens da família - ver Equação \eqref{eq:fam-dist-med}, onde p é o número de pessoas da família.
 
 \begin{equation}\label{eq:fam-dist-med}
 FAM\_DIST\_MED=\frac{\displaystyle\sum_{j=1}^{p}PESS\_DIST\_TOT_{j}}{FAM\_VIAG\_TOT}
@@ -1190,29 +1351,41 @@ FAM\_DURACAO\_TOT=\displaystyle\sum_{j=1}^{p}PESS\_DURACAO\_TOT_{j}
 FAM\_DURACAO\_MED=\frac{\displaystyle\sum_{j=1}^{p}PESS\_DURACAO\_TOT_{j}}{FAM\_VIAG\_TOT}
 \end{equation}\\
 
-\item \textbf{Presença de automóveis na família}: Foi gerada uma \textit{dummy} (PRESENCA_AUTO) para indicar a presença de automóvel na família.
+\item \textbf{Presença de automóveis na família}: Foi gerada uma \textit{dummy} \mbox{(PRESENCA_AUTO)} para indicar a presença de automóvel na família.
 Segundo \apudonline{STRAMBI2001}{PEIXOTO2002} a motorização é um fator de grande influência sobre o padrão de mobilidade. 
 \citeauthoronline{PEIXOTO2002}\ (\citeyear{PEIXOTO2002}), ao estudar a evolução temporal da mobilidade na Região Metropolitana de Porto Alegre, entre 1986 e 1997, detectou ser a posse de veículos uma característica importante para segmentação de grupos de comportamento semelhantes.
 Geralmente, a utilização do automóvel é decidida dentro de uma determinada dinâmica familiar.
 No contexto familiar surgem questões como: em não existindo um automóvel para cada pessoa habilitada, quem tem a prioridade no uso? Quem trabalha mais longe de casa? Quem tem uma rotina mais complexa? Quem leva os filhos na escola? Quem é autônomo?\\
 
-\item \textbf{Presença de crianças na família}: Como um indicativo do estágio no ciclo de vida familiar \cite{ORTUZAR1994}, foram geradas \textit{dummies} para indicar, na família, a presença de crianças/adolescentes de quatro faixas etárias, a saber: 
+\item \textbf{Presença de crianças na família}: Como um indicativo do estágio no ciclo de vida familiar \cite{ORTUZAR1994}, foram geradas \textit{dummies} para indicar, na família, a presença de crianças de três faixas etárias, conforme Quadro \ref{qua:dummy-crianca}.
 
-    \begin{compactitem}[]
-    \item PRESENCA_FILH_ate4 -> indica se a família conta com crianças até 4 anos
-    \item PRESENCA_FILH_5a9 -> indica se a família conta com crianças entre 5 e 9 anos
-    \item PRESENCA_FILH_10a14 -> indica se a família conta com crianças entre 10 e 14 anos
-    \item PRESENCA_FILH_15a19 -> indica se a família conta com adolescentes entre 15 e 19 anos
-    \end{compactitem}\
+\begin{quadro}[htb]
+    \IBGEtab{
+        \renewcommand{\arraystretch}{1.5}
+        \ABNTEXfontereduzida
+        \caption{\textit{Dummies} de presença de crianças na família}
+        \label{qua:dummy-crianca}
+  	}{%
+        \begin{tabular}{P{4.5cm}P{9.0cm}}             
+           \hline
+		       \headerTabCenterCell{\textit{Dummy}}&
+		       \headerTabCenterCell{Descrição}\\ 		        
+		    \hline\hline
+		    	PRESENCA_FILH_ate4  & indica se a família conta com crianças até 4 anos\\
+			\hline
+		    	PRESENCA_FILH_5a9 & indica se a família conta com crianças entre 5 e 9 anos\\
+			\hline
+		    	PRESENCA_FILH_10a14 & indica se a família conta com crianças entre 10 e 14 anos\\
+			\bottomrule												
+		\end{tabular}	    		    	
+	}{%
+		%\fonte{Elaboração própria a partir das OD-1977, OD-1987, OD-1997 e OD-2007}
+    }
+\end{quadro}
+
 
 \item \textbf{Presença de idosos na família}: A presença de idoso na família, também é um indicativo de estágio no ciclo de vida familiar \cite{ORTUZAR1994}, tanto mais expressivo quanto mais a população envelhece. 
 \citeauthoronline{OLIVEIRA2014}\ (\citeyear{OLIVEIRA2014}) ao estudar a correlação e efeitos das composições familiares na
 mobilidade do idoso, considerando aspectos econômicos e sociais, constatou que o tamanho da família afeta negativamente a mobilidade dos idosos e que quanto maior o número de idosos na mesma família, maior sua mobilidade. 
-\citeauthoronline{VASCONCELLOS2001}\ (\citeyear{VASCONCELLOS2001}) aponta que aspectos econômicos e sociais influenciam os padrões de mobilidade das pessoas e destaca, dentre os sociais, a família como um dos fatores importantes na tomada de decisões em relação aos deslocamentos e arranjos das atividades diárias. Como o próprio conceito de quem é idoso vem mudando com o tempo, e este trabalho observa quatro \textit{cross sections} e três décadas, decidiu-se por destacar a presença de idosos em duas faixas etárias:
-
-    \begin{compactitem}[]
-    \item PRESENCA_IDOSO_60_70 -> indica se a família conta com pessoa idosa entre 60 e 70 anos
-    \item PRESENCA_IDOSO_70 -> indica se a família conta com pessoa idosa com mais de 70 anos
-    \end{compactitem}
-
+\citeauthoronline{VASCONCELLOS2001}\ (\citeyear{VASCONCELLOS2001}) aponta que aspectos econômicos e sociais influenciam os padrões de mobilidade das pessoas e destaca, dentre os sociais, a família como um dos fatores importantes na tomada de decisões em relação aos deslocamentos e arranjos das atividades diárias. Desta forma, foi criada a \textit{dummy} PRESENCA_IDOSO_60 para indicar se a família conta com pessoa idosa com mais de 60 anos.
 \end{compactitem}
